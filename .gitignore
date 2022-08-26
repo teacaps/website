@@ -1,0 +1,7 @@
+node_modules
+.yarn
+.DS_Store
+.idea
+.vscode
+dist
+*.local

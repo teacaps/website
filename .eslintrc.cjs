@@ -30,5 +30,6 @@ module.exports = {
 	rules: {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-types": "off",
+		"import/no-unresolved": "off",
 	},
 };

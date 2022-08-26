@@ -4,7 +4,6 @@
     "target": "es2020",
     "module": "esnext",
     "moduleResolution": "nodenext",
-    "moduleSuffixes": [".server", ".client", ""],
     "strict": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,

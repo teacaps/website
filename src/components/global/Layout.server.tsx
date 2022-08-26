@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { Footer } from "./Footer";
-import { Navigation } from "./Navigation";
+import { Footer } from "./Footer.server";
+import { Navigation } from "./Navigation.server";
 
 const ShippingNotice = () => (
 	<div className="bg-matcha w-full h-auto flex justify-center content-center py-2">

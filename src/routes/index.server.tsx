@@ -1,4 +1,4 @@
-import { Layout } from "../components/global/Layout";
+import { Layout } from "../components/global/Layout.server";
 import { Container } from "../components/elements/Container";
 
 export default function Landing() {

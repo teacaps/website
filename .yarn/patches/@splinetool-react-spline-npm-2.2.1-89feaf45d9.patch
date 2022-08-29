@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index a64b1600a57e40c610e4e8fb5da4ff81ffcd2fa5..87c2a18776808390e29f99b2ce9b3ceb47bf74e2 100644
+--- a/package.json
++++ b/package.json
+@@ -11,6 +11,7 @@
+   "react-native": "./dist/react-spline.es.js",
+   "exports": {
+     ".": {
++      "types": "./dist/Spline.d.ts",
+       "import": "./dist/react-spline.es.js",
+       "require": "./dist/react-spline.cjs.js"
+     }

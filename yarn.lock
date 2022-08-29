@@ -1088,12 +1088,47 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@splinetool/runtime@npm:^0.9.103":
+"@splinetool/react-spline@npm:2.2.1":
+  version: 2.2.1
+  resolution: "@splinetool/react-spline@npm:2.2.1"
+  dependencies:
+    react-merge-refs: ^1.1.0
+  peerDependencies:
+    "@splinetool/runtime": "*"
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  checksum: 8223318ab0392a45fc8123c14e1d718efdac239d6cd5a04923097d2597fdfc2e0460caba8cb77b268a1911439b4a17f68340321f912d74387c725fab73871f19
+  languageName: node
+  linkType: hard
+
+"@splinetool/react-spline@patch:@splinetool/react-spline@npm%3A2.2.1#./.yarn/patches/@splinetool-react-spline-npm-2.2.1-89feaf45d9.patch::locator=teacaps-website%40workspace%3A.":
+  version: 2.2.1
+  resolution: "@splinetool/react-spline@patch:@splinetool/react-spline@npm%3A2.2.1#./.yarn/patches/@splinetool-react-spline-npm-2.2.1-89feaf45d9.patch::version=2.2.1&hash=d04c2c&locator=teacaps-website%40workspace%3A."
+  dependencies:
+    react-merge-refs: ^1.1.0
+  peerDependencies:
+    "@splinetool/runtime": "*"
+    react: ">=17.0.0"
+    react-dom: ">=17.0.0"
+  checksum: 8ad259b6f460dfc566f184547b875e2315eabff8a14dc40e10e9cc505f9cdd4e356850a7fec583d6006b0026786abba5458c9a8e966424156652bb0341f20e7a
+  languageName: node
+  linkType: hard
+
+"@splinetool/runtime@npm:0.9.103":
   version: 0.9.103
   resolution: "@splinetool/runtime@npm:0.9.103"
   dependencies:
     on-change: ^4.0.0
   checksum: 62d804beadd62dd92b9e95d0c76d38297abe7bd10687cfb92f471b3cd3f9f1b025ef76432abe5f4db27b89ad3abde8319cb637ef6d17c9cc32c8421e1638a1a2
+  languageName: node
+  linkType: hard
+
+"@splinetool/runtime@patch:@splinetool/runtime@npm%3A0.9.103#./.yarn/patches/@splinetool-runtime-npm-0.9.103-878a4f9995.patch::locator=teacaps-website%40workspace%3A.":
+  version: 0.9.103
+  resolution: "@splinetool/runtime@patch:@splinetool/runtime@npm%3A0.9.103#./.yarn/patches/@splinetool-runtime-npm-0.9.103-878a4f9995.patch::version=0.9.103&hash=b53270&locator=teacaps-website%40workspace%3A."
+  dependencies:
+    on-change: ^4.0.0
+  checksum: 6ba3e0dc55360113774a00450e6d9843cf2ec4f517e77e8458416de22b7e7834267f46d82bdaef83f7e6347fd742e238ffa4a39d93996e9d401cf7d20a5c436c
   languageName: node
   linkType: hard
 
@@ -7007,6 +7042,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-merge-refs@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "react-merge-refs@npm:1.1.0"
+  checksum: 90884352999002d868ab9f1bcfe3222fb0f2178ed629f1da7e98e5a9b02a2c96b4aa72800db92aabd69d2483211b4be57a2088e89a11a0b660e7ada744d4ddf7
+  languageName: node
+  linkType: hard
+
 "react-refresh@npm:^0.13.0":
   version: 0.13.0
   resolution: "react-refresh@npm:0.13.0"
@@ -8046,6 +8088,7 @@ __metadata:
     "@shopify/cli": 3.8.0
     "@shopify/cli-hydrogen": 3.8.0
     "@shopify/hydrogen": ^1.3.0
+    "@splinetool/react-spline": ^2.2.1
     "@splinetool/runtime": ^0.9.103
     "@tailwindcss/typography": ^0.5.4
     "@types/eslint": ^8.4.6
@@ -8064,7 +8107,7 @@ __metadata:
     react: ^18.2.0
     react-dom: ^18.2.0
     tailwindcss: ^3.1.8
-    typescript: latest
+    typescript: ^4.8.2
     vite: ^2.9.0
   languageName: unknown
   linkType: soft
@@ -8308,7 +8351,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:latest":
+"typescript@npm:^4.8.2":
   version: 4.8.2
   resolution: "typescript@npm:4.8.2"
   bin:
@@ -8328,7 +8371,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@latest#~builtin<compat/typescript>":
+"typescript@patch:typescript@^4.8.2#~builtin<compat/typescript>":
   version: 4.8.2
   resolution: "typescript@patch:typescript@npm%3A4.8.2#~builtin<compat/typescript>::version=4.8.2&hash=a1c5e5"
   bin:

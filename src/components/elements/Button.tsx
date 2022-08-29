@@ -1,4 +1,4 @@
-import { Color } from "../lib/styleUtils";
+import { Color } from "../../lib/styleUtils";
 import { HTMLAttributes, ReactNode } from "react";
 import clsx from "clsx";
 
@@ -15,7 +15,7 @@ export function Button({ color: baseColor, disabled, icon, className, children, 
 		<button
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
-				`hover:border-0 hover:bg-${color} hover:text-${baseColor === "grain" ? "matcha" : "grain"}`,
+				`hover:bg-${color} hover:text-${baseColor === "grain" ? "matcha" : "grain"}`,
 				`font-medium rounded-full h-12 px-5 flex items-center justify-center space-x-3`,
 				className,
 			)}

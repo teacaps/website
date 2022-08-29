@@ -9,10 +9,10 @@
     "experimentalDecorators": true,
     "lib": ["dom", "dom.iterable", "scripthost", "es2020"],
     "jsx": "react-jsx",
-    "types": ["vite/client"],
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["vite/client"]
   },
   "exclude": ["node_modules", "dist"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
 }

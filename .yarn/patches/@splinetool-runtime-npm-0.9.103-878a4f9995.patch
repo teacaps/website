@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index 4f89e90a82e5684240b930ad42cad6f0573ede77..dff964f7feb18603fa6afe32581e7c0f088abb42 100644
+--- a/package.json
++++ b/package.json
+@@ -8,6 +8,7 @@
+   "react-native": "./build/runtime.js",
+   "exports": {
+     ".": {
++      "types": "./runtime.d.ts",
+       "import": "./build/runtime.js",
+       "require": "./build/runtime.cjs"
+     }

@@ -34,6 +34,17 @@ module.exports = {
 			},
 			grain: "#EFE3D7",
 		},
+		extend: {
+			spacing: {
+				"1/5-screen": "20vh",
+				"2/5-screen": "40vh",
+				"1/2-screen": "50vh",
+				"3/5-screen": "60vh",
+				"2/3-screen": "66.666667vh",
+				"3/4-screen": "75vh",
+				"4/5-screen": "80vh",
+			},
+		},
 	},
 	safelist: [
 		{

@@ -10,6 +10,13 @@ export function Spline(props: Parameters<typeof RealSpline>[0]) {
 			onLoad={({ canvas }: Application) => {
 				canvas.style.width = ``;
 				canvas.style.height = ``;
+				// Set the canvas width/height on resize or else events won't trigger.
+				const ro = new ResizeObserver(() => {
+					const rect = canvas.getBoundingClientRect();
+					canvas.width = rect.width;
+					canvas.height = rect.height;
+				});
+				ro.observe(canvas);
 			}}
 		/>
 	);

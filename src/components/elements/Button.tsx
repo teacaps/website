@@ -1,5 +1,5 @@
-import { Color, MakePropertiesOptional } from "../../lib/utils";
-import { HTMLAttributes, ReactNode } from "react";
+import type { Color, MakePropertiesOptional } from "../../lib/utils";
+import type { HTMLAttributes, ReactNode } from "react";
 import clsx from "clsx";
 import { Link } from "@shopify/hydrogen";
 
@@ -60,7 +60,7 @@ export function ButtonLink<
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${color === "grain" ? "matcha" : "grain"}`,
-				`inline-flex h-12 items-center justify-center gap-3 rounded-full px-5 text-base font-medium`,
+				`inline-flex h-12 w-fit items-center justify-center gap-3 rounded-full px-5 text-base font-medium`,
 				className,
 			)}
 			href={external ? url : undefined}

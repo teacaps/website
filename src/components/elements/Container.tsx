@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, HTMLAttributes } from "react";
+import type { DetailedHTMLProps, HTMLAttributes } from "react";
 import clsx from "clsx";
 
 export type ContainerProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;

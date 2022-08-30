@@ -8,19 +8,19 @@ import { SocialLinks } from "../elements/SocialLinks";
 function FooterNavigation() {
 	return (
 		<div className="flex flex-col space-y-4">
-			<Link to="/" className="text-base leading-6 text-grain hover:underline">
+			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
 				FAQ
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:underline">
+			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
 				Blog
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:underline">
+			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
 				Contact
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:underline">
+			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
 				Shipping & Returns
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:underline">
+			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
 				Terms & Privacy
 			</Link>
 		</div>

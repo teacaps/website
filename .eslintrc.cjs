@@ -31,6 +31,7 @@ module.exports = {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-types": "off",
 		"import/no-unresolved": "off",
-		"react-hooks/exhaustive-deps": "off"
+		"prettier/prettier": "off",
+		"react-hooks/exhaustive-deps": "off",
 	},
 };

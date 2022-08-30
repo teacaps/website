@@ -1,6 +1,6 @@
-import { FormEventHandler } from "react";
+import type { FormEventHandler } from "react";
 import { Input, InputProps } from "./Input";
-import { ButtonProps } from "./Button";
+import type { ButtonProps } from "./Button";
 import clsx from "clsx";
 
 export interface InputWithButtonProps {

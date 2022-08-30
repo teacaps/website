@@ -1,0 +1,15 @@
+{
+  "name": "Storefront API",
+  "schemaPath": "./storefront.schema.json",
+  "extensions": {
+    "endpoints": {
+      "Storefront API": {
+        "url": "https://${env:STOREFRONT_NAME}.myshopify.com/api/${env:STOREFRONT_API_VERSION}/graphql.json",
+        "headers": {
+          "X-Shopify-Storefront-Access-Token": "${env:STOREFRONT_TOKEN}"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

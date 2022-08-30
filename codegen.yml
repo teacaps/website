@@ -1,0 +1,7 @@
+schema: "./storefront.schema.json"
+documents: "./src/**/*.tsx"
+generates:
+  src/graphql/generated.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"

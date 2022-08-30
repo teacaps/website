@@ -7,3 +7,5 @@ dist
 .vscode
 *.local
 .env*
+.eslintcache
+**/graphql/generated.*

@@ -11,12 +11,17 @@
     "dev": "shopify hydrogen dev",
     "build": "shopify hydrogen build",
     "preview": "shopify hydrogen preview",
-    "prettier": "prettier --write src/**/*.{ts,tsx}"
+    "lint": "eslint --cache src/**/*.{ts,tsx}",
+    "prettier": "prettier --cache --write src/**/*.{ts,tsx}",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "prepare": "husky install; yarn codegen"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.11.8",
+    "@graphql-codegen/typescript": "2.7.3",
+    "@graphql-codegen/typescript-operations": "2.5.3",
     "@shopify/cli": "3.8.0",
     "@shopify/cli-hydrogen": "3.8.0",
-    "@types/eslint": "^8.4.6",
     "@types/prettier": "^2.7.0",
     "@types/react": "^18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
@@ -25,6 +30,8 @@
     "eslint-import-resolver-typescript": "^3.5.0",
     "eslint-plugin-hydrogen": "^0.12.2",
     "eslint-plugin-import": "^2.26.0",
+    "graphql": "^16.6.0",
+    "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "typescript": "^4.8.2",

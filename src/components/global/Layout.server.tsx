@@ -3,8 +3,8 @@ import { Footer } from "./Footer.server";
 import { Navigation } from "./Navigation.client";
 
 const ShippingNotice = () => (
-	<div className="bg-matcha w-full h-auto flex justify-center content-center py-2">
-		<span className="text-base leading-6 font-medium text-grain text-center">
+	<div className="flex h-auto w-full content-center justify-center bg-matcha py-2">
+		<span className="text-center text-base font-medium leading-6 text-grain">
 			Free domestic shipping on orders over $100
 		</span>
 	</div>
@@ -12,10 +12,10 @@ const ShippingNotice = () => (
 
 export function Layout({ children }: { children: ReactNode }) {
 	return (
-		<div className="w-full h-screen flex flex-col items-center">
+		<div className="flex h-screen w-full flex-col items-center">
 			<ShippingNotice />
 			<Navigation />
-			<div className="w-full mb-auto">{children}</div>
+			<div className="mb-auto w-full">{children}</div>
 			<Footer />
 		</div>
 	);

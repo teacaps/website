@@ -5,8 +5,8 @@ import { Container } from "../elements/Container";
 
 export function Navigation() {
 	return (
-		<Container className="py-8 flex flex-row items-center">
-			<nav className="h-6 basis-full space-x-12 text-base leading-6 font-normal text-walnut">
+		<Container className="flex flex-row items-center py-8">
+			<nav className="h-6 basis-full space-x-12 text-base font-normal leading-6 text-walnut">
 				<Link prefetch={true} to="/" className="hover:underline">
 					Shop
 				</Link>
@@ -15,10 +15,10 @@ export function Navigation() {
 				</Link>
 			</nav>
 			<Link to="/">
-				<Logo className="text-matcha h-9 basis-full"></Logo>
+				<Logo className="h-9 basis-full text-matcha"></Logo>
 			</Link>
-			<div className="basis-full flex justify-end">
-				<CartIcon className="w-6 h-6 fill-walnut" />
+			<div className="flex basis-full justify-end">
+				<CartIcon className="h-6 w-6 fill-walnut" />
 			</div>
 		</Container>
 	);

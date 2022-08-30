@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "shopify hydrogen dev",
     "build": "shopify hydrogen build",
-    "preview": "shopify hydrogen preview"
+    "preview": "shopify hydrogen preview",
+    "prettier": "prettier --write src/**/*.{ts,tsx}"
   },
   "devDependencies": {
     "@shopify/cli": "3.8.0",
@@ -25,6 +26,7 @@
     "eslint-plugin-hydrogen": "^0.12.2",
     "eslint-plugin-import": "^2.26.0",
     "prettier": "^2.7.1",
+    "prettier-plugin-tailwindcss": "^0.1.13",
     "typescript": "^4.8.2",
     "vite": "^2.9.0"
   },
@@ -32,6 +34,7 @@
     "@shopify/hydrogen": "^1.3.0",
     "@splinetool/react-spline": "^2.2.1",
     "@splinetool/runtime": "^0.9.103",
+    "@tailwindcss/forms": "^0.5.2",
     "@tailwindcss/typography": "^0.5.4",
     "autoprefixer": "^10.4.8",
     "clsx": "^1.2.1",

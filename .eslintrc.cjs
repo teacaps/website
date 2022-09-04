@@ -31,8 +31,10 @@ module.exports = {
 	rules: {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 		"import/no-named-as-default": "off",
 		"import/no-unresolved": "off",
+		"import/order": ["error"],
 		"prettier/prettier": "off",
 		"react-hooks/exhaustive-deps": "off",
 	},

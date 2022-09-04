@@ -1,7 +1,7 @@
 import type { FormEventHandler } from "react";
+import clsx from "clsx";
 import { Input, InputProps } from "./Input";
 import type { ButtonProps } from "./Button";
-import clsx from "clsx";
 
 export interface InputWithButtonProps {
 	color: "matcha" | "grain-matcha" | "grain-walnut" | "walnut";

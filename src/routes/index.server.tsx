@@ -1,11 +1,11 @@
+import clsx from "clsx";
+import { Image } from "@shopify/hydrogen";
 import { Layout } from "../components/global/Layout.server";
 import { Container } from "../components/elements/Container";
 import { Spline } from "../components/elements/SplineWrapper.client";
 import { ButtonLink } from "../components/elements/Button";
 import { Graphic } from "../assets/graphic";
-import clsx from "clsx";
 import { ClockIcon } from "../assets/icons/clock";
-import { Image } from "@shopify/hydrogen";
 
 function Hero() {
 	return (
@@ -70,7 +70,7 @@ function Product({
 	return (
 		<Container className={clsx("flex items-center justify-center py-16", align === "right" && "flex-row-reverse")}>
 			<Image
-				src={`/assets/illustrations/${name}.png`}
+				src={`/assets/illustrations/${name.toLowerCase().replace(/\s/g, "-")}.png`}
 				className="w-1/2 basis-1/2"
 				width={width}
 				height={height}

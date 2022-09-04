@@ -1,9 +1,9 @@
-import type { Color, MakePropertiesOptional } from "../../lib/utils";
-import type { HTMLAttributes, ReactNode } from "react";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 import clsx from "clsx";
 import { Link } from "@shopify/hydrogen";
+import type { Color, MakePropertiesOptional } from "../../lib/utils";
 
-export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	color: Color;
 	disabled?: boolean;
 	icon?: ReactNode | undefined | null;
@@ -32,6 +32,19 @@ export function Button({
 			{...props}>
 			{children}
 			{icon || null}
+		</button>
+	);
+}
+
+export function UnstyledButton({ className, children, ...props }: ButtonHTMLAttributes<HTMLButtonElement>) {
+	return (
+		<button
+			className={clsx(
+				"border-0 border-none bg-transparent p-0 outline-none hover:font-medium active:font-bold disabled:font-bold",
+				className,
+			)}
+			{...props}>
+			{children}
 		</button>
 	);
 }

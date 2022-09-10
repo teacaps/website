@@ -1,3 +1,5 @@
+@import "react-image-gallery/styles/css/image-gallery.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,6 +27,16 @@
 }
 
 html {
-	font-family: "Sweet Sans Pro", system-ui, sans-serif;
-	@apply bg-grain antialiased scroll-smooth;
+	@apply scroll-smooth bg-grain antialiased font-sweet-sans;
+}
+
+.image-gallery-image,
+.image-gallery-thumbnail-image {
+	@apply aspect-[5/4] object-cover !important;
+}
+
+.image-gallery-thumbnail.active,
+.image-gallery-thumbnail:focus,
+.image-gallery-thumbnail:hover {
+	@apply border-2 border-matcha-80 !important;
 }

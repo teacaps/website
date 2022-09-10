@@ -8,19 +8,19 @@ import { SocialLinks } from "../elements/SocialLinks";
 function FooterNavigation() {
 	return (
 		<div className="flex flex-col space-y-4">
-			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
+			<Link to="/" className="text-grain text-base leading-6 hover:font-bold">
 				FAQ
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
+			<Link to="/" className="text-grain text-base leading-6 hover:font-bold">
 				Blog
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
+			<Link to="/" className="text-grain text-base leading-6 hover:font-bold">
 				Contact
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
+			<Link to="/" className="text-grain text-base leading-6 hover:font-bold">
 				Shipping & Returns
 			</Link>
-			<Link to="/" className="text-base leading-6 text-grain hover:font-bold">
+			<Link to="/" className="text-grain text-base leading-6 hover:font-bold">
 				Terms & Privacy
 			</Link>
 		</div>
@@ -48,7 +48,7 @@ function SocialsAndUpdates() {
 							icon={<DiscordIcon className="w-6" />}>
 							Join the Teahouse
 						</ButtonLink>
-						<SocialLinks exclude={["discord"]} className="text-grain" iconClasses="w-6 h-6" />
+						<SocialLinks exclude={["discord"]} iconClasses="w-6 h-6 text-grain hover:text-matcha-40" />
 					</div>
 				</div>
 			</div>

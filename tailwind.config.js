@@ -2,7 +2,17 @@
 module.exports = {
 	content: ["./index.html", "./src/**/*.tsx"],
 	theme: {
-		fontFamily: {},
+		fontFamily: {
+			"sweet-sans": ["Sweet Sans Pro", "system-ui", "sans-serif"],
+		},
+		fontMetrics: {
+			"Sweet Sans Pro": {
+				capHeight: 653,
+				ascent: 770,
+				descent: -230,
+				unitsPerEm: 1000,
+			},
+		},
 		fontWeight: {
 			normal: 400,
 			medium: 500,
@@ -52,5 +62,5 @@ module.exports = {
 			variants: ["hover", "focus", "active", "disabled"],
 		},
 	],
-	plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
+	plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms"), require("tailwindcss-leading-trim")],
 };

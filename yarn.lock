@@ -2219,6 +2219,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-image-gallery@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "@types/react-image-gallery@npm:1.0.5"
+  dependencies:
+    "@types/react": "*"
+  checksum: ce3696070ba014958be26918ebbff2225fddcc0595cff96e2358c098093d94bb30eae2ad220640d0e767a50a59f1b946b80b567590fa13c8c54843768a812983
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:*":
+  version: 18.0.18
+  resolution: "@types/react@npm:18.0.18"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 6d72d35ab3eecf382a5e0f225923f5a2c753045fce02e4e29713f36c99a24f0f770666a49dde96167f37c86271f93339d1b7e2b8969d011b137a9ebd24ee6806
+  languageName: node
+  linkType: hard
+
 "@types/react@npm:^18.0.9":
   version: 18.0.17
   resolution: "@types/react@npm:18.0.17"
@@ -3282,6 +3302,15 @@ __metadata:
     tslib: ^2.0.3
     upper-case-first: ^2.0.2
   checksum: 41fa8fa87f6d24d0835a2b4a9341a3eaecb64ac29cd7c5391f35d6175a0fa98ab044e7f2602e1ec3afc886231462ed71b5b80c590b8b41af903ec2c15e5c5931
+  languageName: node
+  linkType: hard
+
+"capsize@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "capsize@npm:1.1.0"
+  dependencies:
+    round-to: ^4.1.0
+  checksum: 147fbef36a19956be971b81b8c3799dd6374f5a106fd26e2a95c90630aee0903987f5f6f1b19240fe45272f7cb9a6173adef299c9b56bd41d5a27be07a9d837e
   languageName: node
   linkType: hard
 
@@ -8745,6 +8774,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-image-gallery@npm:^1.2.9":
+  version: 1.2.9
+  resolution: "react-image-gallery@npm:1.2.9"
+  peerDependencies:
+    react: ^16.0.0 || ^17.0.0 || ^18.0.0
+  checksum: 1e5d3fddb70e6e84abc01d525a2c6bf3036676638e094fad829e464d2c42f0394bf079718acbfcffef8b0b8780086ac241cd8c51f8a33408b716ce35cc8fd8b2
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -9108,6 +9146,13 @@ __metadata:
   bin:
     rollup: dist/bin/rollup
   checksum: b179c68249584565ddb5664a241e8e48c293b2207718d885b08ee25797d98857a383f06b544bb89819407da5a71557f4713309a278f61c4778bb32b1d3321a1c
+  languageName: node
+  linkType: hard
+
+"round-to@npm:^4.1.0":
+  version: 4.1.0
+  resolution: "round-to@npm:4.1.0"
+  checksum: 9cec2b3a7d6b9294eed1c462cf23642eaa5556ad86026fa85c2b51438ab4b44428f59a07240351a822246b91bc33afe800ae683135ef48a483c8671a8631e8aa
   languageName: node
   linkType: hard
 
@@ -9809,6 +9854,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tailwindcss-leading-trim@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "tailwindcss-leading-trim@npm:1.1.0"
+  dependencies:
+    capsize: ^1.1.0
+    lodash: ^4.17.20
+  checksum: 88c83f17a8662cabf3a0ca1acb24a555d2b3baf809de812f34c0c6df95997af1335cd3075f5a5a49134d424d644d8be0dbaf0bf45b7162bf8716e6da7c3bc928
+  languageName: node
+  linkType: hard
+
 "tailwindcss@npm:^3.1.8":
   version: 3.1.8
   resolution: "tailwindcss@npm:3.1.8"
@@ -9906,6 +9961,7 @@ __metadata:
     "@tailwindcss/typography": ^0.5.4
     "@types/prettier": ^2.7.0
     "@types/react": ^18.0.9
+    "@types/react-image-gallery": ^1.0.5
     "@typescript-eslint/eslint-plugin": ^5.35.1
     "@typescript-eslint/parser": ^5.35.1
     autoprefixer: ^10.4.8
@@ -9921,7 +9977,9 @@ __metadata:
     prettier-plugin-tailwindcss: ^0.1.13
     react: ^18.2.0
     react-dom: ^18.2.0
+    react-image-gallery: ^1.2.9
     tailwindcss: ^3.1.8
+    tailwindcss-leading-trim: ^1.1.0
     typescript: ^4.8.2
     vite: ^2.9.0
   languageName: unknown

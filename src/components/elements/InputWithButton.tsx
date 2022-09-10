@@ -37,9 +37,9 @@ export function InputWithButton({
 			/>
 			<button
 				className={clsx(
-					`border-2 border-${borderColor} text-${inputColor}`,
+					`border-2 border-${borderColor} border-l-0 text-${inputColor} bg-${buttonColor}`,
 					`hover:bg-${inputColor} hover:text-${buttonColor}`,
-					`flex h-12 items-center justify-center rounded-r-full px-5 text-base font-medium`,
+					`flex h-12 items-center justify-center rounded-r-full px-5 font-medium text-base`,
 					className,
 				)}
 				type="submit"

@@ -18,13 +18,13 @@ export function Button({
 	children,
 	...props
 }: ButtonProps) {
-	const color = disabled ? `${baseColor}-${baseColor === "grain" ? 40 : 60}}` : `${baseColor}`;
+	const color = disabled ? `${baseColor}-${baseColor === "grain" ? 40 : 60}` : `${baseColor}`;
 	return (
 		<button
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${baseColor === "grain" ? "matcha" : "grain"}`,
-				`flex h-12 items-center justify-center gap-3 rounded-full px-5 text-base font-medium`,
+				`flex h-12 w-fit items-center justify-center gap-3 rounded-full px-5 font-medium text-base`,
 				className,
 			)}
 			type={type}
@@ -73,7 +73,7 @@ export function ButtonLink<
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${color === "grain" ? "matcha" : "grain"}`,
-				`inline-flex h-12 w-fit items-center justify-center gap-3 rounded-full px-5 text-base font-medium`,
+				`inline-flex h-12 w-fit items-center justify-center gap-3 rounded-full px-5 font-medium text-base`,
 				className,
 			)}
 			href={external ? url : undefined}

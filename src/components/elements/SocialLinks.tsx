@@ -18,7 +18,7 @@ export function SocialLinks({
 }: {
 	className?: string;
 	iconClasses?: string;
-	exclude: Array<keyof typeof socials>;
+	exclude?: Array<keyof typeof socials>;
 }) {
 	return (
 		<div className={clsx(className, "flex flex-row space-x-4")}>

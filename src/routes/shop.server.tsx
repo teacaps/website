@@ -26,15 +26,15 @@ export default function Shop() {
 
 	const products = collections.filter((col) => col.isColorway?.value === "true").flatMap((col) => col.products.nodes);
 
-	return collections.length ? (
+	if (!collections.length) return <NotFound />;
+
+	return (
 		<Layout>
 			<Container className="mt-8 mb-24 flex flex-col items-center justify-start space-y-16">
 				{featured ? <Featured product={featured} /> : null}
 				<ProductDisplay collections={collections} products={products} />
 			</Container>
 		</Layout>
-	) : (
-		<NotFound />
 	);
 }
 

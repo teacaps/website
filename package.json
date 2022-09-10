@@ -24,6 +24,7 @@
     "@shopify/cli-hydrogen": "3.8.0",
     "@types/prettier": "^2.7.0",
     "@types/react": "^18.0.9",
+    "@types/react-image-gallery": "^1.0.5",
     "@typescript-eslint/eslint-plugin": "^5.35.1",
     "@typescript-eslint/parser": "^5.35.1",
     "eslint": "^8.22.0",
@@ -48,7 +49,9 @@
     "postcss": "^8.4.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "tailwindcss": "^3.1.8"
+    "react-image-gallery": "^1.2.9",
+    "tailwindcss": "^3.1.8",
+    "tailwindcss-leading-trim": "^1.1.0"
   },
   "author": "teacaps",
   "packageManager": "yarn@3.2.3",

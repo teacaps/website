@@ -44,6 +44,16 @@ const PRODUCTS_QUERY = gql`
 		title
 		handle
 		availableForSale
+		priceRange {
+			minVariantPrice {
+				amount
+				currencyCode
+			}
+			maxVariantPrice {
+				amount
+				currencyCode
+			}
+		}
 		variants(first: 99) {
 			edges {
 				node {

@@ -11,14 +11,22 @@ export function Spline(props: Parameters<typeof RealSpline>[0]) {
 				canvas.style.width = "";
 				canvas.style.height = "";
 				// Set the canvas width/height on resize or else events won't trigger.
-				const ro = new ResizeObserver(() => {
-					const rect = canvas.getBoundingClientRect();
-					if (Math.abs(rect.height - canvas.height) < 10) return;
-					canvas.width = rect.width;
-					canvas.height = rect.height;
-				});
-				ro.observe(canvas);
+				window.addEventListener("resize", () => adjustCanvasSize(canvas));
+				const emptyDataURL = canvas.toDataURL();
+				const waitForContent = setInterval(() => {
+					if (emptyDataURL !== canvas.toDataURL()) {
+						clearInterval(waitForContent);
+						adjustCanvasSize(canvas);
+					}
+				}, 500);
 			}}
 		/>
 	);
+}
+
+function adjustCanvasSize(canvas: HTMLCanvasElement) {
+	const { devicePixelRatio: ratio } = window;
+	const { width, height } = canvas.getBoundingClientRect();
+	canvas.width = width * ratio;
+	canvas.height = height * ratio;
 }

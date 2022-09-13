@@ -1,7 +1,8 @@
-import { useProductOptions, AddToCartButton, ProductPrice } from "@shopify/hydrogen";
+import { useProductOptions, AddToCartButton, ProductPrice, useCart } from "@shopify/hydrogen";
 import clsx from "clsx";
 import type { RefObject } from "react";
 import type ImageGallery from "react-image-gallery";
+import { useEffect, useState } from "react";
 import type { ProductDetailsFragment } from "../../graphql/generated";
 import { Button } from "../elements/Button";
 import { ClockIcon } from "../../assets/icons/clock";
@@ -38,14 +39,14 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 					<p className="prose text-walnut leading-7">{product.summary?.value}</p>
 				) : null}
 				{colors ? (
-					<div className="flex flex-row space-x-4">
+					<ul className="flex flex-row space-x-4">
 						{colors.map((color) => (
-							<div key={color.name} className="flex items-center justify-start space-x-4">
+							<li key={color.name} className="flex items-center justify-start space-x-4">
 								<div className="h-8 w-8 rounded-full" style={{ backgroundColor: color.hex }} />
 								<span className="font-medium text-matcha text-base">{color.name}</span>
-							</div>
+							</li>
 						))}
-					</div>
+					</ul>
 				) : null}
 			</div>
 			<div className="flex flex-col items-start space-y-8 text-walnut text-2xl leading-8">
@@ -69,40 +70,53 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 	const detailsLines = String(product.detailsHtml)
 		.split("\n")
 		.filter((line) => !line.includes("meta charset"));
-	const detailsListItems = detailsLines.map((line) => {
-		const withoutListTags = line.replace(/<\/?li.*?>/g, "");
-		if (withoutListTags === line) return [null, line.trim()];
-		return withoutListTags
-			.split(": ")
-			.slice(0, 2)
-			.map((s) => s.trim());
-	});
+	const detailsListItems = detailsLines
+		.map((line) => {
+			const withoutListTags = line.replace(/<\/?li.*?>/g, "");
+			// eslint-disable-next-line no-sparse-arrays
+			if (withoutListTags === line) return [, line.trim()];
+			return withoutListTags
+				.split(": ")
+				.slice(0, 2)
+				.map((s) => s.trim());
+		})
+		.filter(([key = "", value = ""]) => {
+			const line = (key + value).trim();
+			const withoutTags = line.replace(/<\/?[^>]*>/g, "");
+			return withoutTags.length;
+		});
 
 	return (
 		<div className="flex flex-col space-y-16 text-walnut">
 			<div className="flex flex-col space-y-16">
-				<div className="flex items-center space-x-16 text-lg">
-					{product.groupBuyDates?.value ? (
-						<div className="flex items-center space-x-4">
-							<ClockIcon className="h-6 w-6 text-walnut-80" />
-							<span className="trim-both leading-none">Available {product.groupBuyDates.value}</span>
-						</div>
-					) : null}
-					{product.estimatedDelivery?.value ? (
-						<div className="flex items-center space-x-4">
-							<AirplaneIcon className="h-6 w-6 text-walnut-80" />
-							<span className="trim-both leading-none">Ships {product.estimatedDelivery.value}</span>
-						</div>
-					) : null}
-				</div>
-				<div className="flex flex-col space-y-4">
+				{(product.groupBuyDates?.value || product.estimatedDelivery?.value) && (
+					<div className="flex items-center space-x-16 text-lg">
+						{product.groupBuyDates?.value ? (
+							<div className="flex items-center space-x-4">
+								<ClockIcon className="h-6 w-6 text-walnut-80" />
+								<span className="trim-both leading-none">Available {product.groupBuyDates.value}</span>
+							</div>
+						) : null}
+						{product.estimatedDelivery?.value ? (
+							<div className="flex items-center space-x-4">
+								<AirplaneIcon className="h-6 w-6 text-walnut-80" />
+								<span className="trim-both leading-none">Ships {product.estimatedDelivery.value}</span>
+							</div>
+						) : null}
+					</div>
+				)}
+				<ul className="flex flex-col space-y-4">
 					{detailsListItems.map(([key, value]) => (
-						<span key={key} className="flex space-x-8 text-base leading-6">
-							<span className="font-regular text-walnut-80">{key}</span>
-							<span className="font-medium">{value}</span>
-						</span>
+						<li key={key || value} className="flex space-x-8 text-base leading-6">
+							<span
+								className="font-regular text-walnut-80"
+								dangerouslySetInnerHTML={{ __html: key || value || "" }}></span>
+							{key && (
+								<span className="font-medium" dangerouslySetInnerHTML={{ __html: value || "" }}></span>
+							)}
+						</li>
 					))}
-				</div>
+				</ul>
 			</div>
 			<ProductUpdates />
 		</div>
@@ -156,16 +170,35 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 
 function AddToCart() {
 	const { selectedVariant } = useProductOptions();
+	const { status: cartStatus } = useCart();
 	const outOfStock = selectedVariant?.availableForSale === false || false;
+	const disabled = outOfStock || cartStatus === "uninitialized" || cartStatus === "fetching";
+	const [buttonText, setButtonText] = useState("Loading...");
+	useEffect(() => {
+		switch (cartStatus) {
+			case "fetching":
+			case "creating":
+				setButtonText("Loading...");
+				break;
+			case "uninitialized":
+			case "idle":
+				setButtonText(outOfStock ? "Sold out" : "Add to cart");
+				break;
+			case "updating":
+				setButtonText("Added!");
+				break;
+		}
+	}, [cartStatus]);
 	return (
 		<AddToCartButton
 			variantId={selectedVariant?.id}
 			quantity={1}
 			accessibleAddingToCartLabel="Add this item to your cart"
-			as="div">
-			<Button color="matcha" disabled={outOfStock} className="px-6 py-4 text-lg">
-				{outOfStock ? "Sold out" : "Add to Cart"}
-			</Button>
+			as={Button}
+			color="matcha"
+			disabled={disabled}
+			className="px-6 py-4 text-lg">
+			{buttonText}
 		</AddToCartButton>
 	);
 }

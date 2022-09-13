@@ -39,6 +39,7 @@
     "vite": "^2.9.0"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.0",
     "@shopify/hydrogen": "^1.3.0",
     "@splinetool/react-spline": "^2.2.1",
     "@splinetool/runtime": "^0.9.103",

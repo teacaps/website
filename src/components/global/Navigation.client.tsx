@@ -1,4 +1,4 @@
-import { Link } from "@shopify/hydrogen";
+import { Link, useCart } from "@shopify/hydrogen";
 import { Logo } from "../../assets/logo";
 import { CartIcon } from "../../assets/icons/cart";
 import { Container } from "../elements/Container";
@@ -27,9 +27,22 @@ export function Navigation() {
 				<div className="flex basis-full justify-end">
 					<button onClick={openDrawer} className="relative flex">
 						<CartIcon className="h-6 w-6 fill-walnut" />
+						<CartBadge />
 					</button>
 				</div>
 			</Container>
 		</>
+	);
+}
+
+function CartBadge() {
+	const { totalQuantity = 0 } = useCart();
+	if (!totalQuantity) return null;
+	return (
+		<div className="absolute -bottom-1 -left-2 flex h-5 w-5 items-center justify-center rounded-full bg-matcha px-[0.125rem] py-[0.125rem] pb-[0.25rem]">
+			<span className="text-[0.75rem] text-center font-medium text-grain trim-both leading-none">
+				{totalQuantity}
+			</span>
+		</div>
 	);
 }

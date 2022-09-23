@@ -172,23 +172,18 @@ function AddToCart() {
 	const { selectedVariant } = useProductOptions();
 	const { status: cartStatus } = useCart();
 	const outOfStock = selectedVariant?.availableForSale === false || false;
-	const disabled = outOfStock || cartStatus === "uninitialized" || cartStatus === "fetching";
+
+	const isLoadingState = () => cartStatus === "creating" || cartStatus === "fetching";
+	const isIdleState = () => cartStatus === "idle" || cartStatus === "uninitialized";
+	const disabled = isLoadingState() || (outOfStock && isIdleState());
+
 	const [buttonText, setButtonText] = useState("Loading...");
+
 	useEffect(() => {
-		switch (cartStatus) {
-			case "fetching":
-			case "creating":
-				setButtonText("Loading...");
-				break;
-			case "uninitialized":
-			case "idle":
-				setButtonText(outOfStock ? "Sold out" : "Add to cart");
-				break;
-			case "updating":
-				setButtonText("Added!");
-				break;
-		}
+		if (isLoadingState()) setButtonText("Loading...");
+		if (isIdleState()) setButtonText(outOfStock ? "Sold out" : "Add to cart");
 	}, [cartStatus]);
+
 	return (
 		<AddToCartButton
 			variantId={selectedVariant?.id}
@@ -197,7 +192,10 @@ function AddToCart() {
 			as={Button}
 			color="matcha"
 			disabled={disabled}
-			className="px-6 py-4 text-lg">
+			className="px-6 py-4 text-lg"
+			onClick={() => {
+				setButtonText("Added!");
+			}}>
 			{buttonText}
 		</AddToCartButton>
 	);

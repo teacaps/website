@@ -108,6 +108,16 @@ const PRODUCT_QUERY = gql`
 						title
 						handle
 						availableForSale
+						priceRange {
+							minVariantPrice {
+								amount
+								currencyCode
+							}
+							maxVariantPrice {
+								amount
+								currencyCode
+							}
+						}
 						featuredImage {
 							url
 							altText

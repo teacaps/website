@@ -59,8 +59,8 @@ function SocialsAndUpdates() {
 						<ButtonLink
 							url="https://teacaps.studio/discord"
 							color="grain"
-							className="w-full text-sm sm:w-fit sm:text-base"
-							icon={<DiscordIcon className="w-4 sm:w-6" />}>
+							className="w-full text-base sm:w-fit"
+							icon={<DiscordIcon className="w-6" />}>
 							Join the Teahouse
 						</ButtonLink>
 						<SocialLinks

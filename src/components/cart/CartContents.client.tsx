@@ -26,7 +26,7 @@ export function CartContents() {
 
 function CartEmpty() {
 	return (
-		<div className="-mt-24 flex h-full flex-col items-center justify-center space-y-8 px-16">
+		<div className="-mt-24 flex h-full flex-col items-center justify-center space-y-8 md:px-16">
 			<h2 className="whitespace-pre-wrap font-medium text-matcha text-3xl">Nothing to see here</h2>
 			<span className="font-medium text-walnut text-xl leading-none">{"Your cart's empty!"}</span>
 		</div>

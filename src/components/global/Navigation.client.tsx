@@ -1,19 +1,23 @@
+import clsx from "clsx";
 import { Link, useCart } from "@shopify/hydrogen";
 import { Logo } from "../../assets/logo";
 import { CartIcon } from "../../assets/icons/cart";
 import { Container } from "../elements/Container";
-import { Drawer, useDrawer } from "../cart/Drawer";
+import { Drawer, useDrawer } from "../elements/Drawer";
 import { CartContents } from "../cart/CartContents.client";
+import { Teacap } from "../../assets/teacap";
 
 export function Navigation() {
 	const { isOpen, openDrawer, closeDrawer } = useDrawer();
+
+	const logoClasses = "h-5 xs:h-9 xl:basis-full text-matcha";
 	return (
 		<>
-			<Drawer show={isOpen} onClose={closeDrawer}>
+			<Drawer title="Cart" show={isOpen} onClose={closeDrawer}>
 				<CartContents />
 			</Drawer>
-			<Container className="flex flex-row items-center py-8">
-				<nav className="h-6 basis-full space-x-12 font-normal text-walnut text-base leading-6">
+			<Container className="xl:justify-[normal] flex flex-row items-center justify-between py-8">
+				<nav className="h-6 space-x-12 font-normal text-walnut text-sm leading-6 xl:basis-full xs:text-base">
 					<Link prefetch={true} to="/shop" className="hover:font-medium">
 						Shop
 					</Link>
@@ -22,11 +26,12 @@ export function Navigation() {
 					</Link>
 				</nav>
 				<Link to="/">
-					<Logo className="h-9 basis-full text-matcha"></Logo>
+					<Teacap className={clsx(logoClasses, "lg:hidden")} />
+					<Logo className={clsx(logoClasses, "hidden lg:block")} />
 				</Link>
-				<div className="flex basis-full justify-end">
+				<div className="flex justify-end xl:basis-full">
 					<button onClick={openDrawer} className="relative flex">
-						<CartIcon className="h-6 w-6 fill-walnut" />
+						<CartIcon className="h-4 w-4 fill-walnut xs:h-6 xs:w-6" />
 						<CartBadge />
 					</button>
 				</div>

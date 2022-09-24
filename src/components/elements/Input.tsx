@@ -24,7 +24,7 @@ export function Input({ color, disabled, className, ...props }: InputProps) {
 			className={clsx(
 				`bg-${color} text-${textColor}`,
 				`placeholder:text-${placeholderColor}`,
-				`flex h-12 items-center justify-center gap-3 rounded-full px-5 text-base font-medium`,
+				`flex h-10 items-center justify-center rounded-full px-5 font-medium sm:h-12`,
 				disabled && `bg-${disabledBackgroundColor} text-${disabledTextColor}`,
 				className,
 			)}

@@ -11,12 +11,12 @@ function Hero() {
 	return (
 		<>
 			<Container className="mt-24 flex flex-col items-start">
-				<h1 className="inline w-3/4 text-4xl font-normal leading-tight text-matcha sm:text-5xl lg:w-1/2">
+				<h1 className="inline w-3/4 font-normal text-matcha text-4xl leading-tight sm:text-5xl lg:w-1/2">
 					For lovers of tea
 					<br />
 					and keyboards
 				</h1>
-				<ButtonLink color="walnut" className="mt-8 text-lg leading-none" url="store">
+				<ButtonLink color="walnut" className="mt-8 text-lg leading-none" url="shop">
 					Shop
 				</ButtonLink>
 			</Container>
@@ -33,7 +33,7 @@ function Welcome() {
 		<div className="bg-matcha">
 			<Container className="flex flex-col items-center justify-center space-y-8 py-16">
 				<div className="w-full text-center text-grain sm:w-2/3">
-					<h2 className="mb-6 text-4xl font-normal leading-10">Welcome to the Studio!</h2>
+					<h2 className="mb-6 font-normal text-4xl leading-10">Welcome to the Studio!</h2>
 					<p className="text-lg leading-7 sm:text-xl">
 						Glad to have you here! We’re a small group of enthusiasts making tea, keycaps, and friends like
 						no other. Have a look around!
@@ -78,16 +78,16 @@ function Product({
 			/>
 			<div className="basis-1/2">
 				<div className="inline-flex space-x-6">
-					<h2 className="inline text-4xl font-normal leading-10 text-matcha">{name}</h2>
+					<h2 className="inline font-normal text-matcha text-4xl leading-10">{name}</h2>
 					{until && (
-						<div className="inline-flex items-center justify-center text-lg font-normal leading-6 text-walnut-60">
+						<div className="inline-flex items-center justify-center font-normal text-walnut-60 text-lg leading-6">
 							<ClockIcon className="h-6" />
 							<span className="ml-3">until {until}</span>
 						</div>
 					)}
 				</div>
-				{interestCheck ? <h3 className="mt-2 mb-3 text-2xl leading-8 text-walnut">interest check</h3> : null}
-				{description ? <p className="mt-2 mb-3 text-lg leading-7 text-walnut">{description}</p> : null}
+				{interestCheck ? <h3 className="mt-2 mb-3 text-walnut text-2xl leading-8">interest check</h3> : null}
+				{description ? <p className="mt-2 mb-3 text-walnut text-lg leading-7">{description}</p> : null}
 				<ButtonLink
 					external={interestCheck}
 					url={url}
@@ -104,8 +104,8 @@ function Timeline() {
 	return (
 		<Container className="flex flex-col items-center justify-center space-y-8 py-16">
 			<div className="w-full text-center sm:w-2/3">
-				<h2 className="mb-6 text-4xl font-normal leading-10 text-matcha">Looking for our previous sets?</h2>
-				<p className="text-lg leading-7 text-walnut sm:text-xl">
+				<h2 className="mb-6 font-normal text-matcha text-4xl leading-10">Looking for our previous sets?</h2>
+				<p className="text-walnut text-lg leading-7 sm:text-xl">
 					Have a look at the timeline for updates on where your order is!
 				</p>
 			</div>
@@ -123,11 +123,10 @@ export default function Landing() {
 			<Welcome />
 			<Product
 				name="Sencha"
-				description="Enjoy a feeling of life and greenery with some natural goodness with TeaPBT Sencha. Handle without care, as the coolness of the Sencha will allow you to enjoy the hot beverage on a humid summer day."
-				url=""
+				description="From the rolling hills of Japan comes a set themed after one of our favorite teas - Sencha. With soft green undertones, TeaPBT Sencha embraces the feeling of a warm cup of tea on a cool fall afternoon."
+				url="/products/sencha"
 				align="left"
 				imageDimensions={{ width: 1000, height: 528 }}
-				interestCheck={true}
 			/>
 			<Timeline />
 		</Layout>

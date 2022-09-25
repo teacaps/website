@@ -39,7 +39,7 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 					<p className="prose text-walnut leading-7">{product.summary?.value}</p>
 				) : null}
 				{colors ? (
-					<ul className="flex flex-row space-x-4">
+					<ul className="flex flex-row flex-wrap gap-4">
 						{colors.map((color) => (
 							<li key={color.name} className="flex items-center justify-start space-x-4">
 								<div className="h-8 w-8 rounded-full" style={{ backgroundColor: color.hex }} />
@@ -90,7 +90,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 		<div className="flex flex-col space-y-16 text-walnut">
 			<div className="flex flex-col space-y-16">
 				{(product.groupBuyDates?.value || product.estimatedDelivery?.value) && (
-					<div className="flex items-center space-x-16 text-lg">
+					<div className="flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
 						{product.groupBuyDates?.value ? (
 							<div className="flex items-center space-x-4">
 								<ClockIcon className="h-6 w-6 text-walnut-80" />
@@ -125,13 +125,18 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 
 function ProductUpdates() {
 	return (
-		<div className="flex flex-col space-y-6">
+		<div className="flex flex-col space-y-4 md:space-y-6">
 			<p className="text-walnut text-lg leading-7">
 				To keep up with production and shipping, sign up for email updates or join our community on social
 				media!
 			</p>
-			<InputWithButton color="grain-walnut" placeholder="Your email" buttonText="Subscribe" />
-			<SocialLinks iconClasses="h-6 w-6 text-walnut hover:text-matcha" />
+			<InputWithButton
+				color="grain-walnut"
+				placeholder="Your email"
+				buttonText="Subscribe"
+				className="w-full max-w-full"
+			/>
+			<SocialLinks iconClasses="mt-2 md:mt-0 h-6 w-6 text-walnut hover:text-matcha" />
 		</div>
 	);
 }
@@ -146,7 +151,10 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 					<Button
 						key={variant.id}
 						color="walnut"
-						className={clsx("px-4 py-2", variant.id === selectedVariant?.id && "bg-walnut text-grain")}
+						className={clsx(
+							"px-4 py-2 text-base",
+							variant.id === selectedVariant?.id && "bg-walnut text-grain",
+						)}
 						onClick={() => {
 							setSelectedVariant(variant as never);
 							// I can't believe this works

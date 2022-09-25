@@ -14,11 +14,11 @@ export function ProductDetails({ product }: { product: ProductDetailsFragment })
 	return (
 		<ProductOptionsProvider data={product}>
 			<Container className="mt-8 mb-16">
-				<section className="mb-16 flex w-full space-x-12">
+				<section className="mb-16 flex w-full flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-6 lg:space-x-12">
 					<ProductGallery media={product.media.nodes} galleryRef={galleryRef} />
 					<ProductInfo product={product} gallery={galleryRef} />
 				</section>
-				<div className="my-16 w-full">
+				<div className="mt-16 mb-8 w-full sm:mb-16">
 					<Timeline status={product.status?.value} />
 				</div>
 				{colorwayCollection ? <ShopTheCollection collection={colorwayCollection as never} /> : null}

@@ -22,15 +22,16 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 			thumbnailAlt: previewImage?.altText || undefined,
 		}));
 	return (
-		<div className="sticky top-0 -mt-16 h-full w-2/5">
-			<div className="sticky mt-16 h-fit w-full">
+		<div className="h-full w-full md:sticky md:top-0 md:-mt-16 md:w-2/5">
+			<div className="h-fit w-full md:sticky md:mt-16">
 				<ImageGallery
 					ref={galleryRef}
 					items={items}
 					lazyLoad={true}
 					showNav={false}
 					showFullscreenButton={false}
-					showPlayButton={false}></ImageGallery>
+					showPlayButton={false}
+				/>
 			</div>
 		</div>
 	);

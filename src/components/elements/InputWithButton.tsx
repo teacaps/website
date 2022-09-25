@@ -32,7 +32,10 @@ export function InputWithButton({
 		<form onSubmit={onSubmit} className={clsx("inline-flex", className)}>
 			<Input
 				color={inputColor}
-				className={clsx(`rounded-r-none border-2 border-${borderColor} sm:flex-grow`, inputClassName)}
+				className={clsx(
+					`rounded-r-none border-2 border-${borderColor} flex-auto overflow-clip`,
+					inputClassName,
+				)}
 				{...inputRest}
 				disabled={disabled}
 				placeholder={placeholder}

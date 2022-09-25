@@ -20,8 +20,8 @@ export function Timeline({ status }: { status?: string }) {
 		(step) => step.name.toLowerCase() === (status || "Fulfilled").toLowerCase(),
 	);
 	return (
-		<nav aria-label="Timeline" className="flex w-full items-center justify-center">
-			<ol className="relative flex w-4/5 items-center justify-between">
+		<div aria-label="Timeline" className="flex w-full items-center justify-center">
+			<ol className="relative flex w-full flex-grow flex-col items-center justify-between sm:flex-row xl:w-4/5">
 				{steps.map((step, index) => {
 					const StepIcon = step.icon;
 					const isLast = index === steps.length - 1;
@@ -38,20 +38,28 @@ export function Timeline({ status }: { status?: string }) {
 							? "text-walnut-60"
 							: "text-matcha-60";
 					return (
-						<li key={step.name} className={clsx(`relative rounded-full`, !isLast && "flex-grow")}>
+						<li
+							key={step.name}
+							className={clsx(
+								`relative -ml-28 rounded-full pb-8 sm:ml-0 sm:py-0`,
+								!isLast && "flex-grow",
+							)}>
 							{!isLast && (
-								<div className="absolute inset-0 flex items-center" aria-hidden="true">
-									<div className={clsx("h-0.5 w-full", bgColor)} />
+								<div className="absolute inset-0 ml-6 flex items-center sm:ml-0" aria-hidden="true">
+									<div className={clsx("h-full w-0.5 sm:h-0.5 sm:w-full", bgColor)} />
 								</div>
 							)}
 							<div
 								className={clsx(
-									"relative flex h-12 w-12 items-center justify-center rounded-full",
+									"relative flex h-12 w-12 items-center justify-center rounded-full sm:h-8 sm:w-8 md:h-12 md:w-12",
 									bgColor,
-								)}
-								style={{}}>
-								<StepIcon className="h-4 w-4 text-grain" />
-								<div className={clsx("absolute mt-24 font-medium text-lg leading-none", textColor)}>
+								)}>
+								<StepIcon className="h-4 w-4 text-grain sm:h-3 sm:w-3 md:h-4 md:w-4" />
+								<div
+									className={clsx(
+										"absolute left-0 ml-16 font-medium text-lg leading-none sm:left-unset sm:ml-0 sm:mt-20 sm:text-sm md:mt-24 md:text-base lg:text-lg",
+										textColor,
+									)}>
 									{step.name}
 								</div>
 							</div>
@@ -59,6 +67,6 @@ export function Timeline({ status }: { status?: string }) {
 					);
 				})}
 			</ol>
-		</nav>
+		</div>
 	);
 }

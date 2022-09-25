@@ -1,5 +1,5 @@
 import type { CollectionFragment } from "../../graphql/generated";
-import { ProductCard } from "../shop/ProductCard.client";
+import { ProductCard } from "./ProductCard.client";
 
 export function ShopTheCollection({ collection }: { collection: CollectionFragment }) {
 	return (

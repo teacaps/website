@@ -1,7 +1,7 @@
 import { CacheLong, gql, useLocalization, useShopQuery } from "@shopify/hydrogen";
 import { Layout } from "../components/global/Layout.server";
 import { Container } from "../components/elements/Container";
-import { ProductDisplay } from "../components/shop/ProductDisplay.client";
+import { ShopProductDisplay } from "../components/shop/ShopProductDisplay.client";
 import type { ShopQuery } from "../graphql/generated";
 import { Featured } from "../components/shop/Featured.server";
 import { NotFound } from "../components/global/NotFound.server";
@@ -32,7 +32,7 @@ export default function Shop() {
 		<Layout>
 			<Container className="mt-4 mb-16 flex flex-col items-center justify-start space-y-12 sm:mt-8 md:mb-24 md:space-y-16">
 				{featured ? <Featured product={featured} /> : null}
-				<ProductDisplay collections={collections} products={products} />
+				<ShopProductDisplay collections={collections} products={products} />
 			</Container>
 		</Layout>
 	);

@@ -30,7 +30,7 @@ export default function Shop() {
 
 	return (
 		<Layout>
-			<Container className="mt-8 mb-24 flex flex-col items-center justify-start space-y-16">
+			<Container className="mt-4 mb-16 flex flex-col items-center justify-start space-y-12 sm:mt-8 md:mb-24 md:space-y-16">
 				{featured ? <Featured product={featured} /> : null}
 				<ProductDisplay collections={collections} products={products} />
 			</Container>

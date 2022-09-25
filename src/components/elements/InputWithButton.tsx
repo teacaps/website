@@ -41,7 +41,7 @@ export function InputWithButton({
 				className={clsx(
 					`border-2 border-${borderColor} border-l-0 text-${inputColor} bg-${buttonColor}`,
 					`hover:bg-${inputColor} hover:text-${buttonColor}`,
-					`flex h-10 items-center justify-center rounded-r-full px-5 font-medium sm:h-12`,
+					`flex h-10 items-center justify-center rounded-r-full px-5 font-medium md:h-12`,
 					buttonClassName,
 				)}
 				type="submit"

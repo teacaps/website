@@ -24,7 +24,9 @@ export function Button({
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${baseColor === "grain" ? "matcha" : "grain"}`,
-				`flex h-12 w-fit items-center justify-center gap-3 rounded-full px-5 font-medium text-base`,
+				`flex items-center justify-center gap-3 rounded-full px-5 font-medium`,
+				className?.includes("h-") ? "" : "h-12",
+				className?.includes("w-") ? "" : "w-fit",
 				className,
 			)}
 			type={type}
@@ -73,7 +75,8 @@ export function ButtonLink<
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${color === "grain" ? "matcha" : "grain"}`,
-				`inline-flex h-12 items-center justify-center gap-3 rounded-full px-5 font-medium`,
+				`inline-flex items-center justify-center gap-3 rounded-full px-5 font-medium`,
+				className?.includes("h-") ? "" : "h-12",
 				className?.includes("w-") ? "" : "w-fit",
 				className,
 			)}

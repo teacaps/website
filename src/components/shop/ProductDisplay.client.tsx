@@ -11,7 +11,7 @@ export function ProductDisplay({ collections, products }: ProductDisplayProps) {
 	const [filter, setFilter] = useState("all");
 
 	return (
-		<div className="flex w-full items-start justify-center space-x-16">
+		<div className="flex w-full flex-col items-center justify-center space-y-6 md:flex-row md:items-start md:space-y-0 md:space-x-10 xl:space-x-16">
 			<Filter collections={collections} filter={filter} setFilter={setFilter} />
 			{products?.length ? <ProductGrid products={products} filter={filter} /> : null}
 		</div>

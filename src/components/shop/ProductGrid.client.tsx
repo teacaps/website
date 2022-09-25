@@ -10,7 +10,7 @@ interface ProductGridProps {
 export function ProductGrid({ products, filter }: ProductGridProps) {
 	return (
 		<Suspense>
-			<div className="grid w-5/6 grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-3">
+			<div className="grid w-full grid-cols-2 gap-x-0 gap-y-8 sm:gap-x-4 md:w-5/6 lg:grid-cols-3 lg:gap-x-0 xl:gap-x-4">
 				{products.map((product) => (
 					<ProductCard
 						key={product.handle}

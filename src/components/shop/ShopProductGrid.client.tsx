@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/generated";
+import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/storefront.generated";
 import { ProductCard } from "../product/ProductCard.client";
 
 interface ProductGridProps {

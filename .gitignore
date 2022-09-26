@@ -8,4 +8,4 @@ dist
 *.local
 .env*
 .eslintcache
-**/graphql/generated.*
+**/graphql/*generated*

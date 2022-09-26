@@ -1,4 +1,4 @@
-import type { CollectionFragment } from "../../graphql/generated";
+import type { CollectionFragment } from "../../graphql/storefront.generated";
 import { UnstyledButton } from "../elements/Button";
 import { Dropdown } from "../elements/Dropdown";
 import { FilterIcon } from "../../assets/icons/filter";

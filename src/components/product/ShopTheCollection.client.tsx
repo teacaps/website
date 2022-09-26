@@ -1,4 +1,4 @@
-import type { CollectionFragment } from "../../graphql/generated";
+import type { CollectionFragment } from "../../graphql/storefront.generated";
 import { CollectionProductCard } from "./ProductCard.client";
 
 export function ShopTheCollection({ collection }: { collection: CollectionFragment }) {

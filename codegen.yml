@@ -1,7 +1,15 @@
-schema: "./storefront.schema.json"
-documents: "./src/**/*.tsx"
 generates:
-  src/graphql/generated.ts:
+  src/graphql/storefront.generated.ts:
+    documents:
+      - "./src/**/*.{ts,tsx}"
+      - "!./src/routes/api/**/*.{ts,tsx}"
+    schema: "./storefront.schema.json"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+  src/graphql/admin.generated.ts:
+    documents: "./src/routes/api/**/*.{ts,tsx}"
+    schema: "./admin.schema.json"
     plugins:
       - "typescript"
       - "typescript-operations"

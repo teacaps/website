@@ -1,6 +1,6 @@
 import { Image } from "@shopify/hydrogen";
 import { ButtonLink } from "../elements/Button";
-import type { ProductOverviewFragment } from "../../graphql/generated";
+import type { ProductOverviewFragment } from "../../graphql/storefront.generated";
 
 export function Featured({ product }: { product: ProductOverviewFragment }) {
 	return (

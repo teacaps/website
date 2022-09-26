@@ -2,7 +2,7 @@ import { CacheLong, gql, useLocalization, useShopQuery } from "@shopify/hydrogen
 import { Layout } from "../components/global/Layout.server";
 import { Container } from "../components/elements/Container";
 import { ShopProductDisplay } from "../components/shop/ShopProductDisplay.client";
-import type { ShopQuery } from "../graphql/generated";
+import type { ShopQuery } from "../graphql/storefront.generated";
 import { Featured } from "../components/shop/Featured.server";
 import { NotFound } from "../components/global/NotFound.server";
 

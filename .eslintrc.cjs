@@ -19,7 +19,7 @@ module.exports = {
 			},
 		},
 	],
-	ignorePatterns: ["src/graphql/generated.ts"],
+	ignorePatterns: ["src/graphql/*.generated.ts"],
 	settings: {
 		"import/resolver": {
 			typescript: {
@@ -31,6 +31,7 @@ module.exports = {
 	rules: {
 		"@typescript-eslint/ban-ts-comment": "off",
 		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/naming-convention": "off",
 		"@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 		"import/no-named-as-default": "off",
 		"import/no-unresolved": "off",

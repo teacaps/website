@@ -1,5 +1,5 @@
 import { gql, useRouteParams, useShopQuery } from "@shopify/hydrogen";
-import type { ProductQuery } from "../../graphql/generated";
+import type { ProductQuery } from "../../graphql/storefront.generated";
 import { NotFound } from "../../components/global/NotFound.server";
 import { Layout } from "../../components/global/Layout.server";
 import { ProductDetails } from "../../components/product/ProductDetails.client";

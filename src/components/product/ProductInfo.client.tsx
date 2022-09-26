@@ -3,7 +3,7 @@ import clsx from "clsx";
 import type { RefObject } from "react";
 import type ImageGallery from "react-image-gallery";
 import { useEffect, useState } from "react";
-import type { ProductDetailsFragment } from "../../graphql/generated";
+import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
 import { Button } from "../elements/Button";
 import { ClockIcon } from "../../assets/icons/clock";
 import { AirplaneIcon } from "../../assets/icons/airplane";

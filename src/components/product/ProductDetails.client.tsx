@@ -1,7 +1,7 @@
 import type ImageGallery from "react-image-gallery";
 import { ProductOptionsProvider } from "@shopify/hydrogen";
 import { useRef } from "react";
-import type { ProductDetailsFragment } from "../../graphql/generated";
+import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
 import { Container } from "../elements/Container";
 import { ProductGallery } from "./ProductGallery.client";
 import { ProductInfo } from "./ProductInfo.client";

@@ -1,8 +1,25 @@
 {
-  "name": "Storefront API",
-  "schemaPath": "./storefront.schema.json",
+  "name": "Shopify API",
+  "projects": {
+    "admin": {
+      "schemaPath": "./admin.schema.json",
+      "includes": ["./src/routes/api/**"]
+    },
+    "storefront": {
+      "schemaPath": "./storefront.schema.json",
+      "includes": ["./src/**"],
+      "excludes": ["./src/routes/api/**"]
+    }
+  },
   "extensions": {
     "endpoints": {
+      "Admin API": {
+        "url": "https://${env:STOREFRONT_NAME}.myshopify.com/admin/api/${env:ADMIN_API_VERSION}/graphql.json",
+        "headers": {
+          "X-Shopify-Access-Token": "${env:ADMIN_API_TOKEN}"
+        },
+        "introspect": true
+      },
       "Storefront API": {
         "url": "https://${env:STOREFRONT_NAME}.myshopify.com/api/${env:STOREFRONT_API_VERSION}/graphql.json",
         "headers": {

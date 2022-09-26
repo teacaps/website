@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/generated";
+import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/storefront.generated";
 import { Filter } from "./Filter.client";
 import { ShopProductGrid } from "./ShopProductGrid.client";
 

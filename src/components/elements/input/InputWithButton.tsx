@@ -1,8 +1,9 @@
-import type { FormEventHandler } from "react";
-import clsx from "clsx";
 import { Form } from "@shopify/hydrogen/experimental";
+import clsx from "clsx";
 import { Input, InputProps } from "./Input";
 import type { ButtonProps } from "./Button";
+import type { FormEventHandler } from "react";
+
 
 export interface InputWithButtonProps {
 	name: string;

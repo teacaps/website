@@ -1,10 +1,11 @@
 import clsx from "clsx";
-import { CartFillIcon } from "../../assets/icons/cart-fill";
-import { GarageFillIcon } from "../../assets/icons/garage-fill";
+
 import { AirplaneFillIcon } from "../../assets/icons/airplane-fill";
-import { ShopFillIcon } from "../../assets/icons/shop-fil";
+import { CartFillIcon } from "../../assets/icons/cart-fill";
 import { CheckmarkIcon } from "../../assets/icons/checkmark";
+import { GarageFillIcon } from "../../assets/icons/garage-fill";
 import { MagnifyingGlassIcon } from "../../assets/icons/magnifying";
+import { ShopFillIcon } from "../../assets/icons/shop-fil";
 
 const steps = [
 	{ name: "Preorder", icon: CartFillIcon },

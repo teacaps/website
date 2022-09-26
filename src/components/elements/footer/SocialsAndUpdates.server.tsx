@@ -1,6 +1,6 @@
-import { ButtonLink } from "../input/Button";
 import { DiscordIcon } from "../../../assets/icons/socials/discord";
 import { SocialLinks } from "../SocialLinks";
+import { ButtonLink } from "../input/Button";
 import { SubscribeForm } from "../input/SubscribeForm.client";
 
 export function SocialsAndUpdates() {

@@ -1,5 +1,6 @@
+import { Image, Link, ProductPrice } from "@shopify/hydrogen";
 import clsx from "clsx";
-import { Image, ProductPrice, Link } from "@shopify/hydrogen";
+
 import type { ProductOverviewFragment } from "../../graphql/storefront.generated";
 
 export function ProductCard({ product, hidden = false }: { product: ProductOverviewFragment; hidden?: boolean }) {

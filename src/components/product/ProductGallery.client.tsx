@@ -1,7 +1,8 @@
 import ImageGallery, { type ReactImageGalleryItem } from "react-image-gallery";
-import type { LegacyRef } from "react";
-import type { MediaFragment, MediaImage } from "../../graphql/storefront.generated";
 import { MediaContentType } from "../../graphql/storefront.generated";
+import type { MediaFragment, MediaImage } from "../../graphql/storefront.generated";
+import type { LegacyRef } from "react";
+
 
 interface ProductGalleryProps {
 	media: Array<MediaFragment>;

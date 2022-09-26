@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/storefront.generated";
+
 import { ProductCard } from "../product/ProductCard.client";
+import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/storefront.generated";
 
 interface ProductGridProps {
 	products: Array<ProductOverviewFragment>;

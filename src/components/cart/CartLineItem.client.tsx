@@ -1,5 +1,6 @@
-import { useCartLine, CartLineImage, CartLinePrice, CartLineProductTitle, useCart } from "@shopify/hydrogen";
+import { CartLineImage, CartLinePrice, CartLineProductTitle, useCart, useCartLine } from "@shopify/hydrogen";
 import clsx from "clsx";
+
 import { BinIcon } from "../../assets/icons/bin";
 import { CartLineQuantityInput } from "./CartLineQuantityInput.client";
 

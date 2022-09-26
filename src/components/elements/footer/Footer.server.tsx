@@ -1,6 +1,6 @@
 import { Container } from "../Container";
-import { SocialsAndUpdates } from "./SocialsAndUpdates.server";
 import { FooterNavigation } from "./FooterNavigation.server";
+import { SocialsAndUpdates } from "./SocialsAndUpdates.server";
 
 export function Footer() {
 	return (

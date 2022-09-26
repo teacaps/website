@@ -35,7 +35,13 @@ module.exports = {
 		"@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
 		"import/no-named-as-default": "off",
 		"import/no-unresolved": "off",
-		"import/order": ["error"],
+		"import/order": ["error", {
+			alphabetize: {
+				order: "asc",
+				caseInsensitive: false,
+			},
+			groups: ["builtin", "external", "internal", "parent", "sibling", "index", "type", "object"]
+		}],
 		"prettier/prettier": "off",
 		"react-hooks/exhaustive-deps": "off",
 		"no-console": "off",

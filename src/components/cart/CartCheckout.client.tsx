@@ -1,4 +1,5 @@
-import { useCart, Money } from "@shopify/hydrogen";
+import { Money, useCart } from "@shopify/hydrogen";
+
 import { ButtonLink } from "../elements/input/Button";
 
 export function CartCheckout() {

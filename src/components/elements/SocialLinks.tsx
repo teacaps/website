@@ -1,8 +1,9 @@
 import clsx from "clsx";
+
 import { DiscordIcon } from "../../assets/icons/socials/discord";
+import { InstagramIcon } from "../../assets/icons/socials/instagram";
 import { RedditIcon } from "../../assets/icons/socials/reddit";
 import { TwitterIcon } from "../../assets/icons/socials/twitter";
-import { InstagramIcon } from "../../assets/icons/socials/instagram";
 
 const socials = {
 	discord: [DiscordIcon, "https://discord.gg/K3fgaDrJha"],

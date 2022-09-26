@@ -1,6 +1,7 @@
 // @ts-expect-error TS1479 TS does not seem to understand that this is being run as a module
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, ReactNode, useState } from "react";
+
 import { XIcon } from "../../assets/icons/x";
 
 export function Drawer({

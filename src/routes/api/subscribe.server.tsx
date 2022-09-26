@@ -1,4 +1,5 @@
-import { gql, type HydrogenRequest } from "@shopify/hydrogen";
+import { type HydrogenRequest, gql } from "@shopify/hydrogen";
+
 import { adminApiClient } from "../../lib/gqlAdminApiClient";
 
 export async function api(request: HydrogenRequest) {

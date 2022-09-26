@@ -1,7 +1,8 @@
-import { Fragment, ReactNode } from "react";
 // @ts-ignore
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
+import { Fragment, ReactNode } from "react";
+
 import { CheckmarkIcon } from "../../assets/icons/checkmark";
 import type { Color } from "../../lib/utils";
 

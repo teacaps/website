@@ -1,7 +1,7 @@
-import type { CollectionFragment } from "../../graphql/storefront.generated";
-import { UnstyledButton } from "../elements/input/Button";
-import { Dropdown } from "../elements/Dropdown";
 import { FilterIcon } from "../../assets/icons/filter";
+import { Dropdown } from "../elements/Dropdown";
+import { UnstyledButton } from "../elements/input/Button";
+import type { CollectionFragment } from "../../graphql/storefront.generated";
 
 interface FilterProps {
 	collections: Array<CollectionFragment>;

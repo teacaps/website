@@ -1,8 +1,9 @@
 import { gql, useRouteParams, useShopQuery } from "@shopify/hydrogen";
-import type { ProductQuery } from "../../graphql/storefront.generated";
-import { NotFound } from "../../components/global/NotFound.server";
+
 import { Layout } from "../../components/global/Layout.server";
+import { NotFound } from "../../components/global/NotFound.server";
 import { ProductDetails } from "../../components/product/ProductDetails.client";
+import type { ProductQuery } from "../../graphql/storefront.generated";
 
 export default function Product() {
 	const { handle } = useRouteParams();

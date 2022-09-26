@@ -1,5 +1,5 @@
+import { CartProvider, FileRoutes, Router, ShopifyProvider } from "@shopify/hydrogen";
 import renderHydrogen from "@shopify/hydrogen/entry-server";
-import { Router, FileRoutes, ShopifyProvider, CartProvider } from "@shopify/hydrogen";
 import { Suspense } from "react";
 
 function App() {

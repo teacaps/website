@@ -1,14 +1,15 @@
-import { useProductOptions, AddToCartButton, ProductPrice, useCart } from "@shopify/hydrogen";
+import { AddToCartButton, ProductPrice, useCart, useProductOptions } from "@shopify/hydrogen";
 import clsx from "clsx";
+import { useEffect, useState } from "react";
+
+import { AirplaneIcon } from "../../assets/icons/airplane";
+import { ClockIcon } from "../../assets/icons/clock";
+import { SocialLinks } from "../elements/SocialLinks";
+import { Button } from "../elements/input/Button";
+import { SubscribeForm } from "../elements/input/SubscribeForm.client";
+import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
 import type { RefObject } from "react";
 import type ImageGallery from "react-image-gallery";
-import { useEffect, useState } from "react";
-import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
-import { Button } from "../elements/input/Button";
-import { ClockIcon } from "../../assets/icons/clock";
-import { AirplaneIcon } from "../../assets/icons/airplane";
-import { SocialLinks } from "../elements/SocialLinks";
-import { SubscribeForm } from "../elements/input/SubscribeForm.client";
 
 interface ProductInfoProps {
 	product: ProductDetailsFragment;

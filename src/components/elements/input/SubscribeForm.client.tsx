@@ -1,6 +1,7 @@
 import { useState } from "react";
-import type { InputWithButtonProps } from "./InputWithButton";
+
 import { InputWithButton } from "./InputWithButton";
+import type { InputWithButtonProps } from "./InputWithButton";
 
 export function SubscribeForm(props: Partial<InputWithButtonProps>) {
 	const [buttonText, setButtonText] = useState("Subscribe");

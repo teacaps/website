@@ -1,7 +1,8 @@
 import { useState } from "react";
-import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/storefront.generated";
+
 import { Filter } from "./Filter.client";
 import { ShopProductGrid } from "./ShopProductGrid.client";
+import type { CollectionFragment, ProductOverviewFragment } from "../../graphql/storefront.generated";
 
 interface ProductDisplayProps {
 	products: Array<ProductOverviewFragment>;

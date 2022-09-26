@@ -1,7 +1,17 @@
-import type { ReactNode } from "react";
+
+
+
+
+
+
+
+
+
+
+import { Footer } from "../elements/footer/Footer.server";
 import { Navigation } from "../elements/header/Navigation.client";
 import { ShippingNotice } from "../elements/header/ShippingNotice";
-import { Footer } from "../elements/footer/Footer.server";
+import type { ReactNode } from "react";
 
 export function Layout({ children }: { children: ReactNode }) {
 	return (

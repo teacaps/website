@@ -1,6 +1,7 @@
 import { CartLineProvider, useCart } from "@shopify/hydrogen";
-import { CartLineItem } from "./CartLineItem.client";
+
 import { CartCheckout } from "./CartCheckout.client";
+import { CartLineItem } from "./CartLineItem.client";
 
 export function CartContents() {
 	const { lines } = useCart();

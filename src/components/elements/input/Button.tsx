@@ -1,7 +1,8 @@
-import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
-import clsx from "clsx";
 import { Link } from "@shopify/hydrogen";
+import clsx from "clsx";
 import type { Color, MakePropertiesOptional } from "../../../lib/utils";
+import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
+
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	color: Color;

@@ -1,4 +1,5 @@
 import { CacheLong, gql, Seo, ShopifyAnalyticsConstants, useServerAnalytics, useShopQuery } from "@shopify/hydrogen";
+import { Suspense } from "react";
 
 import { Layout } from "../components/global/Layout.server";
 import { Hero } from "../components/landing/Hero.client";
@@ -14,7 +15,9 @@ export default function Landing() {
 	});
 	return (
 		<Layout>
-			<LandingSeo />
+			<Suspense>
+				<LandingSeo />
+			</Suspense>
 			<Hero />
 			<Welcome />
 			<ProductSection

@@ -1,4 +1,12 @@
-import { gql, useRouteParams, useShopQuery } from "@shopify/hydrogen";
+import {
+	gql,
+	Seo,
+	ShopifyAnalyticsConstants,
+	useRouteParams,
+	useServerAnalytics,
+	useShopQuery,
+} from "@shopify/hydrogen";
+import { Suspense } from "react";
 
 import { Layout } from "../../components/global/Layout.server";
 import { NotFound } from "../../components/global/NotFound.server";
@@ -15,8 +23,18 @@ export default function Product() {
 
 	if (!product) return <NotFound />;
 
+	useServerAnalytics({
+		shopify: {
+			pageType: ShopifyAnalyticsConstants.pageType.product,
+			resourceId: product.id,
+		},
+	});
+
 	return (
 		<Layout>
+			<Suspense>
+				<Seo type="product" data={{ ...product, seo: { title: product.title } }} />
+			</Suspense>
 			<div className="h-full w-full">
 				<ProductDetails product={product} />
 			</div>
@@ -68,6 +86,14 @@ const PRODUCT_QUERY = gql`
 	fragment ProductDetails on Product {
 		id
 		title
+		description
+		seo {
+			title
+			description
+		}
+		featuredImage {
+			url
+		}
 		detailsHtml: descriptionHtml
 		media(first: 99) {
 			nodes {

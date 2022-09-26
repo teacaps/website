@@ -1,11 +1,11 @@
 import clsx from "clsx";
 import { Link, useCart } from "@shopify/hydrogen";
-import { Logo } from "../../assets/logo";
-import { CartIcon } from "../../assets/icons/cart";
-import { Container } from "../elements/Container";
-import { Drawer, useDrawer } from "../elements/Drawer";
-import { CartContents } from "../cart/CartContents.client";
-import { Teacap } from "../../assets/teacap";
+import { Logo } from "../../../assets/logo";
+import { CartIcon } from "../../../assets/icons/cart";
+import { Container } from "../Container";
+import { Drawer, useDrawer } from "../Drawer";
+import { CartContents } from "../../cart/CartContents.client";
+import { Teacap } from "../../../assets/teacap";
 
 export function Navigation() {
 	const { isOpen, openDrawer, closeDrawer } = useDrawer();

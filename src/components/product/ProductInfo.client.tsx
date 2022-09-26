@@ -4,11 +4,11 @@ import type { RefObject } from "react";
 import type ImageGallery from "react-image-gallery";
 import { useEffect, useState } from "react";
 import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
-import { Button } from "../elements/Button";
+import { Button } from "../elements/input/Button";
 import { ClockIcon } from "../../assets/icons/clock";
 import { AirplaneIcon } from "../../assets/icons/airplane";
-import { InputWithButton } from "../elements/InputWithButton";
 import { SocialLinks } from "../elements/SocialLinks";
+import { SubscribeForm } from "../elements/input/SubscribeForm.client";
 
 interface ProductInfoProps {
 	product: ProductDetailsFragment;
@@ -130,12 +130,7 @@ function ProductUpdates() {
 				To keep up with production and shipping, sign up for email updates or join our community on social
 				media!
 			</p>
-			<InputWithButton
-				color="grain-walnut"
-				placeholder="Your email"
-				buttonText="Subscribe"
-				className="w-full max-w-full"
-			/>
+			<SubscribeForm className="w-full" />
 			<SocialLinks iconClasses="mt-2 md:mt-0 h-6 w-6 text-walnut hover:text-matcha" />
 		</div>
 	);

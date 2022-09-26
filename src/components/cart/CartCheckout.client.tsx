@@ -1,5 +1,5 @@
 import { useCart, Money } from "@shopify/hydrogen";
-import { ButtonLink } from "../elements/Button";
+import { ButtonLink } from "../elements/input/Button";
 
 export function CartCheckout() {
 	const { checkoutUrl, cost } = useCart();

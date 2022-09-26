@@ -1,8 +1,8 @@
 import clsx from "clsx";
-import type { HTMLAttributes } from "react";
-import type { Color } from "../../lib/utils";
+import type { InputHTMLAttributes } from "react";
+import type { Color } from "../../../lib/utils";
 
-export interface InputProps extends HTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<any> {
 	color: Exclude<Color, "pepper">;
 	disabled?: boolean;
 }

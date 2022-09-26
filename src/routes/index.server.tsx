@@ -3,7 +3,7 @@ import { Image } from "@shopify/hydrogen";
 import { Layout } from "../components/global/Layout.server";
 import { Container } from "../components/elements/Container";
 import { Spline } from "../components/elements/SplineWrapper.client";
-import { ButtonLink } from "../components/elements/Button";
+import { ButtonLink } from "../components/elements/input/Button";
 import { Graphic } from "../assets/graphic";
 import { ClockIcon } from "../assets/icons/clock";
 
@@ -70,7 +70,7 @@ function Product({
 	return (
 		<Container
 			className={clsx(
-				"flex flex-col items-center justify-center py-16",
+				"flex flex-col items-center justify-center py-16 px-0",
 				align === "right" ? "sm:flex-row-reverse" : "sm:flex-row",
 			)}>
 			<Image
@@ -80,7 +80,7 @@ function Product({
 				height={height}
 				alt={`An illustration depicting ${name}`}
 			/>
-			<div className="basis-1/2 space-y-4 sm:space-y-0">
+			<div className="basis-1/2 space-y-4">
 				<div className="inline-flex space-x-6">
 					<h2 className="inline font-normal text-matcha text-3xl leading-none sm:text-4xl sm:leading-10">
 						{name}

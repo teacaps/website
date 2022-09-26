@@ -38,5 +38,6 @@ module.exports = {
 		"import/order": ["error"],
 		"prettier/prettier": "off",
 		"react-hooks/exhaustive-deps": "off",
+		"no-console": "off",
 	},
 };

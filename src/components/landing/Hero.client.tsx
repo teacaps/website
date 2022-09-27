@@ -1,6 +1,6 @@
-import { Container } from "../elements/Container";
 import { Spline } from "../elements/SplineWrapper.client";
 import { ButtonLink } from "../elements/input/Button";
+import { Container } from "../global/Container";
 
 export function Hero() {
 	return (

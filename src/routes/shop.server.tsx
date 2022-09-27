@@ -1,7 +1,7 @@
 import { CacheLong, gql, Seo, useLocalization, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
 
-import { Container } from "../components/elements/Container";
+import { Container } from "../components/global/Container";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
 import { Featured } from "../components/shop/Featured.server";

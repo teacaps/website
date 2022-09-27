@@ -5,7 +5,7 @@ import { CartIcon } from "../../../assets/icons/cart";
 import { Logo } from "../../../assets/logo";
 import { Teacap } from "../../../assets/teacap";
 import { CartContents } from "../../cart/CartContents.client";
-import { Container } from "../Container";
+import { Container } from "../../global/Container";
 import { Drawer, useDrawer } from "../Drawer";
 
 export function Navigation() {

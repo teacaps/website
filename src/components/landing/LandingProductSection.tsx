@@ -2,8 +2,8 @@ import { Image } from "@shopify/hydrogen";
 import clsx from "clsx";
 
 import { ClockIcon } from "../../assets/icons/clock";
-import { Container } from "../elements/Container";
 import { ButtonLink } from "../elements/input/Button";
+import { Container } from "../global/Container";
 
 export function ProductSection({
 	name,

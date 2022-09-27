@@ -1,6 +1,6 @@
 import { Graphic } from "../../assets/graphic";
-import { Container } from "../elements/Container";
 import { ButtonLink } from "../elements/input/Button";
+import { Container } from "../global/Container";
 
 export function Welcome() {
 	return (

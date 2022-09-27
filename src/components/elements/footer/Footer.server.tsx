@@ -1,4 +1,4 @@
-import { Container } from "../Container";
+import { Container } from "../../global/Container";
 import { FooterNavigation } from "./FooterNavigation.server";
 import { SocialsAndUpdates } from "./SocialsAndUpdates.server";
 

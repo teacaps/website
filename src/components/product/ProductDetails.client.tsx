@@ -1,7 +1,7 @@
 import { ProductOptionsProvider } from "@shopify/hydrogen";
 import { useRef } from "react";
 
-import { Container } from "../elements/Container";
+import { Container } from "../global/Container";
 import { ProductGallery } from "./ProductGallery.client";
 import { ProductInfo } from "./ProductInfo.client";
 import { ShopTheCollection } from "./ShopTheCollection.client";

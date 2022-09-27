@@ -1,5 +1,5 @@
 import { ClockIcon } from "../../assets/icons/clock";
-import { Container } from "./Container";
+import { Container } from "../global/Container";
 import { ButtonLink } from "./input/Button";
 
 export function Timeline() {

@@ -47,6 +47,7 @@ module.exports = {
 		extend: {
 			screens: {
 				xs: "360px",
+				tall: { raw: "(min-height: 900px)" },
 			},
 			spacing: {
 				unset: "unset",

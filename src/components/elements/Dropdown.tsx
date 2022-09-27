@@ -1,4 +1,4 @@
-// @ts-ignore
+// @ts-expect-error TS1479 TS does not seem to understand that this is being run as a module
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
 import { Fragment, ReactNode } from "react";

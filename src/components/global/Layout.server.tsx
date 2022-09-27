@@ -1,24 +1,14 @@
-
-
-
-
-
-
-
-
-
-
 import { Footer } from "../elements/footer/Footer.server";
 import { Navigation } from "../elements/header/Navigation.client";
 import { ShippingNotice } from "../elements/header/ShippingNotice";
-import type { ReactNode } from "react";
+import type { HTMLAttributes } from "react";
 
-export function Layout({ children }: { children: ReactNode }) {
+export function Layout(props: Partial<HTMLAttributes<HTMLDivElement>>) {
 	return (
-		<div className="flex h-screen w-screen flex-col items-center">
+		<div className="flex h-screen w-screen flex-col items-center overflow-x-hidden">
 			<ShippingNotice />
 			<Navigation />
-			<div className="mb-auto w-full">{children}</div>
+			<div className="mb-auto w-full" {...props}></div>
 			<Footer />
 		</div>
 	);

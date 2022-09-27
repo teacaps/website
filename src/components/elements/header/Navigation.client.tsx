@@ -22,7 +22,7 @@ export function Navigation() {
 					<Link prefetch={true} to="/shop" className="hover:font-medium">
 						Shop
 					</Link>
-					<Link prefetch={false} to="/" className="hover:font-medium">
+					<Link prefetch={false} to="/about" className="hover:font-medium">
 						About
 					</Link>
 				</nav>

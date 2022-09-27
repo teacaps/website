@@ -1,19 +1,21 @@
-import { CacheLong, gql, Seo, useShopQuery } from "@shopify/hydrogen";
+import { CacheLong, Seo, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
 
 import { Graphic } from "../assets/graphic";
-import { Container } from "../components/elements/Container";
+import { Container } from "../components/global/Container";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
-
-import type { AboutPageQuery } from "../graphql/storefront.generated";
+import { PAGE_QUERY } from "./[...page].server";
+import type { PageQuery } from "../graphql/storefront.generated";
 
 export default function About() {
 	const {
 		data: { page },
-	} = useShopQuery<AboutPageQuery>({
-		query: ABOUT_PAGE_QUERY,
+	} = useShopQuery<PageQuery>({
+		query: PAGE_QUERY,
+		variables: { handle: "about" },
 		cache: CacheLong(),
+		preload: "*",
 	});
 	if (!page || !page.title || !page.body) return <NotFound />;
 	return (
@@ -36,17 +38,3 @@ export default function About() {
 		</Layout>
 	);
 }
-
-const ABOUT_PAGE_QUERY = gql`
-	query AboutPage {
-		page(handle: "about") {
-			title
-			body
-			bodySummary
-			seo {
-				title
-				description
-			}
-		}
-	}
-`;

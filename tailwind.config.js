@@ -52,6 +52,22 @@ module.exports = {
 			spacing: {
 				unset: "unset",
 			},
+			typography: ({ theme }) => ({
+				DEFAULT: {
+					css: {
+						"--tw-prose-body": theme("colors.walnut.DEFAULT"),
+						"--tw-prose-headings": theme("colors.matcha.DEFAULT"),
+						"--tw-prose-lead": theme("colors.matcha.DEFAULT"),
+						"--tw-prose-links": theme("colors.matcha.DEFAULT"),
+						"--tw-prose-bullets": theme("colors.matcha.DEFAULT"),
+						h4: {
+							// prose-h4:leading-10
+							lineHeight: "2.5rem",
+							"--leading-offset": "calc((2.5rem - 1em) / -2)",
+						},
+					},
+				},
+			}),
 		},
 	},
 	safelist: [

@@ -6,7 +6,7 @@ import { AirplaneIcon } from "../../assets/icons/airplane";
 import { ClockIcon } from "../../assets/icons/clock";
 import { SocialLinks } from "../elements/SocialLinks";
 import { Button } from "../elements/input/Button";
-import { SubscribeForm } from "../elements/input/SubscribeForm.client";
+import { ProductSubscribeForm } from "../elements/input/SubscribeForm.client";
 import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
 import type { RefObject } from "react";
 import type ImageGallery from "react-image-gallery";
@@ -26,11 +26,12 @@ export function ProductInfo({ product, gallery }: ProductInfoProps) {
 }
 
 function ProductDescription({ product, gallery }: ProductInfoProps) {
-	const { variants, selectedVariant, setSelectedVariant } = useProductOptions();
+	const { selectedVariant, setSelectedVariant } = useProductOptions();
+	if (!selectedVariant?.availableForSale) setSelectedVariant(null);
+
 	const colors: Array<{ name: string; hex: string }> | null = product.colors?.value
 		? JSON.parse(product.colors.value)
 		: null;
-	if (!selectedVariant) setSelectedVariant(variants?.[0] as never);
 
 	return (
 		<div className="flex flex-col space-y-12">
@@ -53,7 +54,10 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 			<div className="flex flex-col items-start space-y-8 text-walnut text-2xl leading-8">
 				<VariantSelector gallery={gallery} />
 				<span className="flex space-x-0">
-					{selectedVariant?.priceV2?.currencyCode}&nbsp;
+					{selectedVariant?.priceV2?.currencyCode ||
+						product.priceRange?.minVariantPrice?.currencyCode ||
+						product.priceRange?.maxVariantPrice?.currencyCode}
+					&nbsp;
 					<ProductPrice
 						as="span"
 						data={product}
@@ -131,7 +135,7 @@ function ProductUpdates() {
 				To keep up with production and shipping, sign up for email updates or join our community on social
 				media!
 			</p>
-			<SubscribeForm className="w-full" />
+			<ProductSubscribeForm className="w-full" />
 			<SocialLinks iconClasses="mt-2 md:mt-0 h-6 w-6 text-walnut hover:text-matcha" />
 		</div>
 	);
@@ -147,9 +151,11 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 					<Button
 						key={variant.id}
 						color="walnut"
+						disabled={!variant.availableForSale}
 						className={clsx(
 							"px-4 py-2 text-base",
 							variant.id === selectedVariant?.id && "bg-walnut text-grain",
+							!variant && "border-none",
 						)}
 						onClick={() => {
 							setSelectedVariant(variant as never);
@@ -175,7 +181,7 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 function AddToCart() {
 	const { selectedVariant } = useProductOptions();
 	const { status: cartStatus } = useCart();
-	const outOfStock = selectedVariant?.availableForSale === false || false;
+	const outOfStock = selectedVariant?.availableForSale === false || true;
 
 	const isLoadingState = () => cartStatus === "creating" || cartStatus === "fetching";
 	const isIdleState = () => cartStatus === "idle" || cartStatus === "uninitialized";

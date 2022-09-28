@@ -1,7 +1,7 @@
 import { DiscordIcon } from "../../../assets/icons/socials/discord";
 import { SocialLinks } from "../SocialLinks";
 import { ButtonLink } from "../input/Button";
-import { SubscribeForm } from "../input/SubscribeForm.client";
+import { FooterSubscribeForm } from "../input/SubscribeForm.client";
 
 export function SocialsAndUpdates() {
 	return (
@@ -13,7 +13,7 @@ export function SocialsAndUpdates() {
 					Teahouse, to find out what we’re all about!
 				</p>
 				<div className="flex flex-col space-y-6 sm:space-y-8">
-					<SubscribeForm className="text-sm md:text-base" inputProps={{ className: "w-full" }} />
+					<FooterSubscribeForm className="text-sm md:text-base" inputProps={{ className: "w-full" }} />
 					<div className="flex w-full max-w-full flex-col items-center justify-between space-y-6 sm:w-auto sm:w-full sm:flex-row sm:space-y-0">
 						<ButtonLink
 							url="https://teacaps.studio/discord"

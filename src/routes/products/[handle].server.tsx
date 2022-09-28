@@ -105,6 +105,16 @@ const PRODUCT_QUERY = gql`
 				...ProductVariant
 			}
 		}
+		priceRange {
+			minVariantPrice {
+				amount
+				currencyCode
+			}
+			maxVariantPrice {
+				amount
+				currencyCode
+			}
+		}
 		summary: metafield(namespace: "udesly", key: "description") {
 			value
 		}

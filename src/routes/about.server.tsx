@@ -5,7 +5,7 @@ import { Graphic } from "../assets/graphic";
 import { Container } from "../components/global/Container";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
-import { PAGE_QUERY } from "./[...page].server";
+import { PAGE_QUERY } from "./[page].server";
 import type { PageQuery } from "../graphql/storefront.generated";
 
 export default function About() {

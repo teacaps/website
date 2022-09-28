@@ -3,7 +3,6 @@ import clsx from "clsx";
 import type { Color, MakePropertiesOptional } from "../../../lib/utils";
 import type { ButtonHTMLAttributes, HTMLAttributes, ReactNode } from "react";
 
-
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	color: Color;
 	disabled?: boolean;
@@ -25,7 +24,7 @@ export function Button({
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${baseColor === "grain" ? "matcha" : "grain"}`,
-				`flex items-center justify-center gap-3 rounded-full px-5 font-medium`,
+				`flex items-center justify-center gap-3 rounded-full px-5 font-medium disabled:cursor-not-allowed`,
 				className?.includes("h-") ? "" : "h-12",
 				className?.includes("w-") ? "" : "w-fit",
 				className,
@@ -43,7 +42,7 @@ export function UnstyledButton({ className, children, ...props }: ButtonHTMLAttr
 	return (
 		<button
 			className={clsx(
-				"border-0 border-none bg-transparent p-0 outline-none hover:font-medium active:font-bold disabled:font-bold",
+				"border-0 border-none bg-transparent p-0 outline-none hover:font-medium active:font-bold disabled:cursor-not-allowed disabled:font-bold",
 				className,
 			)}
 			{...props}>
@@ -76,7 +75,7 @@ export function ButtonLink<
 			className={clsx(
 				`border-2 border-${color} text-${color}`,
 				`hover:bg-${color} hover:text-${color === "grain" ? "matcha" : "grain"}`,
-				`inline-flex items-center justify-center gap-3 rounded-full px-5 font-medium`,
+				`inline-flex items-center justify-center gap-3 rounded-full px-5 font-medium disabled:cursor-not-allowed`,
 				className?.includes("h-") ? "" : "h-12",
 				className?.includes("w-") ? "" : "w-fit",
 				className,

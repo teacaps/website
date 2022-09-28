@@ -1,9 +1,8 @@
-import { Form } from "@shopify/hydrogen/experimental";
 import clsx from "clsx";
+import { Form } from "./Form.client";
 import { Input, InputProps } from "./Input";
 import type { ButtonProps } from "./Button";
 import type { FormEventHandler } from "react";
-
 
 export interface InputWithButtonProps {
 	name: string;
@@ -35,34 +34,30 @@ export function InputWithButton({
 	const { className: inputClassName, ...inputRest } = inputProps ?? {};
 	const { className: buttonClassName, ...buttonRest } = buttonProps ?? {};
 	return (
-		<Form action={action} onSubmit={onSubmit} method="post">
-			<div className={clsx("inline-flex w-full", className)}>
-				<Input
-					name={name}
-					color={inputColor}
-					className={clsx(
-						`rounded-r-none border-2 border-${borderColor} flex-auto overflow-clip`,
-						inputClassName,
-					)}
-					{...inputRest}
-					disabled={disabled}
-					placeholder={placeholder}
-				/>
-				<button
-					className={clsx(
-						`border-2 border-${borderColor} border-l-0 text-${inputColor} bg-${buttonColor}`,
-						`hover:bg-${inputColor} hover:text-${buttonColor}`,
-						`flex h-10 items-center justify-center rounded-r-full px-5 font-medium md:h-12`,
-						buttonClassName,
-					)}
-					type="submit"
-					disabled={disabled}
-					{...buttonRest}>
-					{buttonText}
-				</button>
-			</div>
-			{/* requires multiple children for some reason */}
-			<></>
+		<Form action={action} onSubmit={onSubmit} method="post" className={clsx("inline-flex w-full", className)}>
+			<Input
+				name={name}
+				color={inputColor}
+				className={clsx(
+					`rounded-r-none border-2 border-${borderColor} flex-auto overflow-clip`,
+					inputClassName,
+				)}
+				{...inputRest}
+				disabled={disabled}
+				placeholder={placeholder}
+			/>
+			<button
+				className={clsx(
+					`border-2 border-${borderColor} border-l-0 text-${inputColor} bg-${buttonColor}`,
+					`hover:bg-${inputColor} hover:text-${buttonColor}`,
+					`flex h-10 items-center justify-center rounded-r-full px-5 font-medium md:h-12`,
+					buttonClassName,
+				)}
+				type="submit"
+				disabled={disabled}
+				{...buttonRest}>
+				{buttonText}
+			</button>
 		</Form>
 	);
 }

@@ -1,6 +1,7 @@
-import { type HydrogenRequest, gql } from "@shopify/hydrogen";
-
+import { gql } from "@shopify/hydrogen";
 import { adminApiClient } from "../../lib/gqlAdminApiClient";
+import type { CreateCustomerMutation } from "../../graphql/admin.generated";
+import type { HydrogenRequest } from "@shopify/hydrogen";
 
 export async function api(request: HydrogenRequest) {
 	if (request.method !== "POST") return new Response(null, { status: 405 });
@@ -9,7 +10,7 @@ export async function api(request: HydrogenRequest) {
 	const email = data.get("email");
 	if (!email || typeof email !== "string") return new Response(null, { status: 400 });
 
-	const response = await adminApiClient(CREATE_CUSTOMER_MUTATION, { email }).catch((err) => {
+	const response = await adminApiClient<CreateCustomerMutation>(CREATE_CUSTOMER_MUTATION, { email }).catch((err) => {
 		console.error(err);
 		return new Response(err, { status: 500 });
 	});

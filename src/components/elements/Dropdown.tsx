@@ -1,10 +1,11 @@
 // @ts-expect-error TS1479 TS does not seem to understand that this is being run as a module
 import { Listbox, Transition } from "@headlessui/react";
 import clsx from "clsx";
-import { Fragment, ReactNode } from "react";
+import { Fragment } from "react";
 
 import { CheckmarkIcon } from "../../assets/icons/checkmark";
 import type { Color } from "../../lib/utils";
+import type { ReactNode } from "react";
 
 export function Dropdown({
 	options,

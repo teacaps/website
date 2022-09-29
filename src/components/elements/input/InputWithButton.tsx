@@ -1,7 +1,8 @@
 import clsx from "clsx";
 import { Form } from "./Form.client";
-import { Input, InputProps } from "./Input";
+import { Input } from "./Input";
 import type { ButtonProps } from "./Button";
+import type { InputProps } from "./Input";
 import type { FormEventHandler } from "react";
 
 export interface InputWithButtonProps {

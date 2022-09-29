@@ -7,5 +7,4 @@ dist
 *.local
 .env*
 .eslintcache
-**/graphql/*generated*
 .vercel

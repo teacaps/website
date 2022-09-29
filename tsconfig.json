@@ -9,7 +9,7 @@
 
     "strict": true,
     "skipLibCheck": true,
-
+    "isolatedModules": true,
     "noUnusedParameters": true,
 
     "importsNotUsedAsValues": "remove",

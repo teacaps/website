@@ -1,4 +1,4 @@
-import { CacheLong, gql, HydrogenRequest, HydrogenRouteProps, Seo, useShopQuery } from "@shopify/hydrogen";
+import { CacheLong, gql, Seo, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
 import { socials } from "../components/elements/SocialLinks";
 import { Container } from "../components/global/Container";
@@ -6,6 +6,7 @@ import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
 import { isKeyof } from "../lib/utils";
 import type { PageQuery } from "../graphql/storefront.generated";
+import type { HydrogenRequest, HydrogenRouteProps } from "@shopify/hydrogen";
 
 export default function Page({ request, response }: HydrogenRouteProps) {
 	const { page: handle } = request.ctx.router.routeParams;

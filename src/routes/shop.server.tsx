@@ -29,7 +29,7 @@ export default function Shop() {
 
 	const products = collections.filter((col) => col.isColorway?.value === "true").flatMap((col) => col.products.nodes);
 
-	if (!collections.length) return <NotFound />;
+	if (!collections.length) return <NotFound type="error" />;
 
 	return (
 		<Layout>

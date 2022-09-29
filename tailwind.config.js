@@ -44,11 +44,18 @@ module.exports = {
 			},
 			grain: "#EFE3D7",
 		},
+		// This needs to be specified manually, not in `extends`, or else `xs` will be sorted after `2xl and therefore
+		// take precedence in the generated CSS file.
+		screens: {
+			"xs": "360px",
+			"sm": "640px",
+			"md": "768px",
+			"lg": "1024px",
+			"xl": "1280px",
+			"2xl": "1536px",
+			"tall": { raw: "(min-height: 900px)" },
+		},
 		extend: {
-			screens: {
-				xs: "360px",
-				tall: { raw: "(min-height: 900px)" },
-			},
 			spacing: {
 				unset: "unset",
 			},
@@ -60,9 +67,9 @@ module.exports = {
 						"--tw-prose-lead": theme("colors.matcha.DEFAULT"),
 						"--tw-prose-links": theme("colors.matcha.DEFAULT"),
 						"--tw-prose-bullets": theme("colors.matcha.DEFAULT"),
-						h4: {
+						"h4": {
 							// prose-h4:leading-10
-							lineHeight: "2.5rem",
+							"lineHeight": "2.5rem",
 							"--leading-offset": "calc((2.5rem - 1em) / -2)",
 						},
 					},

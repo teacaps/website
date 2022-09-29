@@ -21,7 +21,7 @@ export default function Product() {
 		variables: { handle },
 	}).data;
 
-	if (!product) return <NotFound />;
+	if (!product) return <NotFound type="404" />;
 
 	useServerAnalytics({
 		shopify: {

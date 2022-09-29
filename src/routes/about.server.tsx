@@ -17,7 +17,7 @@ export default function About() {
 		cache: CacheLong(),
 		preload: "*",
 	});
-	if (!page || !page.title || !page.body) return <NotFound />;
+	if (!page || !page.title || !page.body) return <NotFound type="404" />;
 	return (
 		<Layout className="h-screen w-full">
 			<Suspense>

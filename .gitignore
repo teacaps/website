@@ -1,7 +1,6 @@
 node_modules
 dist
 .yarn/cache
-.yarn/plugins
 .DS_Store
 .idea
 .vscode
@@ -9,3 +8,4 @@ dist
 .env*
 .eslintcache
 **/graphql/*generated*
+.vercel

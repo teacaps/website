@@ -36,6 +36,7 @@
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
     "typescript": "beta",
+    "vercel": "^28.4.5",
     "vite": "^2.9.0"
   },
   "dependencies": {

@@ -1,0 +1,28 @@
+name: Deploy to Vercel
+on: [pull_request, push]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+            node-version: 16
+            cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v25.1.0
+        with:
+          vercel-args: "--prod"
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}

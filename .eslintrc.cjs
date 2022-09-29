@@ -33,6 +33,8 @@ module.exports = {
 		"@typescript-eslint/ban-types": "off",
 		"@typescript-eslint/naming-convention": "off",
 		"@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_" }],
+		"eslint-comments/disable-enable-pair": "off",
+		"eslint-comments/no-unlimited-disable": "off",
 		"import/no-named-as-default": "off",
 		"import/no-unresolved": "off",
 		"import/order": ["error", {

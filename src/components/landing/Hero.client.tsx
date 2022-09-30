@@ -1,4 +1,3 @@
-import { Spline } from "../elements/SplineWrapper.client";
 import { ButtonLink } from "../elements/input/Button";
 import { Container } from "../global/Container";
 
@@ -15,9 +14,13 @@ export function Hero() {
 					Shop
 				</ButtonLink>
 			</Container>
-			<Spline
-				scene="/spline/scene.splinecode"
+			<video
+				src="/assets/hero-teacup.webm"
 				className="md:[60vw] ml-auto mb-16 mt-10 w-[75vw] sm:mb-24 sm:mt-16 lg:-mt-16 lg:w-[45vw] xl:-mt-24 2xl:-mt-36 2xl:w-[40vw]"
+				autoPlay
+				loop
+				muted
+				playsInline
 			/>
 		</>
 	);

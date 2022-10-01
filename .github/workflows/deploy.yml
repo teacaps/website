@@ -1,13 +1,56 @@
 name: Deploy to Vercel
-on: [pull_request, push]
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "api/**"
+      - "**.config.*"
+      - ".github/workflows/**"
+
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "api/**"
+      - "**.config.*"
+      - ".github/workflows/**"
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      IS_MERGED: ${{ github.event_name == 'pull_request' && github.event.pull_request.merged }}
+      IS_PUSH: ${{ github.event_name == 'push' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Deploy to Vercel
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Build
+        run: yarn build
+
+      - name: Deploy to Vercel as preview
+        if: env.IS_MERGED != 'true' && env.IS_PUSH != 'true'
+        uses: amondnet/vercel-action@v25.1.0
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      - name: Deploy to Vercel as production
+        if: env.IS_PUSH == 'true'
         uses: amondnet/vercel-action@v25.1.0
         with:
           vercel-args: "--prod"

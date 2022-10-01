@@ -40,3 +40,7 @@ html {
 .image-gallery-thumbnail:hover {
 	@apply border-2 border-matcha-80 !important;
 }
+
+.image-gallery-thumbnails {
+	@apply pb-0 !important;
+}

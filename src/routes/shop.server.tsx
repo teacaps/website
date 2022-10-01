@@ -1,7 +1,8 @@
-import { CacheLong, gql, Seo, useLocalization, useShopQuery } from "@shopify/hydrogen";
+import { CacheLong, gql, useLocalization, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
 
 import { Container } from "../components/global/Container";
+import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
 import { Featured } from "../components/shop/Featured.server";
@@ -21,7 +22,6 @@ export default function Shop() {
 	});
 	const {
 		collections: { nodes: collections },
-		shop: { name: title },
 	} = data;
 
 	const featuredCollection = collections.find((col) => col.handle === "featured");
@@ -34,7 +34,7 @@ export default function Shop() {
 	return (
 		<Layout>
 			<Suspense>
-				<Seo type="page" data={{ title }} />
+				<CustomSeo type="page" />
 			</Suspense>
 			<Container className="mt-4 mb-16 flex flex-col items-center justify-start space-y-12 sm:mt-8 md:mb-24 md:space-y-16">
 				{featured ? <Featured product={featured} /> : null}
@@ -102,9 +102,6 @@ const PRODUCTS_QUERY = gql`
 			nodes {
 				...Collection
 			}
-		}
-		shop {
-			name
 		}
 	}
 `;

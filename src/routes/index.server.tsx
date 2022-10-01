@@ -1,11 +1,11 @@
-import { CacheLong, gql, Seo, ShopifyAnalyticsConstants, useServerAnalytics, useShopQuery } from "@shopify/hydrogen";
+import { ShopifyAnalyticsConstants, useServerAnalytics } from "@shopify/hydrogen";
 import { Suspense } from "react";
 
+import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
 import { Hero } from "../components/landing/Hero.client";
 import { ProductSection } from "../components/landing/LandingProductSection";
 import { Welcome } from "../components/landing/Welcome";
-import type { ShopInfoQuery } from "../graphql/storefront.generated";
 
 export default function Landing() {
 	useServerAnalytics({
@@ -16,7 +16,7 @@ export default function Landing() {
 	return (
 		<Layout>
 			<Suspense>
-				<LandingSeo />
+				<CustomSeo type="homepage" />
 			</Suspense>
 			<Hero />
 			<Welcome />
@@ -31,34 +31,3 @@ export default function Landing() {
 		</Layout>
 	);
 }
-
-function LandingSeo() {
-	const {
-		data: {
-			shop: { name, description },
-		},
-	} = useShopQuery<ShopInfoQuery>({
-		query: LANDING_SEO_QUERY,
-		cache: CacheLong(),
-		preload: true,
-	});
-
-	return (
-		<Seo
-			type="homepage"
-			data={{
-				title: name,
-				description,
-			}}
-		/>
-	);
-}
-
-const LANDING_SEO_QUERY = gql`
-	query ShopInfo {
-		shop {
-			name
-			description
-		}
-	}
-`;

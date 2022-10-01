@@ -1,8 +1,9 @@
-import { CacheLong, Seo, useShopQuery } from "@shopify/hydrogen";
+import { CacheLong, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
 
 import { Graphic } from "../assets/graphic";
 import { Container } from "../components/global/Container";
+import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
 import { PAGE_QUERY } from "./[page].server";
@@ -21,7 +22,7 @@ export default function About() {
 	return (
 		<Layout className="h-full max-h-screen w-full">
 			<Suspense>
-				<Seo type="page" data={page} />
+				<CustomSeo type="page" data={page} image="https://teacaps.studio/about-og-image.png" />
 			</Suspense>
 			<Container className="flex h-full items-center justify-center">
 				<div className="-mt-12 flex w-4/5 flex-col items-center justify-start space-y-6 py-24 xl:w-2/3 tall:justify-center">

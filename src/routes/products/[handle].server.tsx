@@ -1,12 +1,6 @@
-import {
-	gql,
-	Seo,
-	ShopifyAnalyticsConstants,
-	useRouteParams,
-	useServerAnalytics,
-	useShopQuery,
-} from "@shopify/hydrogen";
+import { gql, ShopifyAnalyticsConstants, useRouteParams, useServerAnalytics, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
+import { CustomSeo } from "../../components/global/CustomSeo.server";
 
 import { Layout } from "../../components/global/Layout.server";
 import { NotFound } from "../../components/global/NotFound.server";
@@ -33,7 +27,7 @@ export default function Product() {
 	return (
 		<Layout>
 			<Suspense>
-				<Seo type="product" data={{ ...product, seo: { title: product.title } }} />
+				<CustomSeo type="product" data={{ ...product, seo: { title: product.title } }} />
 			</Suspense>
 			<div className="h-full w-full pb-8 sm:pb-16">
 				<ProductDetails product={product} />

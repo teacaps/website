@@ -1,7 +1,8 @@
-import { CacheLong, gql, Seo, useShopQuery } from "@shopify/hydrogen";
+import { CacheLong, gql, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
 import { socials } from "../components/elements/SocialLinks";
 import { Container } from "../components/global/Container";
+import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
 import { isKeyof } from "../lib/utils";
@@ -29,7 +30,7 @@ export default function Page({ request, response }: HydrogenRouteProps) {
 	return (
 		<Layout>
 			<Suspense>
-				<Seo type="page" data={page} />
+				<CustomSeo type="page" data={page} />
 			</Suspense>
 			<Container className="my-16 mx-2 flex items-center justify-center sm:mx-0">
 				<div

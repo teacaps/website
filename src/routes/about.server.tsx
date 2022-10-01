@@ -19,7 +19,7 @@ export default function About() {
 	});
 	if (!page || !page.title || !page.body) return <NotFound type="404" />;
 	return (
-		<Layout className="h-screen w-full">
+		<Layout className="h-full max-h-screen w-full">
 			<Suspense>
 				<Seo type="page" data={page} />
 			</Suspense>

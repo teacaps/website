@@ -21,7 +21,7 @@ export function Timeline({ status }: { status?: string }) {
 		(step) => step.name.toLowerCase() === (status || "Fulfilled").toLowerCase(),
 	);
 	return (
-		<div aria-label="Timeline" className="flex w-full items-center justify-center">
+		<div aria-label="Timeline" className="my-16 flex w-full items-center justify-center md:my-24 md:pb-8">
 			<ol className="relative flex w-full flex-grow flex-col items-center justify-between sm:flex-row xl:w-4/5">
 				{steps.map((step, index) => {
 					const StepIcon = step.icon;
@@ -42,8 +42,8 @@ export function Timeline({ status }: { status?: string }) {
 						<li
 							key={step.name}
 							className={clsx(
-								`relative -ml-28 rounded-full pb-8 sm:ml-0 sm:py-0`,
-								!isLast && "flex-grow",
+								`relative -ml-28 rounded-full sm:ml-0 sm:py-0`,
+								!isLast && "flex-grow pb-8",
 							)}>
 							{!isLast && (
 								<div className="absolute inset-0 ml-6 flex items-center sm:ml-0" aria-hidden="true">

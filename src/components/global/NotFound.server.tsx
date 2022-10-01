@@ -13,7 +13,7 @@ const body = {
 };
 export function NotFound({ type }: { type: "404" | "error" }) {
 	return (
-		<Layout className="relative h-screen min-h-[500px] w-full sm:min-h-fit">
+		<Layout className="relative h-full max-h-screen min-h-[500px] w-full sm:min-h-fit">
 			<Suspense>
 				<Seo type="noindex" data={{}} />
 			</Suspense>

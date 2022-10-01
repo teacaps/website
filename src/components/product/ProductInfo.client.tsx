@@ -26,8 +26,8 @@ export function ProductInfo({ product, gallery }: ProductInfoProps) {
 }
 
 function ProductDescription({ product, gallery }: ProductInfoProps) {
-	const { selectedVariant, setSelectedVariant } = useProductOptions();
-	if (!selectedVariant?.availableForSale) setSelectedVariant(null);
+	const { selectedVariant } = useProductOptions();
+	const variantAvailable = selectedVariant?.availableForSale;
 
 	const colors: Array<{ name: string; hex: string }> | null = product.colors?.value
 		? JSON.parse(product.colors.value)
@@ -54,7 +54,7 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 			<div className="flex flex-col items-start space-y-8 text-walnut text-2xl leading-8">
 				<VariantSelector gallery={gallery} />
 				<span className="flex space-x-0">
-					{selectedVariant?.priceV2?.currencyCode ||
+					{(variantAvailable && selectedVariant?.priceV2?.currencyCode) ||
 						product.priceRange?.minVariantPrice?.currencyCode ||
 						product.priceRange?.maxVariantPrice?.currencyCode}
 					&nbsp;
@@ -62,7 +62,7 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 						as="span"
 						data={product}
 						withoutTrailingZeros={true}
-						variantId={selectedVariant?.id}
+						variantId={variantAvailable ? selectedVariant?.id : undefined}
 					/>
 				</span>
 				<AddToCart />

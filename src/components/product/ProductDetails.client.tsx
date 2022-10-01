@@ -14,12 +14,12 @@ export function ProductDetails({ product }: { product: ProductDetailsFragment })
 	const galleryRef = useRef<ImageGallery>(null);
 	return (
 		<ProductOptionsProvider data={product}>
-			<Container className="mt-8 mb-16">
+			<Container className="mt-8">
 				<section className="mb-16 flex w-full flex-col space-y-8 md:flex-row md:space-y-0 md:space-x-6 lg:space-x-12">
 					<ProductGallery media={product.media.nodes} galleryRef={galleryRef} />
 					<ProductInfo product={product} gallery={galleryRef} />
 				</section>
-				<div className="mt-16 mb-8 w-full sm:mb-16">
+				<div className="mt-16 w-full">
 					<Timeline status={product.status?.value} />
 				</div>
 				{colorwayCollection ? <ShopTheCollection collection={colorwayCollection as never} /> : null}

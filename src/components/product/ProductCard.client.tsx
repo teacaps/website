@@ -33,7 +33,10 @@ export function CollectionProductCard({
 	const available = product.availableForSale;
 	return (
 		<Link
-			className={clsx("flex flex-col items-start justify-start space-y-4 px-4 sm:px-6", hidden && "hidden")}
+			className={clsx(
+				"flex w-1/2 flex-col items-start justify-start space-y-4 px-8 sm:w-1/3 sm:px-4 lg:px-8",
+				hidden && "hidden",
+			)}
 			to={`/products/${product.handle}`}>
 			<Image
 				className="aspect-[5/4] h-auto w-auto rounded-2xl object-cover xs:rounded-3xl"

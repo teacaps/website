@@ -35,7 +35,7 @@ export default function Product() {
 			<Suspense>
 				<Seo type="product" data={{ ...product, seo: { title: product.title } }} />
 			</Suspense>
-			<div className="h-full w-full">
+			<div className="h-full w-full pb-8 sm:pb-16">
 				<ProductDetails product={product} />
 			</div>
 		</Layout>

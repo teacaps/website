@@ -27,7 +27,10 @@ export default function Product() {
 	return (
 		<Layout>
 			<Suspense>
-				<CustomSeo type="product" data={{ ...product, seo: { title: product.title } }} />
+				<CustomSeo
+					type="product"
+					data={{ ...product, seo: { title: product.title, description: product.description } }}
+				/>
 			</Suspense>
 			<div className="h-full w-full pb-8 sm:pb-16">
 				<ProductDetails product={product} />

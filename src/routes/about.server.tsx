@@ -22,7 +22,7 @@ export default function About() {
 	return (
 		<Layout className="h-full max-h-screen w-full">
 			<Suspense>
-				<CustomSeo type="page" data={page} image="https://teacaps.studio/about-og-image.png" />
+				<CustomSeo type="page" data={page} image="/about-og-image.png" />
 			</Suspense>
 			<Container className="flex h-full items-center justify-center">
 				<div className="-mt-12 flex w-4/5 flex-col items-center justify-start space-y-6 py-24 xl:w-2/3 tall:justify-center">

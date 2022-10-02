@@ -16,7 +16,7 @@ export function SocialsAndUpdates() {
 					<FooterSubscribeForm className="text-sm md:text-base" inputProps={{ className: "w-full" }} />
 					<div className="flex w-full max-w-full flex-col items-center justify-between space-y-6 sm:w-auto sm:w-full sm:flex-row sm:space-y-0">
 						<ButtonLink
-							url="https://teacaps.studio/discord"
+							url="/discord"
 							color="grain"
 							className="w-full text-base sm:w-fit"
 							icon={<DiscordIcon className="w-6" />}>

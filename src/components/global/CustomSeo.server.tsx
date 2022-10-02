@@ -1,4 +1,4 @@
-import { CacheLong, gql, Head, Seo, useShopQuery } from "@shopify/hydrogen";
+import { CacheLong, gql, Head, Seo, useShopQuery, useUrl } from "@shopify/hydrogen";
 import type { ShopInfoQuery } from "../../graphql/storefront.generated";
 
 type DefaultSeoProps = Parameters<typeof Seo>[0];
@@ -19,6 +19,9 @@ export function CustomSeo(props: CustomSeoProps) {
 		preload: "*",
 	});
 
+	const url = useUrl();
+	const image = props.image?.includes("://") ? props.image : url.origin + (props.image || "/landing-og-image.png");
+
 	return (
 		<>
 			<Seo
@@ -32,9 +35,7 @@ export function CustomSeo(props: CustomSeoProps) {
 				{...rest}
 			/>
 			<Head>
-				{!("image" in data) && (
-					<meta name="og:image" content={props.image || "https://teacaps.studio/landing-og-image.png"} />
-				)}
+				{!("image" in data) && <meta name="og:image" content={image} />}
 				<meta name="theme-color" content={props.color || "#336C61"} />
 				<meta name="twitter:card" content="summary_large_image" />
 			</Head>

@@ -21,7 +21,7 @@ export function Timeline({ status }: { status?: string }) {
 		(step) => step.name.toLowerCase() === (status || "Fulfilled").toLowerCase(),
 	);
 	return (
-		<div aria-label="Timeline" className="my-16 flex w-full items-center justify-center md:my-24 md:pb-8">
+		<div aria-label="Timeline" className="mt-16 flex w-full items-center justify-center sm:pb-8 md:mt-24">
 			<ol className="relative flex w-full flex-grow flex-col items-center justify-between sm:flex-row xl:w-4/5">
 				{steps.map((step, index) => {
 					const StepIcon = step.icon;

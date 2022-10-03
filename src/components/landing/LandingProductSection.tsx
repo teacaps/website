@@ -25,17 +25,17 @@ export function ProductSection({
 	return (
 		<Container
 			className={clsx(
-				"flex flex-col items-center justify-center py-16 px-0",
-				align === "right" ? "sm:flex-row-reverse" : "sm:flex-row",
+				"flex flex-col items-center justify-center py-16",
+				align === "right" ? "md:flex-row-reverse" : "md:flex-row",
 			)}>
 			<Image
 				src={`/assets/illustrations/${name.toLowerCase().replace(/\s/g, "-")}.png`}
-				className="mb-8 w-full sm:mb-0 sm:w-1/2 sm:basis-1/2"
+				className="mb-8 w-full md:mb-0 md:w-1/2 md:basis-1/2"
 				width={width}
 				height={height}
 				alt={`An illustration depicting ${name}`}
 			/>
-			<div className="basis-1/2 space-y-4">
+			<div className="w-full basis-1/2 space-y-4 md:w-auto">
 				<div className="inline-flex space-x-6">
 					<h2 className="inline font-normal text-matcha text-3xl leading-none sm:text-4xl sm:leading-10">
 						{name}
@@ -50,7 +50,9 @@ export function ProductSection({
 				{interestCheck ? (
 					<h3 className="mt-2 mb-3 text-walnut text-xl leading-8 sm:text-2xl">interest check</h3>
 				) : null}
-				{description ? <p className="mb-3 text-walnut leading-7 sm:mt-2 sm:text-lg">{description}</p> : null}
+				{description ? (
+					<p className="mb-3 max-w-full text-walnut text-lg leading-7 md:mt-2">{description}</p>
+				) : null}
 				<ButtonLink
 					external={interestCheck}
 					url={url}

@@ -34,7 +34,7 @@ export function CollectionProductCard({
 	return (
 		<Link
 			className={clsx(
-				"flex w-1/2 flex-col items-start justify-start space-y-4 px-8 sm:w-1/3 sm:px-4 lg:px-8",
+				"flex w-1/2 min-w-[200px] flex-col items-start justify-center space-y-4 px-8 sm:w-1/3 sm:min-w-0 sm:justify-start sm:px-4 lg:px-8",
 				hidden && "hidden",
 			)}
 			to={`/products/${product.handle}`}>

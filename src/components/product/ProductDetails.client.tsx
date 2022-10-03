@@ -19,10 +19,10 @@ export function ProductDetails({ product }: { product: ProductDetailsFragment })
 					<ProductGallery media={product.media.nodes} galleryRef={galleryRef} />
 					<ProductInfo product={product} gallery={galleryRef} />
 				</section>
-				<div className="mt-16 w-full">
-					<Timeline status={product.status?.value} />
-				</div>
-				{colorwayCollection ? <ShopTheCollection collection={colorwayCollection as never} /> : null}
+				<Timeline status={product.status?.value} />
+				{(colorwayCollection?.products.nodes.length || 0) > 1 ? (
+					<ShopTheCollection collection={colorwayCollection as never} />
+				) : null}
 			</Container>
 		</ProductOptionsProvider>
 	);

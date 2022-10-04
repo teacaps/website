@@ -9,7 +9,7 @@ import { Timeline } from "./Timeline";
 import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
 import type ImageGallery from "react-image-gallery";
 
-export function ProductDetails({ product }: { product: ProductDetailsFragment }) {
+export function ProductDisplay({ product }: { product: ProductDetailsFragment }) {
 	const colorwayCollection = product.collections.nodes.find((collection) => collection.isColorway?.value === "true");
 	const galleryRef = useRef<ImageGallery>(null);
 	return (

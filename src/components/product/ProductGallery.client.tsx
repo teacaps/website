@@ -1,11 +1,14 @@
+import clsx from "clsx";
 import ImageGallery, { type ReactImageGalleryItem } from "react-image-gallery";
+import { ExpandIcon } from "../../assets/icons/expand";
+import { MinimizeIcon } from "../../assets/icons/minimize";
 import { MediaContentType } from "../../graphql/storefront.generated";
 import type { MediaFragment, MediaImage } from "../../graphql/storefront.generated";
-import type { LegacyRef } from "react";
+import type { RefObject } from "react";
 
 interface ProductGalleryProps {
 	media: Array<MediaFragment>;
-	galleryRef: LegacyRef<ImageGallery>;
+	galleryRef: RefObject<ImageGallery>;
 }
 
 export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
@@ -29,8 +32,22 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 					items={items}
 					lazyLoad={true}
 					showNav={false}
-					showFullscreenButton={false}
 					showPlayButton={false}
+					renderFullscreenButton={(onClick, isFullscreen) => {
+						const FullscreenIcon = isFullscreen ? MinimizeIcon : ExpandIcon;
+						return (
+							<button
+								type="button"
+								className={clsx(
+									"z-4 group absolute rounded-full bg-grain p-2",
+									isFullscreen ? "right-8 bottom-8" : "right-4 bottom-4",
+								)}
+								onClick={onClick}
+								aria-label="Toggle fullscreen">
+								<FullscreenIcon className="h-4 text-matcha transition-all group-hover:h-5" />
+							</button>
+						);
+					}}
 				/>
 			</div>
 		</div>

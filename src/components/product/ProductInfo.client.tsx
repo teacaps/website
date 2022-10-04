@@ -77,13 +77,11 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 		.filter((line) => !line.includes("meta charset"));
 	const detailsListItems = detailsLines
 		.map((line) => {
-			const withoutListTags = line.replace(/<\/?li.*?>/g, "");
+			const withoutTags = line.replace(/<[^>]*>?/g, "");
+			const [key, value] = withoutTags.split(":");
 			// eslint-disable-next-line no-sparse-arrays
-			if (withoutListTags === line) return [, line.trim()];
-			return withoutListTags
-				.split(": ")
-				.slice(0, 2)
-				.map((s) => s.trim());
+			if (withoutTags === line || !value) return [, line.trim()];
+			return [key.trim(), value.trim()];
 		})
 		.filter(([key = "", value = ""]) => {
 			const line = (key + value).trim();
@@ -112,13 +110,13 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 				)}
 				<ul className="flex flex-col space-y-4">
 					{detailsListItems.map(([key, value]) => (
-						<li key={key || value} className="flex space-x-8 text-base leading-6">
-							<span
-								className="font-regular text-walnut-80"
-								dangerouslySetInnerHTML={{ __html: key || value || "" }}></span>
-							{key && (
-								<span className="font-medium" dangerouslySetInnerHTML={{ __html: value || "" }}></span>
-							)}
+						<li
+							key={key || value}
+							className={clsx("flex space-x-8 leading-6", key ? "text-base" : "text-lg")}>
+							<p
+								className={clsx("font-regular", !!key && "text-walnut-80")}
+								dangerouslySetInnerHTML={{ __html: key || value || "" }}></p>
+							{key && <p className="font-medium" dangerouslySetInnerHTML={{ __html: value || "" }}></p>}
 						</li>
 					))}
 				</ul>
@@ -146,16 +144,18 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 	if (!variants || variants.length === 1) return null;
 	return (
 		<div className="flex space-x-4">
-			{variants.map((variant) =>
-				variant ? (
+			{variants.map((variant) => {
+				const isSelected = selectedVariant?.id === variant?.id;
+				const isAvailable = variant?.availableForSale;
+				if (!variant) return null;
+				return (
 					<Button
 						key={variant.id}
 						color="walnut"
-						disabled={!variant.availableForSale}
+						disabled={!isAvailable}
 						className={clsx(
 							"px-4 py-2 text-base",
-							variant.id === selectedVariant?.id && "bg-walnut text-grain",
-							!variant && "border-none",
+							isSelected && (isAvailable ? "bg-walnut" : "bg-grain text-walnut-60"),
 						)}
 						onClick={() => {
 							setSelectedVariant(variant as never);
@@ -172,8 +172,8 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 						}}>
 						{variant.title}
 					</Button>
-				) : null,
-			)}
+				);
+			})}
 		</div>
 	);
 }

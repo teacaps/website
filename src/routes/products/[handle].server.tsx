@@ -4,7 +4,7 @@ import { CustomSeo } from "../../components/global/CustomSeo.server";
 
 import { Layout } from "../../components/global/Layout.server";
 import { NotFound } from "../../components/global/NotFound.server";
-import { ProductDetails } from "../../components/product/ProductDetails.client";
+import { ProductDisplay } from "../../components/product/ProductDisplay.client";
 import type { ProductQuery } from "../../graphql/storefront.generated";
 
 export default function Product() {
@@ -33,7 +33,7 @@ export default function Product() {
 				/>
 			</Suspense>
 			<div className="h-full w-full pb-8 sm:pb-16">
-				<ProductDetails product={product} />
+				<ProductDisplay product={product} />
 			</div>
 		</Layout>
 	);

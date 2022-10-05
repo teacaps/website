@@ -46,3 +46,5 @@ export function NotFound({ type }: { type: "404" | "error" }) {
 		</Layout>
 	);
 }
+
+export default () => NotFound({ type: "error" });

@@ -5,8 +5,9 @@ globalThis.Oxygen ??= { env: (process.env as Record<string, string>) || import.m
 
 export default defineConfig({
 	shopify: {
-		storeDomain: `${globalThis.Oxygen.env.STOREFRONT_NAME}.myshopify.com`,
+		storeDomain: "checkout.teacaps.studio",
 		storefrontToken: globalThis.Oxygen.env.STOREFRONT_TOKEN,
 		storefrontApiVersion: globalThis.Oxygen.env.STOREFRONT_API_VERSION,
 	},
+	serverErrorPage: "./src/global/NotFound.server.tsx",
 });

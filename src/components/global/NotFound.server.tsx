@@ -29,15 +29,15 @@ export function NotFound({ type }: { type: "404" | "error" }) {
 							color="matcha"
 							className="w-full whitespace-nowrap sm:w-fit"
 							url="/shop"
-							icon={<CartIcon className="h-6 text-matcha" />}>
+							icon={<CartIcon className="h-6" />}>
 							{"See what's new"}
 						</ButtonLink>
 						<ButtonLink
 							color="walnut"
 							className="w-full whitespace-nowrap sm:w-fit"
 							url="/discord"
-							icon={<DiscordIcon className="h-6 text-walnut" />}>
-							{"Join the Teahouse"}
+							icon={<DiscordIcon className="h-6" />}>
+							Join the Teahouse
 						</ButtonLink>
 					</div>
 				</div>

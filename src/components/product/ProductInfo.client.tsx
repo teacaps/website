@@ -179,7 +179,7 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 function AddToCart() {
 	const { selectedVariant } = useProductOptions();
 	const { status: cartStatus } = useCart();
-	const outOfStock = selectedVariant?.availableForSale === false || true;
+	const outOfStock = !selectedVariant?.availableForSale ?? true;
 
 	const isLoadingState = () => cartStatus === "creating" || cartStatus === "fetching";
 	const isIdleState = () => cartStatus === "idle" || cartStatus === "uninitialized";

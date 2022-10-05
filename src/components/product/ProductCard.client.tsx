@@ -34,7 +34,7 @@ export function CollectionProductCard({
 	return (
 		<Link
 			className={clsx(
-				"flex w-1/2 min-w-[200px] flex-col items-start justify-center space-y-4 px-8 sm:w-1/3 sm:min-w-0 sm:justify-start sm:px-4 lg:px-8",
+				"flex w-full flex-col items-start justify-center space-y-4 px-4 xs:w-1/2 xs:min-w-[160px] sm:w-1/3 sm:min-w-0 sm:justify-start lg:px-8",
 				hidden && "hidden",
 			)}
 			to={`/products/${product.handle}`}>
@@ -45,7 +45,7 @@ export function CollectionProductCard({
 				alt={product.featuredImage?.altText || `An image of ${product.title}`}
 			/>
 			<div className="font-medium text-walnut-80 text-sm leading-6 sm:text-base">
-				<span className="mb-2 text-walnut text-base leading-none md:text-lg">{product.title}</span>
+				<span className="mb-2 text-walnut leading-none">{product.title}</span>
 				{available ? <ProductPrice data={product} withoutTrailingZeros={true} /> : <div>Unavailable</div>}
 			</div>
 		</Link>

@@ -34,9 +34,9 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 		: null;
 
 	return (
-		<div className="flex flex-col space-y-12">
+		<div className="flex flex-col space-y-16">
 			<div className="space-y-8">
-				<h1 className="text-matcha text-4xl leading-10">{product.title}</h1>
+				<h1 className="text-matcha text-3xl leading-10 md:text-4xl">{product.title}</h1>
 				{product.summary?.value ? (
 					<p className="prose text-walnut leading-7">{product.summary?.value}</p>
 				) : null}
@@ -44,16 +44,16 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 					<ul className="flex flex-row flex-wrap gap-4">
 						{colors.map((color) => (
 							<li key={color.name} className="flex items-center justify-start space-x-4">
-								<div className="h-8 w-8 rounded-full" style={{ backgroundColor: color.hex }} />
-								<span className="font-medium text-matcha text-base">{color.name}</span>
+								<div className="h-5 w-5 rounded-full" style={{ backgroundColor: color.hex }} />
+								<span className="font-medium text-matcha text-sm leading-5">{color.name}</span>
 							</li>
 						))}
 					</ul>
 				) : null}
 			</div>
-			<div className="flex flex-col items-start space-y-8 text-walnut text-2xl leading-8">
+			<div className="flex flex-col items-start space-y-6 text-matcha text-xl leading-8 lg:text-2xl">
 				<VariantSelector gallery={gallery} />
-				<span className="flex space-x-0">
+				<span className="flex">
 					{(variantAvailable && selectedVariant?.priceV2?.currencyCode) ||
 						product.priceRange?.minVariantPrice?.currencyCode ||
 						product.priceRange?.maxVariantPrice?.currencyCode}
@@ -110,9 +110,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 				)}
 				<ul className="flex flex-col space-y-4">
 					{detailsListItems.map(([key, value]) => (
-						<li
-							key={key || value}
-							className={clsx("flex space-x-8 leading-6", key ? "text-base" : "text-lg")}>
+						<li key={key || value} className="flex space-x-8 text-base leading-6">
 							<p
 								className={clsx("font-regular", !!key && "text-walnut-80")}
 								dangerouslySetInnerHTML={{ __html: key || value || "" }}></p>
@@ -129,7 +127,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 function ProductUpdates() {
 	return (
 		<div className="flex flex-col space-y-4 md:space-y-6">
-			<p className="text-walnut text-lg leading-7">
+			<p className="text-walnut leading-7">
 				To keep up with production and shipping, sign up for email updates or join our community on social
 				media!
 			</p>
@@ -154,7 +152,7 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 						color="walnut"
 						disabled={!isAvailable}
 						className={clsx(
-							"px-4 py-2 text-base",
+							"h-10 px-4 text-sm",
 							isSelected && (isAvailable ? "bg-walnut" : "bg-grain text-walnut-60"),
 						)}
 						onClick={() => {
@@ -202,7 +200,7 @@ function AddToCart() {
 			as={Button}
 			color="matcha"
 			disabled={disabled}
-			className="px-6 py-4 text-lg"
+			className="px-6 py-4 text-base"
 			onClick={() => {
 				setButtonText("Added!");
 			}}>

@@ -1,8 +1,8 @@
 import { ClockIcon } from "../../assets/icons/clock";
+import { ButtonLink } from "../elements/input/Button";
 import { Container } from "../global/Container";
-import { ButtonLink } from "./input/Button";
 
-export function Timeline() {
+export function TimelineSection() {
 	return (
 		<Container className="flex flex-col items-center justify-center space-y-8 pb-16 pt-8">
 			<div className="w-full text-center sm:w-2/3">

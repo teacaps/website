@@ -51,13 +51,13 @@ export function ProductSection({
 					<h3 className="mt-2 mb-3 text-walnut text-xl leading-8 sm:text-2xl">interest check</h3>
 				) : null}
 				{description ? (
-					<p className="mb-3 max-w-full text-walnut text-lg leading-7 md:mt-2">{description}</p>
+					<p className="mb-3 max-w-full text-walnut leading-7 md:mt-2 md:text-lg">{description}</p>
 				) : null}
 				<ButtonLink
 					external={interestCheck}
 					url={url}
 					color={interestCheck ? "matcha" : "walnut"}
-					className="sm:text-lg">
+					className="md:text-lg">
 					{interestCheck ? "Share your thoughts" : `Shop ${name}`}
 				</ButtonLink>
 			</div>

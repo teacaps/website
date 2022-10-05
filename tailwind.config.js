@@ -47,7 +47,7 @@ module.exports = {
 		// This needs to be specified manually, not in `extends`, or else `xs` will be sorted after `2xl and therefore
 		// take precedence in the generated CSS file.
 		screens: {
-			"xs": "360px",
+			"xs": "385px",
 			"sm": "640px",
 			"md": "768px",
 			"lg": "1024px",

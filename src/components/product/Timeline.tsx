@@ -46,19 +46,22 @@ export function Timeline({ status }: { status?: string }) {
 								!isLast && "flex-grow pb-8",
 							)}>
 							{!isLast && (
-								<div className="absolute inset-0 ml-6 flex items-center sm:ml-0" aria-hidden="true">
+								// 15px x-margin on a 2px line to center it to a 32px circle, not pretty
+								<div
+									className="absolute inset-0 ml-[0.9375rem] flex items-center sm:ml-0"
+									aria-hidden="true">
 									<div className={clsx("h-full w-0.5 sm:h-0.5 sm:w-full", bgColor)} />
 								</div>
 							)}
 							<div
 								className={clsx(
-									"relative flex h-12 w-12 items-center justify-center rounded-full sm:h-8 sm:w-8 md:h-12 md:w-12",
+									"relative flex h-8 w-8 items-center justify-center rounded-full lg:h-12 lg:w-12",
 									bgColor,
 								)}>
-								<StepIcon className="h-4 w-4 text-grain sm:h-3 sm:w-3 md:h-4 md:w-4" />
+								<StepIcon className="h-3 text-grain lg:h-4" />
 								<div
 									className={clsx(
-										"absolute left-0 ml-16 font-medium text-lg leading-none sm:left-unset sm:ml-0 sm:mt-20 sm:text-sm md:mt-24 md:text-base lg:text-lg",
+										"absolute left-0 ml-12 font-medium text-base leading-none sm:left-unset sm:ml-0 sm:mt-20 sm:text-sm md:mt-24 lg:text-lg",
 										textColor,
 									)}>
 									{step.name}

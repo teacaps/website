@@ -1,30 +1,34 @@
 import { CacheLong, gql, useShopQuery } from "@shopify/hydrogen";
 import { Suspense } from "react";
-import { socials } from "../components/elements/SocialLinks";
 import { Container } from "../components/global/Container";
 import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
 import { NotFound } from "../components/global/NotFound.server";
-import { isKeyof } from "../lib/utils";
 import type { PageQuery } from "../graphql/storefront.generated";
-import type { HydrogenRequest, HydrogenRouteProps } from "@shopify/hydrogen";
+import type { HydrogenRouteProps } from "@shopify/hydrogen";
 
 export default function Page({ request, response }: HydrogenRouteProps) {
 	const { page: handle } = request.ctx.router.routeParams;
-
-	const redirectUrl = isKeyof(socials, handle) && socials[handle][1];
-	if (redirectUrl) return response.redirect(redirectUrl);
-
 	if (!handle) return <NotFound type="error" />;
 
 	const {
-		data: { page },
+		data: { page, urlRedirects },
 	} = useShopQuery<PageQuery>({
 		query: PAGE_QUERY,
 		variables: { handle },
 		cache: CacheLong(),
 		preload: "*",
 	});
+
+	const redirect = urlRedirects.nodes.find(
+		(redirect) => redirect.path.replace(/\//g, "") === handle.replace(/\//g, ""),
+	);
+	if (redirect) return response.redirect(redirect.target);
+
+	if (handle.match(/.+\/(?:checkouts|invoices|orders)/)) {
+		return response.redirect(new URL(handle, "https://checkout.teacaps.studio").href);
+	}
+
 	if (!page || !page.title || !page.body) return <NotFound type="404" />;
 
 	return (
@@ -44,6 +48,12 @@ export default function Page({ request, response }: HydrogenRouteProps) {
 
 export const PAGE_QUERY = gql`
 	query Page($handle: String!) {
+		urlRedirects(first: 99) {
+			nodes {
+				path
+				target
+			}
+		}
 		page(handle: $handle) {
 			title
 			body
@@ -55,18 +65,3 @@ export const PAGE_QUERY = gql`
 		}
 	}
 `;
-
-export async function api(request: HydrogenRequest) {
-	console.log("going to api");
-	const { page: handle } = request.ctx.router.routeParams;
-	const redirectUrl = isKeyof(socials, handle) && socials[handle];
-	if (redirectUrl) {
-		return {
-			status: 302,
-			headers: {
-				location: redirectUrl,
-			},
-		};
-	}
-	return new Request(request.url, request);
-}

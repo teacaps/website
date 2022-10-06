@@ -5,7 +5,7 @@ import { InstagramIcon } from "../../assets/icons/socials/instagram";
 import { RedditIcon } from "../../assets/icons/socials/reddit";
 import { TwitterIcon } from "../../assets/icons/socials/twitter";
 
-export const socials = {
+const socials = {
 	discord: [DiscordIcon, "https://discord.gg/K3fgaDrJha"],
 	reddit: [RedditIcon, "https://www.reddit.com/user/shopteacaps"],
 	twitter: [TwitterIcon, "https://twitter.com/shopteacaps"],

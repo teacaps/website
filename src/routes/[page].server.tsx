@@ -20,14 +20,8 @@ export default function Page({ request, response }: HydrogenRouteProps) {
 		preload: "*",
 	});
 
-	const redirect = urlRedirects.nodes.find(
-		(redirect) => redirect.path.replace(/\//g, "") === handle.replace(/\//g, ""),
-	);
+	const redirect = urlRedirects.nodes.find((redirect) => `/${handle}` === redirect.path);
 	if (redirect) return response.redirect(redirect.target);
-
-	if (handle.match(/.+\/(?:checkouts|invoices|orders)/)) {
-		return response.redirect(new URL(handle, "https://checkout.teacaps.studio").href);
-	}
 
 	if (!page || !page.title || !page.body) return <NotFound type="404" />;
 

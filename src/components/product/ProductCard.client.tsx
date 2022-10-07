@@ -10,7 +10,7 @@ export function ProductCard({ product, hidden = false }: { product: ProductOverv
 			className={clsx("flex flex-col items-start justify-start space-y-4 px-4 sm:px-6", hidden && "hidden")}
 			to={`/products/${product.handle}`}>
 			<Image
-				className="aspect-[5/4] h-auto w-auto rounded-2xl object-cover xs:rounded-3xl"
+				className="aspect-[5/4] h-auto rounded-2xl object-cover xs:rounded-3xl"
 				width={500}
 				data={product.featuredImage!}
 				alt={product.featuredImage?.altText || `An image of ${product.title}`}

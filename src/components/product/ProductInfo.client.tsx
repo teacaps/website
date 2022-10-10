@@ -118,6 +118,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 						</li>
 					))}
 				</ul>
+				<p> This product is a pre-order item. Order cancellations are not available after the pre-order has been closed. If your shipping address has changed, please contact us at least three weeks before delivery. </p>
 			</div>
 			<ProductUpdates />
 		</div>

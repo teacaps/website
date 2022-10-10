@@ -6514,6 +6514,29 @@ export type PageQuery = {
 	} | null;
 };
 
+export type BlogQueryVariables = Exact<{ [key: string]: never }>;
+
+export type BlogQuery = {
+	__typename?: "QueryRoot";
+	articles: {
+		__typename?: "ArticleConnection";
+		nodes: Array<{
+			__typename?: "Article";
+			title: string;
+			excerpt?: string | null;
+			publishedAt: any;
+			handle: string;
+			image?: {
+				__typename?: "Image";
+				url: any;
+				altText?: string | null;
+				height?: number | null;
+				width?: number | null;
+			} | null;
+		}>;
+	};
+};
+
 type Media_ExternalVideo_Fragment = {
 	__typename?: "ExternalVideo";
 	mediaContentType: MediaContentType;

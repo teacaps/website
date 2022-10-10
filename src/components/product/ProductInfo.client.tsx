@@ -91,9 +91,9 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 
 	return (
 		<div className="flex flex-col space-y-16 text-walnut">
-			<div className="flex flex-col space-y-16">
+			<div className="flex flex-col">
 				{(product.groupBuyDates?.value || product.estimatedDelivery?.value) && (
-					<div className="flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
+					<div className="mb-16 flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
 						{product.groupBuyDates?.value ? (
 							<div className="flex items-center space-x-4">
 								<ClockIcon className="h-6 w-6 text-walnut-80" />
@@ -108,7 +108,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 						) : null}
 					</div>
 				)}
-				<ul className="flex flex-col space-y-4">
+				<ul className="mb-8 flex flex-col space-y-4">
 					{detailsListItems.map(([key, value]) => (
 						<li key={key || value} className="flex space-x-8 text-base leading-6">
 							<p
@@ -118,6 +118,11 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 						</li>
 					))}
 				</ul>
+				<p className="text-walnut-80 text-sm leading-5">
+					This product is a pre-order item. Order cancellations are not available after the pre-order has been
+					closed. If your shipping address has changed, please contact us at least three weeks before
+					delivery.
+				</p>
 			</div>
 			<ProductUpdates />
 		</div>

@@ -119,9 +119,12 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 					))}
 				</ul>
 				<p className="text-walnut-80 text-sm leading-5">
-					This product is a pre-order item. Order cancellations are not available after the pre-order has been
-					closed. If your shipping address has changed, please contact us at least three weeks before
-					delivery.
+					{product.preorder?.value
+						? "This product is a pre-order item. " +
+						  "Order cancellations are not available after the pre-order has been closed. " +
+						  "If your shipping address has changed, please contact us at least three weeks before delivery."
+						: "This product is in-stock. " +
+						  "If combined with pre-order products in a single order, we'll ship your order when all products have arrived."}
 				</p>
 			</div>
 			<ProductUpdates />

@@ -6677,6 +6677,7 @@ export type ProductDetailsFragment = {
 	groupBuyDates?: { __typename?: "Metafield"; value: string } | null;
 	colors?: { __typename?: "Metafield"; value: string } | null;
 	status?: { __typename?: "Metafield"; value: string } | null;
+	preorder?: { __typename?: "Metafield"; value: string } | null;
 	collections: {
 		__typename?: "CollectionConnection";
 		nodes: Array<{
@@ -6813,6 +6814,7 @@ export type ProductQuery = {
 		groupBuyDates?: { __typename?: "Metafield"; value: string } | null;
 		colors?: { __typename?: "Metafield"; value: string } | null;
 		status?: { __typename?: "Metafield"; value: string } | null;
+		preorder?: { __typename?: "Metafield"; value: string } | null;
 		collections: {
 			__typename?: "CollectionConnection";
 			nodes: Array<{

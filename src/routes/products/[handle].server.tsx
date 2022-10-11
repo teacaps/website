@@ -127,6 +127,9 @@ const PRODUCT_QUERY = gql`
 		status: metafield(namespace: "custom", key: "status") {
 			value
 		}
+		preorder: metafield(namespace: "custom", key: "preorder") {
+			value
+		}
 		collections(first: 99) {
 			nodes {
 				id

@@ -5,17 +5,17 @@ import { BlogPreview } from "../components/blog/BlogPreview";
 import { Container } from "../components/global/Container";
 import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
-import { NotFound } from "../components/global/NotFound.server";
 import type { BlogQuery } from "../graphql/storefront.generated";
 
 export default function Blog() {
 	const {
-		data: { articles },
+		data: {
+			articles: { nodes: articles },
+		},
 	} = useShopQuery<BlogQuery>({
 		query: BLOG_QUERY,
 		cache: CacheShort(),
 	});
-	if (!articles?.nodes?.length) return <NotFound type="404" />;
 	return (
 		<Layout className="h-full max-h-screen w-full">
 			<Suspense>
@@ -23,9 +23,15 @@ export default function Blog() {
 			</Suspense>
 			<Container className="my-16 flex justify-center">
 				<div className="flex flex-col space-y-12">
-					{articles.nodes.map((article) => (
-						<BlogPreview key={article.handle} article={article} />
-					))}
+					{articles.length ? (
+						articles.map((article) => <BlogPreview key={article.handle} article={article} />)
+					) : (
+						<span className="text-center text-walnut">
+							{
+								"There don't seem to be any articles just yet. Be sure to check in soon to hear from the Teacaps team!"
+							}
+						</span>
+					)}
 				</div>
 			</Container>
 		</Layout>

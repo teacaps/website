@@ -23,7 +23,7 @@ export default function Article() {
 	);
 
 	return (
-		<Layout className="h-full max-h-screen w-full">
+		<Layout>
 			<Suspense>
 				<CustomSeo
 					type="page"
@@ -35,7 +35,7 @@ export default function Article() {
 					}}
 				/>
 			</Suspense>
-			<Container className="flex h-full flex-col items-center justify-center gap-y-12 pt-16 pb-24">
+			<Container className="flex flex-col items-center gap-y-12 pt-16 pb-24">
 				<Image
 					data={article.image!}
 					alt={article.image?.altText || article.excerpt || article.title}
@@ -45,7 +45,7 @@ export default function Article() {
 					<h1 className="mb-0 font-normal text-2xl lg:text-3xl">{article.title}</h1>
 					<span className="text-walnut-80 text-sm lg:text-base">{publishedAt}</span>
 					<div className="mt-6 w-full" dangerouslySetInnerHTML={{ __html: article.contentHtml }}></div>
-					<Graphic className="mt-6 h-4 lg:h-5" />
+					<Graphic className="mt-8 h-4 lg:h-5" />
 				</div>
 			</Container>
 		</Layout>

@@ -6514,6 +6514,55 @@ export type PageQuery = {
 	} | null;
 };
 
+export type BlogQueryVariables = Exact<{ [key: string]: never }>;
+
+export type BlogQuery = {
+	__typename?: "QueryRoot";
+	articles: {
+		__typename?: "ArticleConnection";
+		nodes: Array<{
+			__typename?: "Article";
+			title: string;
+			excerpt?: string | null;
+			publishedAt: any;
+			handle: string;
+			image?: {
+				__typename?: "Image";
+				url: any;
+				altText?: string | null;
+				height?: number | null;
+				width?: number | null;
+			} | null;
+		}>;
+	};
+};
+
+export type ArticleQueryVariables = Exact<{
+	handle: Scalars["String"];
+}>;
+
+export type ArticleQuery = {
+	__typename?: "QueryRoot";
+	blog?: {
+		__typename?: "Blog";
+		articleByHandle?: {
+			__typename?: "Article";
+			title: string;
+			excerpt?: string | null;
+			contentHtml: any;
+			publishedAt: any;
+			image?: {
+				__typename?: "Image";
+				url: any;
+				altText?: string | null;
+				height?: number | null;
+				width?: number | null;
+			} | null;
+			seo?: { __typename?: "SEO"; title?: string | null; description?: string | null } | null;
+		} | null;
+	} | null;
+};
+
 type Media_ExternalVideo_Fragment = {
 	__typename?: "ExternalVideo";
 	mediaContentType: MediaContentType;

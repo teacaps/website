@@ -21,6 +21,7 @@
     "@graphql-codegen/typescript-operations": "2.5.3",
     "@shopify/cli": "3.8.0",
     "@shopify/cli-hydrogen": "3.8.0",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "@types/prettier": "^2.7.0",
     "@types/react": "^18.0.9",
     "@types/react-image-gallery": "^1.0.5",

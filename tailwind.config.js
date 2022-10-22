@@ -83,5 +83,10 @@ module.exports = {
 			variants: ["hover", "focus", "active", "disabled"],
 		},
 	],
-	plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms"), require("tailwindcss-leading-trim")],
+	plugins: [
+		require("@tailwindcss/typography"),
+		require("@tailwindcss/forms"),
+		require("@tailwindcss/line-clamp"),
+		require("tailwindcss-leading-trim"),
+	],
 };

@@ -5,6 +5,16 @@ import { ClockIcon } from "../../assets/icons/clock";
 import { ButtonLink } from "../elements/input/Button";
 import { Container } from "../global/Container";
 
+export interface ProductSectionProps {
+	name: string;
+	description?: string;
+	url: string;
+	until?: string;
+	align: "left" | "right";
+	imageDimensions: { width: number; height: number };
+	interestCheck?: boolean;
+}
+
 export function ProductSection({
 	name,
 	description,
@@ -13,15 +23,7 @@ export function ProductSection({
 	align,
 	imageDimensions: { width, height },
 	interestCheck = false,
-}: {
-	name: string;
-	description?: string;
-	url: string;
-	until?: string;
-	align: "left" | "right";
-	imageDimensions: { width: number; height: number };
-	interestCheck?: boolean;
-}) {
+}: ProductSectionProps) {
 	return (
 		<Container
 			className={clsx(

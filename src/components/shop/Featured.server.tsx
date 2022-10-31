@@ -18,7 +18,7 @@ export function Featured({ product }: { product: ProductOverviewFragment }) {
 				/>
 			</a>
 			<div className="flex min-w-fit flex-col items-center space-y-4 pb-4 md:items-start md:py-8">
-				<h2 className="text-center font-normal text-walnut text-2xl leading-10 sm:text-4xl md:text-left xs:text-3xl">
+				<h2 className="text-center font-normal text-walnut text-2xl leading-10 xs:text-3xl sm:text-4xl md:text-left">
 					{product.title}
 				</h2>
 				<ButtonLink

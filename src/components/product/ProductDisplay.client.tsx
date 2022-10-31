@@ -19,7 +19,7 @@ export function ProductDisplay({ product }: { product: ProductDetailsFragment })
 					<ProductGallery media={product.media.nodes} galleryRef={galleryRef} />
 					<ProductInfo product={product} gallery={galleryRef} />
 				</section>
-				<Timeline status={product.status?.value} />
+				{product.preorder ? <Timeline status={product.status?.value} /> : null}
 				{(colorwayCollection?.products.nodes.length || 0) > 1 ? (
 					<ShopTheCollection collection={colorwayCollection as never} />
 				) : null}

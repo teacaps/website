@@ -21,11 +21,11 @@ export default function Landing() {
 			<Hero />
 			<Welcome />
 			<ProductSection
-				name="Sencha"
-				description="From the rolling hills of Japan comes a set themed after one of our favorite teas - Sencha. With soft green undertones, TeaPBT Sencha embraces the feeling of a warm cup of tea on a cool fall afternoon."
-				url="/products/sencha"
-				align="left"
-				imageDimensions={{ width: 1000, height: 528 }}
+				name="Ritual"
+				description="Crisp mornings and quiet evenings. Nothing brings comfort like habits and routines. Ritual encompasses the feeling of a routine well-kept. Choose from a lighter morning variant, or a darker  evening variant."
+				url="/products/ritual"
+				align="right"
+				imageDimensions={{ width: 1000, height: 582 }}
 			/>
 			{/* <Timeline /> */}
 		</Layout>

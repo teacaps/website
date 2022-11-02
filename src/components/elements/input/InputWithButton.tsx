@@ -40,7 +40,7 @@ export function InputWithButton({
 				name={name}
 				color={inputColor}
 				className={clsx(
-					`rounded-r-none border-2 border-${borderColor} flex-auto overflow-clip`,
+					`rounded-r-none border-2 border-${borderColor} w-full flex-auto overflow-clip`,
 					inputClassName,
 				)}
 				{...inputRest}

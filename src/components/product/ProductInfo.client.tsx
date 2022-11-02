@@ -18,7 +18,7 @@ interface ProductInfoProps {
 
 export function ProductInfo({ product, gallery }: ProductInfoProps) {
 	return (
-		<div className="flex basis-3/5 flex-col space-y-16">
+		<div className="flex basis-1/2 flex-col space-y-16">
 			<ProductDescription product={product} gallery={gallery} />
 			<ProductMisc product={product} />
 		</div>

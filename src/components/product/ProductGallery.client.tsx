@@ -25,7 +25,7 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 			thumbnailAlt: previewImage?.altText || undefined,
 		}));
 	return (
-		<div className="h-full w-full basis-2/5 md:sticky md:top-0 md:-mt-16 md:w-2/5">
+		<div className="h-full w-full basis-1/2 md:sticky md:top-0 md:-mt-16 md:w-1/2">
 			<div className="h-fit w-full md:sticky md:mt-16">
 				<ImageGallery
 					ref={galleryRef}

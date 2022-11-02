@@ -44,3 +44,7 @@ html {
 .image-gallery-thumbnails {
 	@apply pb-0 !important;
 }
+
+.image-gallery-thumbnail {
+	@apply w-32 !important;
+}

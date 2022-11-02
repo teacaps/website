@@ -89,25 +89,24 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 			return withoutTags.length;
 		});
 
+	const isInStock = product.preorder?.value === "false";
+	const availability = isInStock ? "in stock" : product.groupBuyDates?.value || "in stock";
+
 	return (
 		<div className="flex flex-col space-y-16 text-walnut">
 			<div className="flex flex-col">
-				{(product.groupBuyDates?.value || product.estimatedDelivery?.value) && (
-					<div className="mb-16 flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
-						{product.groupBuyDates?.value ? (
-							<div className="flex items-center space-x-4">
-								<ClockIcon className="h-6 w-6 text-walnut-80" />
-								<span className="trim-both leading-none">Available {product.groupBuyDates.value}</span>
-							</div>
-						) : null}
-						{product.estimatedDelivery?.value ? (
-							<div className="flex items-center space-x-4">
-								<AirplaneIcon className="h-6 w-6 text-walnut-80" />
-								<span className="trim-both leading-none">Ships {product.estimatedDelivery.value}</span>
-							</div>
-						) : null}
+				<div className="mb-16 flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
+					<div className="flex items-center space-x-4">
+						<ClockIcon className="h-6 w-6 text-walnut-80" />
+						<span className="trim-both leading-none">Available {availability}</span>
 					</div>
-				)}
+					{!isInStock && product.estimatedDelivery?.value ? (
+						<div className="flex items-center space-x-4">
+							<AirplaneIcon className="h-6 w-6 text-walnut-80" />
+							<span className="trim-both leading-none">Ships {product.estimatedDelivery.value}</span>
+						</div>
+					) : null}
+				</div>
 				<ul className="mb-8 flex flex-col space-y-4">
 					{detailsListItems.map(([key, value]) => (
 						<li key={key || value} className="flex space-x-8 text-base leading-6">
@@ -119,7 +118,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 					))}
 				</ul>
 				<p className="text-walnut-80 text-sm leading-5">
-					{product.preorder?.value
+					{!isInStock
 						? "This product is a pre-order item. " +
 						  "Order cancellations are not available after the pre-order has been closed. " +
 						  "If your shipping address has changed, please contact us at least three weeks before delivery."

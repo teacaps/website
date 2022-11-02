@@ -161,7 +161,7 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 						disabled={!isAvailable}
 						className={clsx(
 							"h-10 px-4 text-sm",
-							isSelected && (isAvailable ? "bg-walnut" : "bg-grain text-walnut-60"),
+							isSelected && (isAvailable ? "bg-walnut text-grain" : "bg-grain text-walnut-60"),
 						)}
 						onClick={() => {
 							setSelectedVariant(variant as never);

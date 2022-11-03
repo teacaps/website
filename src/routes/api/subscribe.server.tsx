@@ -26,7 +26,7 @@ const CREATE_CUSTOMER_MUTATION = gql`
 		customerCreate(
 			input: {
 				email: $email
-				emailMarketingConsent: { marketingState: SUBSCRIBED, marketingOptInLevel: CONFIRMED_OPT_IN }
+				emailMarketingConsent: { marketingState: SUBSCRIBED, marketingOptInLevel: SINGLE_OPT_IN }
 			}
 		) {
 			customer {

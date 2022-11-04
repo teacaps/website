@@ -2,10 +2,10 @@ import { CacheLong, gql, Head, Seo, useShopQuery, useUrl } from "@shopify/hydrog
 import type { ShopInfoQuery } from "../../graphql/storefront.generated";
 
 type DefaultSeoProps = Parameters<typeof Seo>[0];
-export type CustomSeoProps = Omit<Partial<DefaultSeoProps>, "data"> & {
-	data?: DefaultSeoProps["data"];
+export type CustomSeoProps = Partial<DefaultSeoProps> & {
 	color?: string;
 	image?: string | undefined;
+	thumbnail?: string | undefined;
 };
 export function CustomSeo(props: CustomSeoProps) {
 	const { data = {}, ...rest } = props;
@@ -36,8 +36,8 @@ export function CustomSeo(props: CustomSeoProps) {
 			/>
 			<Head>
 				{!("image" in data) && <meta name="og:image" content={image} />}
+				{!props.thumbnail && <meta name="twitter:card" content="summary_large_image" />}
 				<meta name="theme-color" content={props.color || "#336C61"} />
-				<meta name="twitter:card" content="summary_large_image" />
 			</Head>
 		</>
 	);

@@ -29,7 +29,12 @@ export default function Product() {
 			<Suspense>
 				<CustomSeo
 					type="product"
-					data={{ ...product, seo: { title: product.title, description: product.description } }}
+					data={{
+						...product,
+						seo: { title: product.title, description: product.summary?.value },
+					}}
+					image={undefined}
+					thumbnail={product.featuredImage?.url}
 				/>
 			</Suspense>
 			<div className="h-full w-full pb-8 sm:pb-16">

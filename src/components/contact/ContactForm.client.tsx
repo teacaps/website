@@ -1,13 +1,15 @@
+import { useLocalization } from "@shopify/hydrogen";
 import { useState } from "react";
 import { Button } from "../elements/input/Button";
 import { Form } from "../elements/input/Form.client";
 import { Input } from "../elements/input/Input";
 
 export function ContactForm() {
+	const { country } = useLocalization();
 	const [buttonText, setButtonText] = useState("Send");
 	return (
 		<Form
-			action="/contact#contact-form"
+			action="/api/contact"
 			method="POST"
 			className="flex w-3/5 flex-col items-center space-y-6"
 			onSubmit={() => {
@@ -15,9 +17,10 @@ export function ContactForm() {
 				setTimeout(() => setButtonText("Sent!"), 1000);
 				setTimeout(() => setButtonText("Send"), 3000);
 			}}>
+			<input type="hidden" name="locale" value={country.isoCode} />
 			<div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-4">
 				<div className="sm:col-span-2">
-					<label htmlFor="name" className="block pl-2 font-medium text-walnut text-sm">
+					<label htmlFor="name" className="block pl-2 font-medium text-walnut-80 text-sm">
 						Name
 					</label>
 					<Input
@@ -25,7 +28,7 @@ export function ContactForm() {
 						textColor="walnut"
 						className="mt-3 w-full border-walnut-60"
 						type="text"
-						name="contact[name]"
+						name="name"
 						id="name"
 						autoComplete="name"
 						placeholder="James Poppyseed"
@@ -33,7 +36,7 @@ export function ContactForm() {
 					/>
 				</div>
 				<div className="sm:col-span-2">
-					<label htmlFor="email" className="block pl-2 font-medium text-walnut text-sm">
+					<label htmlFor="email" className="block pl-2 font-medium text-walnut-80 text-sm">
 						Email
 					</label>
 					<Input
@@ -41,7 +44,7 @@ export function ContactForm() {
 						textColor="walnut"
 						className="mt-3 w-full border-walnut-60"
 						type="email"
-						name="contact[email]"
+						name="email"
 						id="email"
 						autoComplete="email"
 						placeholder="example@teacaps.studio"
@@ -49,13 +52,13 @@ export function ContactForm() {
 					/>
 				</div>
 				<div className="sm:col-span-4">
-					<label htmlFor="message" className="block pl-2 font-medium text-walnut text-sm">
+					<label htmlFor="message" className="block pl-2 font-medium text-walnut-80 text-sm">
 						Message
 					</label>
 					<div className="mt-3">
 						<textarea
 							id="field"
-							name="contact[field]"
+							name="message"
 							rows={5}
 							className="w-full rounded-3xl border-walnut-60 bg-grain px-5 font-medium text-walnut placeholder:text-pepper-40"
 							placeholder="Enter your message"

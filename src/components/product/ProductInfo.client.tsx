@@ -95,19 +95,15 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 	const detailsLines = String(product.detailsHtml)
 		.split("\n")
 		.filter((line) => !line.includes("meta charset"));
-	const detailsListItems = detailsLines
-		.map((line) => {
-			const withoutTags = line.replace(/<[^>]*>?/g, "");
-			const [key, value] = withoutTags.split(":");
-			// eslint-disable-next-line no-sparse-arrays
-			if (withoutTags === line || !value) return [, line.trim()];
-			return [key.trim(), value.trim()];
-		})
-		.filter(([key = "", value = ""]) => {
-			const line = (key + value).trim();
-			const withoutTags = line.replace(/<\/?[^>]*>/g, "");
-			return withoutTags.length;
-		});
+	const detailsListItems = detailsLines.reduce<Array<[string | undefined, string]>>((acc, line) => {
+		const withoutTags = line.replace(/<[^>]*>?/g, "");
+		if (!withoutTags.length) return acc;
+		const [key, value] = withoutTags.split(":");
+		// eslint-disable-next-line no-sparse-arrays
+		if (withoutTags === line || !value) acc.push([, line.trim()]);
+		else acc.push([key.trim(), value.trim()]);
+		return acc;
+	}, []);
 
 	const isInStock = product.preorder?.value === "false";
 	const availability = isInStock ? "in stock" : product.groupBuyDates?.value || "in stock";

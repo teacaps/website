@@ -33,6 +33,15 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 		? JSON.parse(product.colors.value)
 		: null;
 
+	const currencyCode =
+		(variantAvailable && selectedVariant?.priceV2?.currencyCode) ||
+		product.priceRange?.minVariantPrice?.currencyCode ||
+		product.priceRange?.maxVariantPrice?.currencyCode;
+
+	const compareAtPrice = Number(product.compareAtPriceRange.maxVariantPrice.amount);
+	const regularPrice = Number(product.priceRange.maxVariantPrice.amount);
+	const isOnSale = (compareAtPrice && compareAtPrice !== regularPrice) || null;
+
 	return (
 		<div className="flex flex-col space-y-16">
 			<div className="space-y-8">
@@ -53,18 +62,29 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 			</div>
 			<div className="flex flex-col items-start space-y-6 text-matcha text-xl leading-8 lg:text-2xl">
 				<VariantSelector gallery={gallery} />
-				<span className="flex">
-					{(variantAvailable && selectedVariant?.priceV2?.currencyCode) ||
-						product.priceRange?.minVariantPrice?.currencyCode ||
-						product.priceRange?.maxVariantPrice?.currencyCode}
-					&nbsp;
-					<ProductPrice
-						as="span"
-						data={product}
-						withoutTrailingZeros={true}
-						variantId={variantAvailable ? selectedVariant?.id : undefined}
-					/>
-				</span>
+				<div className="flex items-center space-x-2">
+					<span className="flex">
+						{currencyCode}
+						&nbsp;
+						<ProductPrice
+							as="span"
+							data={product}
+							withoutTrailingZeros={true}
+							variantId={variantAvailable ? selectedVariant?.id : undefined}
+						/>
+					</span>
+					{isOnSale ? (
+						<span className="flex text-walnut-80 line-through text-lg">
+							<ProductPrice
+								as="span"
+								priceType="compareAt"
+								data={product}
+								withoutTrailingZeros={true}
+								variantId={variantAvailable ? selectedVariant?.id : undefined}
+							/>
+						</span>
+					) : null}
+				</div>
 				<AddToCart />
 			</div>
 		</div>

@@ -72,11 +72,20 @@ const PRODUCT_QUERY = gql`
 			name
 			value
 		}
-		priceV2 {
+		price {
 			amount
 			currencyCode
 		}
 		unitPrice {
+			amount
+			currencyCode
+		}
+		compareAtPrice {
+			amount
+			currencyCode
+		}
+		# Only included because required by <ProductSeo />
+		priceV2 {
 			amount
 			currencyCode
 		}

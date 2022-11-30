@@ -1,4 +1,4 @@
-import { AddToCartButton, ProductPrice, useCart, useProductOptions } from "@shopify/hydrogen";
+import { AddToCartButton, Money, ProductPrice, useCart, useProductOptions } from "@shopify/hydrogen";
 import clsx from "clsx";
 import { useEffect, useState } from "react";
 
@@ -34,12 +34,12 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 		: null;
 
 	const currencyCode =
-		(variantAvailable && selectedVariant?.priceV2?.currencyCode) ||
+		(variantAvailable && selectedVariant?.price?.currencyCode) ||
 		product.priceRange?.minVariantPrice?.currencyCode ||
 		product.priceRange?.maxVariantPrice?.currencyCode;
 
-	const compareAtPrice = Number(product.compareAtPriceRange.maxVariantPrice.amount);
-	const regularPrice = Number(product.priceRange.maxVariantPrice.amount);
+	const compareAtPrice = Number(selectedVariant?.compareAtPrice?.amount);
+	const regularPrice = Number(selectedVariant?.price?.amount);
 	const isOnSale = (compareAtPrice && compareAtPrice !== regularPrice) || null;
 
 	return (
@@ -75,12 +75,10 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 					</span>
 					{isOnSale ? (
 						<span className="flex text-walnut-80 line-through text-lg">
-							<ProductPrice
+							<Money
 								as="span"
-								priceType="compareAt"
-								data={product}
+								data={selectedVariant?.compareAtPrice || product.compareAtPriceRange.maxVariantPrice}
 								withoutTrailingZeros={true}
-								variantId={variantAvailable ? selectedVariant?.id : undefined}
 							/>
 						</span>
 					) : null}

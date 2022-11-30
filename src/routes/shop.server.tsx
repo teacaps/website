@@ -27,7 +27,14 @@ export default function Shop() {
 	const featuredCollection = collections.find((col) => col.handle === "featured");
 	const featured = featuredCollection?.products.nodes[0];
 
-	const products = collections.filter((col) => col.isColorway?.value === "true").flatMap((col) => col.products.nodes);
+	const colorwayCollections = collections.filter((col) => col.isColorway?.value === "true");
+	const products = colorwayCollections
+		.flatMap((col) => col.products.nodes)
+		.sort((a, b) => {
+			const aInStock = Number(a.availableForSale);
+			const bInStock = Number(b.availableForSale);
+			return bInStock - aInStock;
+		});
 
 	if (!collections.length) return <NotFound type="error" />;
 
@@ -91,14 +98,14 @@ const PRODUCTS_QUERY = gql`
 			key
 			value
 		}
-		products(first: 99, sortKey: CREATED, reverse: true) {
+		products(first: 99, sortKey: COLLECTION_DEFAULT, reverse: true) {
 			nodes {
 				...ProductOverview
 			}
 		}
 	}
 	query Shop($country: CountryCode!, $language: LanguageCode!) @inContext(country: $country, language: $language) {
-		collections(first: 99, sortKey: ID, reverse: true) {
+		collections(first: 99, sortKey: UPDATED_AT, reverse: true) {
 			nodes {
 				...Collection
 			}

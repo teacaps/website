@@ -10,10 +10,10 @@ import type { ProductQuery } from "../../graphql/storefront.generated";
 export default function Product() {
 	const { handle } = useRouteParams();
 
-	const { product } = useShopQuery<ProductQuery>({
+	const product = useShopQuery<ProductQuery>({
 		query: PRODUCT_QUERY,
 		variables: { handle },
-	}).data;
+	}).data.product;
 
 	if (!product) return <NotFound type="404" />;
 

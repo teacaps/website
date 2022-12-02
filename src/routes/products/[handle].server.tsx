@@ -13,7 +13,7 @@ export default function Product() {
 	const product = useShopQuery<ProductQuery>({
 		query: PRODUCT_QUERY,
 		variables: { handle },
-	}).data.product;
+	})?.data?.product;
 
 	if (!product) return <NotFound type="404" />;
 

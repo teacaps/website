@@ -11,12 +11,10 @@ const client = new SESClient({
 });
 
 export async function api(request: HydrogenRequest) {
-	console.log("hit!");
 	if (request.method === "GET") return new Response(null, { status: 302, headers: { Location: "/contact-us" } });
 	if (request.method !== "POST") return new Response(null, { status: 405 });
 
 	const data = await request.formData();
-	console.log(data);
 	const { name, email, message, locale } = Object.fromEntries(data.entries());
 	if (!name || !email || !message) return new Response(null, { status: 400 });
 	if (

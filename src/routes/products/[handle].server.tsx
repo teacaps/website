@@ -5,6 +5,7 @@ import { CustomSeo } from "../../components/global/CustomSeo.server";
 import { Layout } from "../../components/global/Layout.server";
 import { NotFound } from "../../components/global/NotFound.server";
 import { ProductDisplay } from "../../components/product/ProductDisplay.client";
+import { ScrollTracker } from "../../lib/GoogleAnalytics.client";
 import type { ProductQuery } from "../../graphql/storefront.generated";
 
 export default function Product() {
@@ -36,6 +37,7 @@ export default function Product() {
 					image={undefined}
 					thumbnail={product.featuredImage?.url}
 				/>
+				<ScrollTracker event_category="Product Scroll Depth" />
 			</Suspense>
 			<div className="h-full w-full pb-8 sm:pb-16">
 				<ProductDisplay product={product} />

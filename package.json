@@ -22,6 +22,7 @@
     "@shopify/cli": "3.8.0",
     "@shopify/cli-hydrogen": "3.8.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@types/gtag.js": "^0.0.12",
     "@types/prettier": "^2.7.0",
     "@types/react": "^18.0.9",
     "@types/react-image-gallery": "^1.0.5",
@@ -35,7 +36,7 @@
     "husky": "^8.0.1",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "typescript": "beta",
+    "typescript": "^4.9.4",
     "vercel": "^28.4.5",
     "vite": "^2.9.0"
   },

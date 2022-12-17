@@ -6,6 +6,7 @@ import { Layout } from "../components/global/Layout.server";
 import { Hero } from "../components/landing/Hero.client";
 import { ProductSection } from "../components/landing/LandingProductSection";
 import { Welcome } from "../components/landing/Welcome";
+import { ScrollTracker } from "../lib/GoogleAnalytics.client";
 
 export default function Landing() {
 	useServerAnalytics({
@@ -17,6 +18,7 @@ export default function Landing() {
 		<Layout>
 			<Suspense>
 				<CustomSeo type="homepage" />
+				<ScrollTracker />
 			</Suspense>
 			<Hero />
 			<Welcome />

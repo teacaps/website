@@ -6,6 +6,7 @@ import { Container } from "../../components/global/Container";
 import { CustomSeo } from "../../components/global/CustomSeo.server";
 import { Layout } from "../../components/global/Layout.server";
 import { NotFound } from "../../components/global/NotFound.server";
+import { ScrollTracker } from "../../lib/GoogleAnalytics.client";
 import type { ArticleQuery } from "../../graphql/storefront.generated";
 
 export default function Article({ request }: HydrogenRouteProps) {
@@ -51,6 +52,7 @@ export default function Article({ request }: HydrogenRouteProps) {
 						image: article.image,
 					}}
 				/>
+				<ScrollTracker event_category="Blog Post Scroll Depth" />
 			</Suspense>
 			<Container className="flex items-center">
 				<div className="mx-auto flex w-full max-w-[65ch] flex-col items-center pt-8 pb-16">

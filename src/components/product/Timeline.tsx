@@ -13,7 +13,7 @@ const steps = [
 	{ name: "Inspection", icon: MagnifyingGlassIcon },
 	{ name: "Delivery", icon: AirplaneFillIcon },
 	{ name: "Fulfilled", icon: CheckmarkIcon },
-	{ name: "Extras", icon: ShopFillIcon },
+	{ name: "In-Stock", icon: ShopFillIcon },
 ] as const;
 
 export function Timeline({ status }: { status?: string }) {
@@ -59,13 +59,13 @@ export function Timeline({ status }: { status?: string }) {
 									bgColor,
 								)}>
 								<StepIcon className="h-3 text-grain lg:h-4" />
-								<div
+								<span
 									className={clsx(
-										"absolute left-0 ml-12 font-medium text-base leading-none sm:left-unset sm:ml-0 sm:mt-20 sm:text-sm md:mt-24 lg:text-lg",
+										"absolute left-0 ml-12 whitespace-nowrap font-medium text-base leading-none sm:left-unset sm:ml-0 sm:mt-20 sm:text-sm md:mt-24 lg:text-lg",
 										textColor,
 									)}>
 									{step.name}
-								</div>
+								</span>
 							</div>
 						</li>
 					);

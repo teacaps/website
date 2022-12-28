@@ -25,31 +25,29 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 			thumbnailAlt: previewImage?.altText || undefined,
 		}));
 	return (
-		<div className="h-full w-full basis-1/2 md:sticky md:top-0 md:-mt-16 md:w-1/2">
-			<div className="h-fit w-full md:sticky md:mt-16">
-				<ImageGallery
-					ref={galleryRef}
-					items={items}
-					lazyLoad={true}
-					showNav={false}
-					showPlayButton={false}
-					renderFullscreenButton={(onClick, isFullscreen) => {
-						const FullscreenIcon = isFullscreen ? MinimizeIcon : ExpandIcon;
-						return (
-							<button
-								type="button"
-								className={clsx(
-									"z-4 group absolute rounded-full bg-grain p-2",
-									isFullscreen ? "right-8 bottom-8" : "right-4 bottom-4",
-								)}
-								onClick={onClick}
-								aria-label="Toggle fullscreen">
-								<FullscreenIcon className="h-4 text-matcha transition-all group-hover:h-5" />
-							</button>
-						);
-					}}
-				/>
-			</div>
+		<div className="h-fit w-full md:mt-16">
+			<ImageGallery
+				ref={galleryRef}
+				items={items}
+				lazyLoad={true}
+				showNav={false}
+				showPlayButton={false}
+				renderFullscreenButton={(onClick, isFullscreen) => {
+					const FullscreenIcon = isFullscreen ? MinimizeIcon : ExpandIcon;
+					return (
+						<button
+							type="button"
+							className={clsx(
+								"z-4 group absolute rounded-full bg-grain p-2",
+								isFullscreen ? "right-8 bottom-8" : "right-4 bottom-4",
+							)}
+							onClick={onClick}
+							aria-label="Toggle fullscreen">
+							<FullscreenIcon className="h-4 text-matcha transition-all group-hover:h-5" />
+						</button>
+					);
+				}}
+			/>
 		</div>
 	);
 }

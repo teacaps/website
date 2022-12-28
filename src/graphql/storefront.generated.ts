@@ -6839,6 +6839,7 @@ export type ProductVariantFragment = {
 	price: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode };
 	unitPrice?: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode } | null;
 	compareAtPrice?: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode } | null;
+	priceV2: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode };
 	image?: { __typename?: "Image"; id?: string | null; url: any } | null;
 };
 
@@ -6919,6 +6920,7 @@ export type ProductDetailsFragment = {
 			price: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode };
 			unitPrice?: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode } | null;
 			compareAtPrice?: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode } | null;
+			priceV2: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode };
 			image?: { __typename?: "Image"; id?: string | null; url: any } | null;
 		}>;
 	};
@@ -7062,6 +7064,7 @@ export type ProductQuery = {
 				price: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode };
 				unitPrice?: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode } | null;
 				compareAtPrice?: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode } | null;
+				priceV2: { __typename?: "MoneyV2"; amount: any; currencyCode: CurrencyCode };
 				image?: { __typename?: "Image"; id?: string | null; url: any } | null;
 			}>;
 		};

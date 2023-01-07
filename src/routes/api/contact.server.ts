@@ -1,6 +1,5 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import type { HydrogenRequest } from "@shopify/hydrogen";
-const Oxygen = globalThis.Oxygen;
 
 const client = new SESClient({
 	credentials: {
@@ -11,12 +10,16 @@ const client = new SESClient({
 });
 
 export async function api(request: HydrogenRequest) {
+	console.log("hi");
+	console.log(request);
 	if (request.method === "GET") return new Response(null, { status: 302, headers: { Location: "/contact-us" } });
 	if (request.method !== "POST") return new Response(null, { status: 405 });
 
 	const data = await request.formData();
+	console.log("data", data);
 	const { name, email, message, locale } = Object.fromEntries(data.entries());
 	if (!name || !email || !message) return new Response(null, { status: 400 });
+	console.log(name, email, message);
 	if (
 		typeof name !== "string" ||
 		typeof email !== "string" ||
@@ -37,6 +40,7 @@ export async function api(request: HydrogenRequest) {
 		.replace("AM", "am")
 		.replace("PM", "pm");
 
+	console.log("date", date);
 	const command = new SendEmailCommand({
 		Source: "Teacaps (Shopify) <hello@teacaps.studio>",
 		Destination: {
@@ -54,6 +58,7 @@ export async function api(request: HydrogenRequest) {
 			},
 		},
 	});
+	console.log("command", command);
 	client.send(command, (err, data) => {
 		console.log(err, data);
 		if (err || !data) {

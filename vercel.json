@@ -1,13 +1,7 @@
 {
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "../dist/node"
+  "build": {
+    "env": {
+      "ENABLE_VC_BUILD": "1"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/api"
-    }
-  ]
+  }
 }

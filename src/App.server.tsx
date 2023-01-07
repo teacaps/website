@@ -11,8 +11,6 @@ import renderHydrogen from "@shopify/hydrogen/entry-server";
 import { Suspense } from "react";
 import { NotFound } from "./components/global/NotFound.server";
 
-globalThis.Oxygen ??= { env: (process.env as Record<string, string>) || import.meta.env };
-
 function App() {
 	return (
 		<Suspense fallback={null}>

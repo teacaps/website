@@ -10,23 +10,34 @@ const client = new SESClient({
 });
 
 export async function api(request: HydrogenRequest) {
-	console.log("hi");
-	console.log(request);
 	if (request.method === "GET") return new Response(null, { status: 302, headers: { Location: "/contact-us" } });
 	if (request.method !== "POST") return new Response(null, { status: 405 });
 
 	const data = await request.formData();
-	console.log("data", data);
-	const { name, email, message, locale } = Object.fromEntries(data.entries());
+	const { name, email, message, locale, "g-recaptcha-response": recaptchaToken } = Object.fromEntries(data.entries());
 	if (!name || !email || !message) return new Response(null, { status: 400 });
-	console.log(name, email, message);
 	if (
 		typeof name !== "string" ||
 		typeof email !== "string" ||
 		typeof message !== "string" ||
+		typeof recaptchaToken !== "string" ||
 		(locale && typeof locale !== "string")
 	)
 		return new Response(null, { status: 400 });
+
+	const recaptchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body: new URLSearchParams({
+			secret: Oxygen.env.PRIVATE_RECAPTCHA_SECRET_KEY,
+			response: recaptchaToken,
+		}),
+	});
+	if (!recaptchaResponse.ok) return new Response(null, { status: 500 });
+	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+	const { success, score = 0 } = await recaptchaResponse.json();
+	if (!success) return new Response(null, { status: 400 });
+	if (score < 0.5) return new Response(null, { status: 400 });
 
 	const date = new Intl.DateTimeFormat("en-US", {
 		month: "long",
@@ -40,7 +51,6 @@ export async function api(request: HydrogenRequest) {
 		.replace("AM", "am")
 		.replace("PM", "pm");
 
-	console.log("date", date);
 	const command = new SendEmailCommand({
 		Source: "Teacaps (Shopify) <hello@teacaps.studio>",
 		Destination: {
@@ -58,9 +68,7 @@ export async function api(request: HydrogenRequest) {
 			},
 		},
 	});
-	console.log("command", command);
 	client.send(command, (err, data) => {
-		console.log(err, data);
 		if (err || !data) {
 			console.error(err || "No data returned");
 			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument

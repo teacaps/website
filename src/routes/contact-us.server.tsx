@@ -3,6 +3,7 @@ import { ContactForm } from "../components/contact/ContactForm.client";
 import { Container } from "../components/global/Container";
 import { CustomSeo } from "../components/global/CustomSeo.server";
 import { Layout } from "../components/global/Layout.server";
+import { ReCaptcha } from "../lib/ReCaptcha.client";
 
 export default function Contact() {
 	return (
@@ -23,7 +24,9 @@ export default function Contact() {
 					Got a question, comment, or just want to chat with someone about keyboards? Send us a message using
 					the form below.
 				</span>
-				<ContactForm />
+				<ReCaptcha>
+					<ContactForm />
+				</ReCaptcha>
 			</Container>
 		</Layout>
 	);

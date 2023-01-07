@@ -1,23 +1,37 @@
 import { useLocalization } from "@shopify/hydrogen";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { Button } from "../elements/input/Button";
 import { Form } from "../elements/input/Form.client";
 import { Input } from "../elements/input/Input";
 
 export function ContactForm() {
+	const { executeRecaptcha } = useGoogleReCaptcha();
 	const { country } = useLocalization();
 	const [buttonText, setButtonText] = useState("Send");
+	const [captchaToken, setCaptchaToken] = useState("");
+
+	const handleCaptcha = useCallback(async () => {
+		if (!executeRecaptcha) return;
+		setCaptchaToken(await executeRecaptcha("CONTACT_FORM"));
+	}, [executeRecaptcha]);
+
+	useEffect(() => {
+		handleCaptcha();
+	}, [handleCaptcha]);
+
 	return (
 		<Form
 			action="/api/contact"
 			method="POST"
 			className="flex w-3/5 flex-col items-center space-y-6"
-			onSubmit={() => {
+			onSubmit={async () => {
 				setButtonText("Sending...");
 				setTimeout(() => setButtonText("Sent!"), 1000);
 				setTimeout(() => setButtonText("Send"), 3000);
 			}}>
 			<input type="hidden" name="locale" value={country.isoCode} />
+			<input type="hidden" name="g-recaptcha-response" value={captchaToken} />
 			<div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-4">
 				<div className="sm:col-span-2">
 					<label htmlFor="name" className="block pl-2 font-medium text-walnut-80 text-sm">

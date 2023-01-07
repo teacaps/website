@@ -3,9 +3,10 @@
 	<img src="https://user-images.githubusercontent.com/80354781/193418071-7f329930-b0a5-4031-9c62-5d805ab6c02e.png#gh-light-mode-only" height="72">
 </p>
 <p align="center">
-	<a href="https://teacaps.studio">
-		<img src="https://therealsujitk-vercel-badge.vercel.app/?app=teacaps&logo=false" alt="Vercel badge" />
-	</a>
+    <a href="https://app.netlify.com/sites/teacaps/deploys">
+        <img src="https://api.netlify.com/api/v1/badges/da6865bd-adb3-4c66-909d-ff13f683112b/deploy-status" alt="Netlify badge" />
+    </a>
+    <br>
 	<a href="#">
 		<img src="https://img.shields.io/badge/license-MPL--2.0-informational" alt="MPL-2.0 license badge" />
 	</a>
@@ -35,6 +36,7 @@ yarn dev
 The following environment variables are needed.    
 All Shopify environment variables can be obtained from the custom app.     
 Environment variables beginning with SES, used for mail, can be found upon creating an AWS IAM user (`AmazonSESFullAccess` policy is needed).
+Environment variables for ReCAPTCHA can be found upon creating a ReCAPTCHA v3 site.
 
 [Shopify Help Center: Custom apps](https://help.shopify.com/en/manual/apps/custom-apps?shpxid=94647310-2188-415C-BA52-58EC257705DA#create-and-install-a-custom-app)    
 [AWS IAM Management Console](https://us-east-1.console.aws.amazon.com/iam/home)
@@ -46,6 +48,8 @@ STOREFRONT_TOKEN=...
 STOREFRONT_API_VERSION=...
 SES_ACCESS_KEY=...
 SES_ACCESS_KEY_ID=...
+PUBLIC_RECAPTCHA_SITE_KEY=...
+PRIVATE_RECAPTCHA_SECRET_KEY=...
 ```
 
 ## Deployment

@@ -1,7 +1,9 @@
 [[headers]]
-  for = "/public/fonts/*"
+  for = "*.woff"
     [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+    Access-Control-Allow-Origin = "*"
+    Content-Type = "font/woff"
 [build]
   command = "yarn build"
   publish = "dist/client"

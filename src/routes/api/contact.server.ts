@@ -1,10 +1,12 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import type { HydrogenRequest } from "@shopify/hydrogen";
 
+const env: Record<string, string> = typeof Oxygen !== "undefined" && "env" in Oxygen ? Oxygen.env : import.meta.env;
+
 const client = new SESClient({
 	credentials: {
-		accessKeyId: Oxygen.env.SES_ACCESS_KEY_ID,
-		secretAccessKey: Oxygen.env.SES_ACCESS_KEY,
+		accessKeyId: env.SES_ACCESS_KEY_ID,
+		secretAccessKey: env.SES_ACCESS_KEY,
 	},
 	region: "us-east-1",
 });
@@ -29,7 +31,7 @@ export async function api(request: HydrogenRequest) {
 		method: "POST",
 		headers: { "Content-Type": "application/x-www-form-urlencoded" },
 		body: new URLSearchParams({
-			secret: Oxygen.env.PRIVATE_RECAPTCHA_SECRET_KEY,
+			secret: env.PRIVATE_RECAPTCHA_SECRET_KEY,
 			response: recaptchaToken,
 		}),
 	});

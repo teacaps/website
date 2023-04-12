@@ -9,15 +9,13 @@ export type CustomSeoProps = Partial<DefaultSeoProps> & {
 };
 export function CustomSeo(props: CustomSeoProps) {
 	const { data = {}, ...rest } = props;
-	const {
-		data: {
-			shop: { name, description },
-		},
-	} = useShopQuery<ShopInfoQuery>({
+	const { data: { shop: { name, description } = {} } = {}, errors } = useShopQuery<ShopInfoQuery>({
 		query: SHOP_INFO_QUERY,
 		cache: CacheLong(),
 		preload: "*",
 	});
+
+	console.log(errors);
 
 	const url = useUrl();
 	const image = props.image?.includes("://") ? props.image : url.origin + (props.image || "/landing-og-image.png");
@@ -29,7 +27,7 @@ export function CustomSeo(props: CustomSeoProps) {
 				data={{
 					title: name,
 					// @ts-expect-error TS2322 - TS is not a fan of the `Seo` component's discriminated union
-					description,
+					description: description || undefined,
 					...data,
 				}}
 				{...rest}

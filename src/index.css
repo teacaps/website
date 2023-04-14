@@ -6,21 +6,21 @@
 
 @font-face {
 	font-family: "Sweet Sans Pro";
-	src: url("/fonts/SweetSansProRegular.woff") format("woff");
+	src: url("/fonts/SweetSansProRegular.woff2") format("woff2"), url("/fonts/SweetSansProRegular.woff") format("woff");
 	font-style: normal;
 	font-display: swap;
 	font-weight: normal; /* normal */
 }
 @font-face {
 	font-family: "Sweet Sans Pro";
-	src: url("/fonts/SweetSansProMedium.woff") format("woff");
+	src: url("/fonts/SweetSansProMedium.woff2") format("woff2"), url("/fonts/SweetSansProMedium.woff") format("woff");
 	font-style: normal;
 	font-display: swap;
 	font-weight: 500;
 }
 @font-face {
 	font-family: "Sweet Sans Pro";
-	src: url("/fonts/SweetSansProBold.woff") format("woff");
+	src: url("/fonts/SweetSansProBold.woff2") format("woff2"), url("/fonts/SweetSansProMedium.woff") format("woff");
 	font-style: normal;
 	font-display: swap;
 	font-weight: 700; /* bold */

@@ -18,7 +18,7 @@ interface ProductInfoProps {
 
 export function ProductInfo({ product, gallery }: ProductInfoProps) {
 	return (
-		<div className="flex basis-1/2 flex-col space-y-16">
+		<div className="flex basis-1/2 flex-col space-y-12">
 			<ProductDescription product={product} gallery={gallery} />
 			<ProductMisc product={product} />
 		</div>
@@ -87,25 +87,27 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 
 	const isInStock = product.preorder?.value === "false";
 	const availability = isInStock ? "in stock" : product.groupBuyDates?.value || "in stock";
+	const estimatedDelivery = product.estimatedDelivery?.value;
+	const displayShippingDate = !isInStock && estimatedDelivery;
 
 	return (
-		<div className="flex flex-col space-y-8 text-walnut">
+		<div className="flex flex-col space-y-12 text-walnut">
 			<div className="flex flex-col">
-				<div className="mb-8 flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
+				<div className="mb-12 flex flex-col space-y-8 text-lg 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
 					<div className="flex items-center space-x-4">
 						<ClockIcon className="h-6 w-6 text-walnut-80" />
 						<span className="trim-both leading-none">Available {availability}</span>
 					</div>
-					{!isInStock && product.estimatedDelivery?.value ? (
+					{displayShippingDate ? (
 						<div className="flex items-center space-x-4">
 							<AirplaneIcon className="h-6 w-6 text-walnut-80" />
-							<span className="trim-both leading-none">Ships {product.estimatedDelivery.value}</span>
+							<span className="trim-both leading-none">Ships {estimatedDelivery}</span>
 						</div>
 					) : null}
 				</div>
-				<ul className="prose mb-8 flex flex-col gap-2">
+				<ul className="prose mb-6 flex flex-col gap-1 prose-headings:text-walnut prose-h4:mt-1 prose-h4:mb-0 prose-h4:text-lg prose-h4:leading-6">
 					{detailsListItems.map(([key, value]) => (
-						<li key={key || value} className="flex space-x-8 text-base leading-6">
+						<li key={key || value} className="flex space-x-8 leading-6">
 							<span
 								className={clsx("font-regular", !!key && "text-walnut-80")}
 								dangerouslySetInnerHTML={{ __html: key || value || "" }}></span>

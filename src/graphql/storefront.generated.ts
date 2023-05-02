@@ -6937,7 +6937,6 @@ export type ProductDetailsFragment = {
 	summary?: { __typename?: "Metafield"; value: string } | null;
 	estimatedDelivery?: { __typename?: "Metafield"; value: string } | null;
 	groupBuyDates?: { __typename?: "Metafield"; value: string } | null;
-	colors?: { __typename?: "Metafield"; value: string } | null;
 	status?: { __typename?: "Metafield"; value: string } | null;
 	preorder?: { __typename?: "Metafield"; value: string } | null;
 	collections: {
@@ -7081,7 +7080,6 @@ export type ProductQuery = {
 		summary?: { __typename?: "Metafield"; value: string } | null;
 		estimatedDelivery?: { __typename?: "Metafield"; value: string } | null;
 		groupBuyDates?: { __typename?: "Metafield"; value: string } | null;
-		colors?: { __typename?: "Metafield"; value: string } | null;
 		status?: { __typename?: "Metafield"; value: string } | null;
 		preorder?: { __typename?: "Metafield"; value: string } | null;
 		collections: {

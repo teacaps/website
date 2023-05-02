@@ -147,9 +147,6 @@ const PRODUCT_QUERY = gql`
 		groupBuyDates: metafield(namespace: "custom", key: "group_buy_dates") {
 			value
 		}
-		colors: metafield(namespace: "custom", key: "colors") {
-			value
-		}
 		status: metafield(namespace: "custom", key: "status") {
 			value
 		}

@@ -29,10 +29,6 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 	const { selectedVariant } = useProductOptions();
 	const variantAvailable = selectedVariant?.availableForSale;
 
-	const colors: Array<{ name: string; hex: string }> | null = product.colors?.value
-		? JSON.parse(product.colors.value)
-		: null;
-
 	const currencyCode =
 		(variantAvailable && selectedVariant?.price?.currencyCode) ||
 		product.priceRange?.minVariantPrice?.currencyCode ||
@@ -43,23 +39,9 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 	const isOnSale = (compareAtPrice && compareAtPrice !== regularPrice) || null;
 
 	return (
-		<div className="flex flex-col space-y-16">
-			<div className="space-y-8">
-				<h1 className="text-matcha text-3xl leading-10 md:text-4xl">{product.title}</h1>
-				{product.summary?.value ? (
-					<p className="prose text-walnut leading-7">{product.summary?.value}</p>
-				) : null}
-				{colors ? (
-					<ul className="flex flex-row flex-wrap gap-4">
-						{colors.map((color) => (
-							<li key={color.name} className="flex items-center justify-start space-x-4">
-								<div className="h-5 w-5 rounded-full" style={{ backgroundColor: color.hex }} />
-								<span className="font-medium text-matcha text-sm leading-5">{color.name}</span>
-							</li>
-						))}
-					</ul>
-				) : null}
-			</div>
+		<div className="flex flex-col space-y-8">
+			<h1 className="text-matcha text-3xl leading-10 md:text-4xl">{product.title}</h1>
+			{product.summary?.value ? <p className="prose text-walnut leading-7">{product.summary?.value}</p> : null}
 			<div className="flex flex-col items-start space-y-6 text-matcha text-xl leading-8 lg:text-2xl">
 				<VariantSelector gallery={gallery} />
 				<div className="flex items-center space-x-2">
@@ -107,9 +89,9 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 	const availability = isInStock ? "in stock" : product.groupBuyDates?.value || "in stock";
 
 	return (
-		<div className="flex flex-col space-y-16 text-walnut">
+		<div className="flex flex-col space-y-8 text-walnut">
 			<div className="flex flex-col">
-				<div className="mb-16 flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
+				<div className="mb-8 flex flex-col space-y-8 text-lg lg:flex-row lg:items-center lg:space-y-0 lg:space-x-16">
 					<div className="flex items-center space-x-4">
 						<ClockIcon className="h-6 w-6 text-walnut-80" />
 						<span className="trim-both leading-none">Available {availability}</span>
@@ -121,13 +103,15 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 						</div>
 					) : null}
 				</div>
-				<ul className="mb-8 flex flex-col space-y-4">
+				<ul className="prose mb-8 flex flex-col gap-2">
 					{detailsListItems.map(([key, value]) => (
 						<li key={key || value} className="flex space-x-8 text-base leading-6">
-							<p
+							<span
 								className={clsx("font-regular", !!key && "text-walnut-80")}
-								dangerouslySetInnerHTML={{ __html: key || value || "" }}></p>
-							{key && <p className="font-medium" dangerouslySetInnerHTML={{ __html: value || "" }}></p>}
+								dangerouslySetInnerHTML={{ __html: key || value || "" }}></span>
+							{key && (
+								<span className="font-medium" dangerouslySetInnerHTML={{ __html: value || "" }}></span>
+							)}
 						</li>
 					))}
 				</ul>

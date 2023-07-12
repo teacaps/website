@@ -39,7 +39,7 @@ export async function api(request: HydrogenRequest) {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const { success, score = 0 } = await recaptchaResponse.json();
 	if (!success) return new Response(null, { status: 400 });
-	if (score < 0.3) return new Response(null, { status: 400 });
+	if (score < 0.2) return new Response(null, { status: 400 });
 
 	const date = new Intl.DateTimeFormat("en-US", {
 		month: "long",

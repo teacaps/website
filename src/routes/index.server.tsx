@@ -23,6 +23,13 @@ export default function Landing() {
 			<Hero />
 			<Welcome />
 			<ProductSection
+				name="Rosewater"
+				description="Take a stroll through a tranquil garden with Rosewater. Soft pink tones bring out the best of a warm spring day."
+				url="/products/rosewater"
+				align="left"
+				imageDimensions={{ width: 1000, height: 438 }}
+			/>
+			<ProductSection
 				name="Parfait"
 				description="Sweeten your setup with Parfait, a set inspired by our favorite desserts. Parfait draws from the creamy hues of the delicious frozen treat."
 				url="/products/parfait"

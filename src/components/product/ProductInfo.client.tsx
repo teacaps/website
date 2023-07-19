@@ -65,7 +65,7 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 						</span>
 					) : null}
 				</div>
-				<AddToCart />
+				<AddToCart product={product} />
 			</div>
 		</div>
 	);
@@ -183,7 +183,7 @@ function VariantSelector({ gallery }: { gallery: RefObject<ImageGallery> }) {
 	);
 }
 
-function AddToCart() {
+function AddToCart({ product }: { product: ProductDetailsFragment }) {
 	const { selectedVariant } = useProductOptions();
 	const { status: cartStatus } = useCart();
 	const outOfStock = !selectedVariant?.availableForSale ?? true;
@@ -196,7 +196,13 @@ function AddToCart() {
 
 	useEffect(() => {
 		if (isLoadingState()) setButtonText("Loading...");
-		if (isIdleState()) setButtonText(outOfStock ? "Sold out" : "Add to cart");
+		if (isIdleState()) {
+			if (outOfStock) {
+				const isPreOrder = product.preorder?.value === "true";
+				if (isPreOrder) setButtonText("Coming soon");
+				else setButtonText("Currently unavailable");
+			} else setButtonText("Add to cart");
+		}
 	}, [cartStatus]);
 
 	return (

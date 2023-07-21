@@ -15,7 +15,7 @@ export function CustomSeo(props: CustomSeoProps) {
 		preload: "*",
 	});
 
-	console.log(errors);
+	if (errors) console.log(errors);
 
 	const url = useUrl();
 	const image = props.image?.includes("://") ? props.image : url.origin + (props.image || "/landing-og-image.png");

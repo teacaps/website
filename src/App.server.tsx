@@ -10,10 +10,12 @@ import {
 import renderHydrogen from "@shopify/hydrogen/entry-server";
 import { Suspense } from "react";
 import { NotFound } from "./components/global/NotFound.server";
+import { ScrollReset } from "./lib/ScrollReset.client";
 
 function App() {
 	return (
 		<Suspense fallback={null}>
+			<ScrollReset />
 			<ShopifyProvider>
 				<ShopifyAnalytics cookieDomain="teacaps.studio" />
 				<CartProvider>

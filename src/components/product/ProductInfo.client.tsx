@@ -18,9 +18,10 @@ interface ProductInfoProps {
 
 export function ProductInfo({ product, gallery }: ProductInfoProps) {
 	return (
-		<div className="flex basis-1/2 flex-col space-y-12">
+		<div className="flex basis-1/2 flex-col">
 			<ProductDescription product={product} gallery={gallery} />
 			<ProductMisc product={product} />
+			<QualityDisclaimer />
 		</div>
 	);
 }
@@ -39,7 +40,7 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 	const isOnSale = (compareAtPrice && compareAtPrice !== regularPrice) || null;
 
 	return (
-		<div className="flex flex-col space-y-8">
+		<div className="mb-12 flex flex-col space-y-8">
 			<h1 className="text-matcha text-3xl leading-10 md:text-4xl">{product.title}</h1>
 			{product.summary?.value ? <p className="prose text-walnut leading-7">{product.summary?.value}</p> : null}
 			<div className="flex flex-col items-start space-y-6 text-matcha text-xl leading-8 lg:text-2xl">
@@ -128,6 +129,29 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 			</div>
 			<ProductUpdates />
 		</div>
+	);
+}
+
+function QualityDisclaimer() {
+	return (
+		<p
+			className="mt-6 rounded-xl border-4 border-transparent p-1 text-walnut-80 transition-all text-sm leading-6"
+			id="quality-disclaimer">
+			We use a mix of 3D renders and photos to display our products in a variety of environments. Renders are
+			denoted by a small badge in the top left corner of the image. While we try to showcase a range of lighting
+			conditions, your experience may vary depending on the lighting in your space.
+			<br />
+			<br />
+			All our products adhere to our{" "}
+			<a href="/quality" className="underline hover:text-walnut">
+				quality standards
+			</a>
+			. If you have any questions, please contact us at{" "}
+			<a href="mailto:hello@teacaps.studio" className="text-matcha-80 underline hover:text-matcha">
+				hello@teacaps.studio
+			</a>
+			.
+		</p>
 	);
 }
 

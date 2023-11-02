@@ -2,6 +2,7 @@ import clsx from "clsx";
 import ImageGallery, { type ReactImageGalleryItem } from "react-image-gallery";
 import { ExpandIcon } from "../../assets/icons/expand";
 import { MinimizeIcon } from "../../assets/icons/minimize";
+import { PrintFillIcon } from "../../assets/icons/print-fill";
 import { MediaContentType } from "../../graphql/storefront.generated";
 import type { MediaFragment, MediaImage } from "../../graphql/storefront.generated";
 import type { RefObject } from "react";
@@ -10,6 +11,25 @@ interface ProductGalleryProps {
 	media: Array<MediaFragment>;
 	galleryRef: RefObject<ImageGallery>;
 }
+
+const RenderBadge = () => (
+	<button
+		className="group absolute top-4 left-4 z-10 flex gap-2 rounded-full border border-matcha bg-grain px-5 py-2 font-medium text-matcha text-xs hover:cursor-help hover:bg-matcha-20"
+		onClick={() => {
+			const qualityDisclaimer = document.querySelector("#quality-disclaimer");
+			if (!qualityDisclaimer) return;
+			qualityDisclaimer.classList.remove("text-walnut-80", "border-transparent");
+			qualityDisclaimer.classList.add("text-matcha", "bg-matcha-20", "border-matcha-20");
+			qualityDisclaimer.scrollIntoView({ behavior: "smooth" });
+			setTimeout(() => {
+				qualityDisclaimer.classList.add("text-walnut-80", "border-transparent");
+				qualityDisclaimer.classList.remove("text-matcha", "bg-matcha-20", "border-matcha-20");
+			}, 2000);
+		}}>
+		<PrintFillIcon className="h-4" />
+		<span className="mt-0.5">Render</span>
+	</button>
+);
 
 export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 	const items = media
@@ -24,8 +44,10 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 			thumbnailWidth: previewImage?.width || undefined,
 			thumbnailAlt: previewImage?.altText || undefined,
 		}));
+	const currentImageIsRender = items[galleryRef.current?.getCurrentIndex() ?? -1]?.originalAlt?.startsWith("RENDER:");
 	return (
-		<div className="h-fit w-full md:mt-16">
+		<div className="relative h-fit w-full md:mt-16">
+			{currentImageIsRender ? <RenderBadge /> : null}
 			<ImageGallery
 				ref={galleryRef}
 				items={items}

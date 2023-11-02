@@ -1,7 +1,7 @@
-import { useLayoutEffect } from "react";
+import { useClientLayoutEffect } from "./utils";
 
 export function ScrollReset() {
-	useLayoutEffect(() => {
+	useClientLayoutEffect(() => {
 		document.querySelector("#root > div")?.scrollTo({ top: 0, behavior: "smooth" });
 	});
 	return null;

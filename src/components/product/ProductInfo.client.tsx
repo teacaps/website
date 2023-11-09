@@ -22,7 +22,7 @@ export function ProductInfo({ product, gallery }: ProductInfoProps) {
 		<div className="flex basis-1/2 flex-col">
 			<ProductDescription product={product} gallery={gallery} />
 			<ProductMisc product={product} />
-			<QualityDisclaimer />
+			<Disclaimers product={product} />
 		</div>
 	);
 }
@@ -110,7 +110,7 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 						) : null}
 					</div>
 				) : null}
-				<ul className="prose mb-6 flex flex-col gap-1 prose-headings:text-walnut prose-h4:mt-1 prose-h4:mb-0 prose-h4:text-lg prose-h4:leading-6">
+				<ul className="prose flex flex-col gap-1 prose-headings:text-walnut prose-h4:mt-1 prose-h4:mb-0 prose-h4:text-lg prose-h4:leading-6">
 					{detailsListItems.map(([key, value]) => (
 						<li key={key || value} className="flex space-x-8 leading-6">
 							<span
@@ -122,40 +122,43 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 						</li>
 					))}
 				</ul>
-				<p className="text-walnut-80 text-sm leading-5">
-					{!isInStock
-						? "This product is a pre-order item. " +
-						  "Order cancellations are not available after the pre-order has been closed. " +
-						  "If your shipping address has changed, please contact us at least three weeks before delivery."
-						: "This product is in-stock. " +
-						  "If combined with pre-order products in a single order, we'll ship your order when all products have arrived."}
-				</p>
 			</div>
 			<ProductUpdates />
 		</div>
 	);
 }
 
-function QualityDisclaimer() {
+function Disclaimers({ product }: { product: ProductDetailsFragment }) {
+	const isInStock = product.preorder?.value === "false";
 	return (
-		<p
-			className="mt-6 rounded-xl border-4 border-transparent p-1 text-walnut-80 transition-all text-sm leading-6"
-			id="quality-disclaimer">
-			We use a mix of 3D renders and photos to display our products in a variety of environments. Renders are
-			denoted by a small badge in the top left corner of the image. While we try to showcase a range of lighting
-			conditions, your experience may vary depending on the lighting in your space.
-			<br />
-			<br />
-			All our products adhere to our{" "}
-			<a href="/quality" className="underline hover:text-walnut">
-				quality standards
-			</a>
-			. If you have any questions, please contact us at{" "}
-			<a href="mailto:hello@teacaps.studio" className="text-matcha-80 underline hover:text-matcha">
-				hello@teacaps.studio
-			</a>
-			.
-		</p>
+		<>
+			<p className="mt-8 text-walnut-80 text-sm leading-6">
+				{!isInStock
+					? "This product is a pre-order item. " +
+					  "Order cancellations are not available after the pre-order has been closed. " +
+					  "If your shipping address has changed, please contact us at least three weeks before delivery."
+					: "This product is in-stock. " +
+					  "If combined with pre-order products in a single order, we'll ship your order when all products have arrived."}
+			</p>
+			<p
+				className="mt-4 -translate-x-1 rounded-xl border-4 border-transparent p-1 text-walnut-80 transition-all text-sm leading-6"
+				id="quality-disclaimer">
+				We use a mix of 3D renders and photos to display our products in a variety of environments. Renders are
+				denoted by a small badge in the top left corner of the image. While we try to showcase a range of
+				lighting conditions, your experience may vary depending on the lighting in your space.
+				<br />
+				<br />
+				All our products adhere to our{" "}
+				<a href="/quality" className="underline hover:text-walnut">
+					quality standards
+				</a>
+				. If you have any questions, please contact us at{" "}
+				<a href="mailto:hello@teacaps.studio" className="text-matcha-80 underline hover:text-matcha">
+					hello@teacaps.studio
+				</a>
+				.
+			</p>
+		</>
 	);
 }
 

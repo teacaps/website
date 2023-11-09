@@ -153,6 +153,9 @@ const PRODUCT_QUERY = gql`
 		preorder: metafield(namespace: "custom", key: "preorder") {
 			value
 		}
+		externalUrl: metafield(namespace: "custom", key: "external") {
+			value
+		}
 		collections(first: 99) {
 			nodes {
 				id

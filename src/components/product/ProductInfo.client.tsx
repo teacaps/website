@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 
 import { AirplaneIcon } from "../../assets/icons/airplane";
 import { ClockIcon } from "../../assets/icons/clock";
+import { ExternalIcon } from "../../assets/icons/external";
 import { SocialLinks } from "../elements/SocialLinks";
-import { Button } from "../elements/input/Button";
+import { Button, ButtonLink } from "../elements/input/Button";
 import { ProductSubscribeForm } from "../elements/input/SubscribeForm.client";
 import type { ProductDetailsFragment } from "../../graphql/storefront.generated";
 import type { RefObject } from "react";
@@ -86,26 +87,29 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 		return acc;
 	}, []);
 
+	const isExternal = !!product.externalUrl?.value;
 	const isInStock = product.preorder?.value === "false";
 	const availability = isInStock ? "in stock" : product.groupBuyDates?.value || "in stock";
 	const estimatedDelivery = product.estimatedDelivery?.value;
-	const displayShippingDate = !isInStock && estimatedDelivery;
+	const displayShippingDate = !isExternal && !isInStock && estimatedDelivery;
 
 	return (
 		<div className="flex flex-col space-y-12 text-walnut">
 			<div className="flex flex-col">
-				<div className="mb-12 flex flex-col space-y-8 text-lg 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
-					<div className="flex items-center space-x-4">
-						<ClockIcon className="h-6 w-6 text-walnut-80" />
-						<span className="trim-both leading-none">Available {availability}</span>
-					</div>
-					{displayShippingDate ? (
+				{!isExternal ? (
+					<div className="mb-12 flex flex-col space-y-8 text-lg 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
 						<div className="flex items-center space-x-4">
-							<AirplaneIcon className="h-6 w-6 text-walnut-80" />
-							<span className="trim-both leading-none">Ships {estimatedDelivery}</span>
+							<ClockIcon className="h-6 w-6 text-walnut-80" />
+							<span className="trim-both leading-none">Available {availability}</span>
 						</div>
-					) : null}
-				</div>
+						{displayShippingDate ? (
+							<div className="flex items-center space-x-4">
+								<AirplaneIcon className="h-6 w-6 text-walnut-80" />
+								<span className="trim-both leading-none">Ships {estimatedDelivery}</span>
+							</div>
+						) : null}
+					</div>
+				) : null}
 				<ul className="prose mb-6 flex flex-col gap-1 prose-headings:text-walnut prose-h4:mt-1 prose-h4:mb-0 prose-h4:text-lg prose-h4:leading-6">
 					{detailsListItems.map(([key, value]) => (
 						<li key={key || value} className="flex space-x-8 leading-6">
@@ -228,6 +232,18 @@ function AddToCart({ product }: { product: ProductDetailsFragment }) {
 			} else setButtonText("Add to cart");
 		}
 	}, [cartStatus]);
+
+	if (product.externalUrl?.value) {
+		return (
+			<ButtonLink
+				className="gap-2 text-base"
+				url={product.externalUrl.value}
+				color="matcha"
+				icon={<ExternalIcon className="h-4 w-4" />}>
+				Buy
+			</ButtonLink>
+		);
+	}
 
 	return (
 		<AddToCartButton

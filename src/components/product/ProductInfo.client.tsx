@@ -239,6 +239,7 @@ function AddToCart({ product }: { product: ProductDetailsFragment }) {
 	if (product.externalUrl?.value) {
 		return (
 			<ButtonLink
+				target="_blank"
 				className="gap-2 text-base"
 				url={product.externalUrl.value}
 				color="matcha"

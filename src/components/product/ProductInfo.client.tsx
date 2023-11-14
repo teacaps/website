@@ -43,7 +43,11 @@ function ProductDescription({ product, gallery }: ProductInfoProps) {
 	return (
 		<div className="mb-12 flex flex-col space-y-8">
 			<h1 className="text-matcha text-3xl leading-10 md:text-4xl">{product.title}</h1>
-			{product.summary?.value ? <p className="prose text-walnut leading-7">{product.summary?.value}</p> : null}
+			{product.summary?.value ? (
+				<p
+					className="prose text-walnut leading-7"
+					dangerouslySetInnerHTML={{ __html: product.summary?.value }}></p>
+			) : null}
 			<div className="flex flex-col items-start space-y-6 text-matcha text-xl leading-8 lg:text-2xl">
 				<VariantSelector gallery={gallery} />
 				<div className="flex items-center space-x-2">

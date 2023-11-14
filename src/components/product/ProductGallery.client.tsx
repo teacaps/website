@@ -1,11 +1,11 @@
 import clsx from "clsx";
+import { RefObject, useState } from "react";
 import ImageGallery, { type ReactImageGalleryItem } from "react-image-gallery";
 import { ExpandIcon } from "../../assets/icons/expand";
 import { MinimizeIcon } from "../../assets/icons/minimize";
 import { PrintFillIcon } from "../../assets/icons/print-fill";
 import { MediaContentType } from "../../graphql/storefront.generated";
 import type { MediaFragment, MediaImage } from "../../graphql/storefront.generated";
-import type { RefObject } from "react";
 
 interface ProductGalleryProps {
 	media: Array<MediaFragment>;
@@ -44,7 +44,9 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 			thumbnailWidth: previewImage?.width || undefined,
 			thumbnailAlt: previewImage?.altText || undefined,
 		}));
-	const currentImageIsRender = items[galleryRef.current?.getCurrentIndex() ?? -1]?.originalAlt?.startsWith("RENDER:");
+	const [currentIndex, setCurrentIndex] = useState(0);
+	const currentImage = items[currentIndex];
+	const currentImageIsRender = currentImage?.originalAlt?.startsWith("RENDER:");
 	return (
 		<div className="relative h-fit w-full md:mt-16">
 			{currentImageIsRender ? <RenderBadge /> : null}
@@ -54,6 +56,7 @@ export function ProductGallery({ media, galleryRef }: ProductGalleryProps) {
 				lazyLoad={true}
 				showNav={false}
 				showPlayButton={false}
+				onBeforeSlide={(currentIndex) => setCurrentIndex(currentIndex)}
 				renderFullscreenButton={(onClick, isFullscreen) => {
 					const FullscreenIcon = isFullscreen ? MinimizeIcon : ExpandIcon;
 					return (

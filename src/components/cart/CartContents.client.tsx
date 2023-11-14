@@ -7,8 +7,8 @@ export function CartContents() {
 	const { lines } = useCart();
 	if (!lines.length) return <CartEmpty />;
 	return (
-		<form className="flex h-full flex-col justify-between">
-			<section className="mx-12 overflow-auto border-t border-t-matcha-40 pb-4 pt-6">
+		<form className="flex h-full flex-col">
+			<section className="mx-12 mb-auto flex-grow overflow-auto border-t border-t-matcha-40 pb-4 pt-6">
 				<ul className="grid gap-8 overflow-y-auto">
 					{lines.map((line) => (
 						<CartLineProvider key={line.id} line={line}>
@@ -17,7 +17,7 @@ export function CartContents() {
 					))}
 				</ul>
 			</section>
-			<section className="absolute bottom-0 w-full px-12 pb-8">
+			<section className="w-full max-w-[100vw] px-12 pb-8">
 				<h2 className="sr-only">Cart summary</h2>
 				<CartCheckout />
 			</section>

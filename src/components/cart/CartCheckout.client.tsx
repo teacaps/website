@@ -17,12 +17,12 @@ export function CartCheckout() {
 					</span>
 				)}
 				<span className="flex w-full items-center justify-between leading-7">
-					<span className="text-walnut-80">Shipping & taxes</span>
+					<span className="text-walnut-80">Shipping</span>
 					<span className="font-medium text-walnut">Calculated at checkout</span>
 				</span>
 			</div>
-			<ButtonLink url={checkoutUrl!} className="w-full max-w-xl" color="matcha">
-				Continue to Checkout
+			<ButtonLink url={checkoutUrl!} className="w-full" color="matcha">
+				Checkout
 			</ButtonLink>
 		</div>
 	);

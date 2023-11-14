@@ -39,7 +39,7 @@ export function Drawer({
 								leave="transform transition ease-in-out duration-500 sm:duration-700"
 								leaveFrom="translate-0"
 								leaveTo="translate-x-full">
-								<Dialog.Panel className="h-screen w-screen min-w-[40ch] transform bg-grain text-left align-middle shadow-md transition-all lg:w-auto lg:max-w-lg">
+								<Dialog.Panel className="flex h-screen w-screen min-w-[40ch] transform flex-col bg-grain text-left align-middle shadow-md transition-all md:w-auto md:max-w-md lg:max-w-lg">
 									<header className="sticky top-0 flex w-screen items-center justify-between px-8 py-6 md:w-full md:justify-center md:px-12">
 										{(title || null) && (
 											<h2 className="font-medium text-matcha text-lg">{title}</h2>
@@ -48,7 +48,7 @@ export function Drawer({
 											<XIcon className="h-8 w-8 text-matcha" />
 										</button>
 									</header>
-									<div className="grid h-full w-screen md:w-unset">
+									<div className="w-screen flex-grow md:w-unset">
 										<Dialog.Title className="sr-only">Cart</Dialog.Title>
 										{children}
 									</div>

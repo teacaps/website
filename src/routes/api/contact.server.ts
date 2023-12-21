@@ -3,6 +3,10 @@ import type { HydrogenRequest } from "@shopify/hydrogen";
 
 const env: Record<string, string> = typeof Oxygen !== "undefined" && "env" in Oxygen ? Oxygen.env : import.meta.env;
 
+console.log({
+	accessKeyId: env.SES_ACCESS_KEY_ID,
+	secretAccessKey: env.SES_ACCESS_KEY,
+});
 const client = new SESClient({
 	credentials: {
 		accessKeyId: env.SES_ACCESS_KEY_ID,

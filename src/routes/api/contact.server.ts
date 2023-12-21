@@ -13,12 +13,7 @@ const client = new SESClient({
 
 export async function api(request: HydrogenRequest) {
 	console.log(request);
-	console.log(
-		JSON.stringify({
-			accessKeyId: env.SES_ACCESS_KEY_ID,
-			secretAccessKey: env.SES_ACCESS_KEY,
-		}),
-	);
+	console.log(JSON.stringify(env));
 	if (request.method === "GET") return new Response(null, { status: 302, headers: { Location: "/contact-us" } });
 	if (request.method !== "POST") return new Response(null, { status: 405 });
 

@@ -22,25 +22,28 @@ export async function api(request: HydrogenRequest) {
 		typeof name !== "string" ||
 		typeof email !== "string" ||
 		typeof message !== "string" ||
-		typeof recaptchaToken !== "string" ||
 		(locale && typeof locale !== "string")
 	)
 		return new Response(null, { status: 400 });
 
-	const recaptchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-		method: "POST",
-		headers: { "Content-Type": "application/x-www-form-urlencoded" },
-		body: new URLSearchParams({
-			secret: env.PRIVATE_RECAPTCHA_SECRET_KEY,
-			response: recaptchaToken,
-		}),
-	});
-	if (!recaptchaResponse.ok) return new Response(null, { status: 500 });
-	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-	const { success, score = 0 } = await recaptchaResponse.json();
-	if (!success) return new Response(null, { status: 400 });
-	if (score < 0.2) return new Response(null, { status: 400 });
-
+	let potentiallySpam = false;
+	if (recaptchaToken && typeof recaptchaToken === "string") {
+		const recaptchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body: new URLSearchParams({
+				secret: env.PRIVATE_RECAPTCHA_SECRET_KEY,
+				response: recaptchaToken,
+			}),
+		});
+		if (!recaptchaResponse.ok) potentiallySpam = true;
+		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+		const { success, score = 0 } = await recaptchaResponse.json();
+		if (!success) potentiallySpam = true;
+		if (score < 0.2) potentiallySpam = true;
+	} else {
+		potentiallySpam = true;
+	}
 	const date = new Intl.DateTimeFormat("en-US", {
 		month: "long",
 		day: "numeric",
@@ -61,7 +64,7 @@ export async function api(request: HydrogenRequest) {
 		ReplyToAddresses: [`${name} <${email}>`],
 		Message: {
 			Subject: {
-				Data: `New customer message on ${date}`,
+				Data: (potentiallySpam ? "[POTENTIALLY SPAM] " : "") + `New customer message on ${date}`,
 			},
 			Body: {
 				Html: {

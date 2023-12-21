@@ -93,20 +93,23 @@ function ProductMisc({ product }: { product: ProductDetailsFragment }) {
 
 	const isExternal = !!product.externalUrl?.value;
 	const isInStock = product.preorder?.value === "false";
-	const availability = isInStock ? "in stock" : product.groupBuyDates?.value || "in stock";
+	const availability = product.groupBuyDates?.value;
 	const estimatedDelivery = product.estimatedDelivery?.value;
-	const displayShippingDate = !isExternal && !isInStock && estimatedDelivery;
+	// Only display the availability/shipping date container if it's our product and it's a group buy/pre-order
+	const displayDates = !isExternal && !isInStock;
 
 	return (
 		<div className="flex flex-col space-y-12 text-walnut">
 			<div className="flex flex-col">
-				{!isExternal ? (
+				{displayDates ? (
 					<div className="mb-12 flex flex-col space-y-8 text-lg 2xl:flex-row 2xl:items-center 2xl:justify-between 2xl:space-y-0">
-						<div className="flex items-center space-x-4">
-							<ClockIcon className="h-6 w-6 text-walnut-80" />
-							<span className="trim-both leading-none">Available {availability}</span>
-						</div>
-						{displayShippingDate ? (
+						{availability ? (
+							<div className="flex items-center space-x-4">
+								<ClockIcon className="h-6 w-6 text-walnut-80" />
+								<span className="trim-both leading-none">Available {availability}</span>
+							</div>
+						) : null}
+						{estimatedDelivery ? (
 							<div className="flex items-center space-x-4">
 								<AirplaneIcon className="h-6 w-6 text-walnut-80" />
 								<span className="trim-both leading-none">Ships {estimatedDelivery}</span>

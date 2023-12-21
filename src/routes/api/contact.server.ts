@@ -12,6 +12,7 @@ const client = new SESClient({
 });
 
 export async function api(request: HydrogenRequest) {
+	console.log(request);
 	if (request.method === "GET") return new Response(null, { status: 302, headers: { Location: "/contact-us" } });
 	if (request.method !== "POST") return new Response(null, { status: 405 });
 
@@ -26,6 +27,7 @@ export async function api(request: HydrogenRequest) {
 	)
 		return new Response(null, { status: 400 });
 
+	console.log("correct types", name, email, message, recaptchaToken);
 	let potentiallySpam = false;
 	if (recaptchaToken && typeof recaptchaToken === "string") {
 		const recaptchaResponse = await fetch("https://www.google.com/recaptcha/api/siteverify", {
@@ -44,6 +46,7 @@ export async function api(request: HydrogenRequest) {
 	} else {
 		potentiallySpam = true;
 	}
+	console.log(potentiallySpam, "potentially spam");
 	const date = new Intl.DateTimeFormat("en-US", {
 		month: "long",
 		day: "numeric",

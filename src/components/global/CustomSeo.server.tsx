@@ -9,11 +9,13 @@ export type CustomSeoProps = Partial<DefaultSeoProps> & {
 };
 export function CustomSeo(props: CustomSeoProps) {
 	const { data = {}, ...rest } = props;
-	const { data: { shop: { name, description } = {} } = {}, errors } = useShopQuery<ShopInfoQuery>({
+	const { data: shopData, errors } = useShopQuery<ShopInfoQuery>({
 		query: SHOP_INFO_QUERY,
 		cache: CacheLong(),
 		preload: "*",
 	});
+	const { shop } = shopData ?? {};
+	const { name, description } = shop ?? {};
 
 	if (errors) console.log(errors);
 

@@ -14,6 +14,8 @@ const client = new SESClient({
 export async function api(request: HydrogenRequest) {
 	console.log(request);
 	console.log(JSON.stringify(env));
+	console.log("Oxygen");
+	console.log(Oxygen);
 	if (request.method === "GET") return new Response(null, { status: 302, headers: { Location: "/contact-us" } });
 	if (request.method !== "POST") return new Response(null, { status: 405 });
 

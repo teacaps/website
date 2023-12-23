@@ -24,7 +24,7 @@ export default function Contact() {
 					Got a question, comment, or just want to chat with someone about keyboards? Send us a message using
 					the form below.
 				</span>
-				<ReCaptcha>
+				<ReCaptcha reCaptchaKey={Oxygen.env.PUBLIC_RECAPTCHA_SITE_KEY}>
 					<ContactForm />
 				</ReCaptcha>
 			</Container>

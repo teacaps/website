@@ -1,15 +1,14 @@
 import { SESClient, SendEmailCommand } from "@aws-sdk/client-ses";
 import type { HydrogenRequest } from "@shopify/hydrogen";
 
-const client = new SESClient({
-	credentials: {
-		accessKeyId: Oxygen.env.SES_ACCESS_KEY_ID,
-		secretAccessKey: Oxygen.env.SES_ACCESS_KEY,
-	},
-	region: "us-east-1",
-});
-
 export async function api(request: HydrogenRequest) {
+	const client = new SESClient({
+		credentials: {
+			accessKeyId: Oxygen.env.SES_ACCESS_KEY_ID,
+			secretAccessKey: Oxygen.env.SES_ACCESS_KEY,
+		},
+		region: "us-east-1",
+	});
 	console.log(request);
 	console.log("Oxygen");
 	console.log(JSON.stringify(Oxygen));

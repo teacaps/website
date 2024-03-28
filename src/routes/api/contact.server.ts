@@ -36,9 +36,9 @@ export async function api(request: HydrogenRequest) {
 		});
 		if (!recaptchaResponse.ok) potentiallySpam = true;
 		// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-		const { success, score = 0 } = await recaptchaResponse.json();
+		const { success, score = 1 } = await recaptchaResponse.json();
 		if (!success) potentiallySpam = true;
-		if (score < 0.2) potentiallySpam = true;
+		if (score <= 0.1 || message.includes("http")) potentiallySpam = true;
 	} else {
 		potentiallySpam = true;
 	}

@@ -4,7 +4,7 @@ export function ShippingNotice() {
 			<a
 				className="w-full py-2 px-4 text-center font-medium text-grain leading-6 sm:px-0"
 				href="https://milktype.co/sprout75">
-				New from the Teacaps team: Sprout 75 is available for pre-order soon! →
+				New from the Teacaps team: Sprout 75 is available for pre-order! →
 			</a>
 		</div>
 	);
